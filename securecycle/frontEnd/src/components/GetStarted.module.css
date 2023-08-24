@@ -1,10 +1,5 @@
 /* GetStarted.module.css */
 
-/* Content Section */
-.content-section {
-  /* Add styles specific to the outermost container of the component */
-}
-
 .content-container {
   display: flex;
   align-items: center;
@@ -40,7 +35,8 @@
 
 .inspiration-info h1 {
   color: #5d5d5d;
-  font-size: 24px;
+  font-size: 45px;
+  font-weight: 700px;
 }
 
 .inspiration-info p {

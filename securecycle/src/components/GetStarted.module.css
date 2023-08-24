@@ -1,0 +1,72 @@
+/* GetStarted.module.css */
+
+/* Content Section */
+.content-section {
+  /* Add styles specific to the outermost container of the component */
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 140px;
+  min-height: calc(100vh - 30vh);
+}
+
+@media (min-width: 768px) {
+  .content-container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .content-container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content-container {
+    width: 1170px;
+  }
+}
+
+/* Inspiration Info */
+.inspiration-info {
+  height: 50vh;
+  display: grid;
+  align-content: center;
+}
+
+.inspiration-info h1 {
+  color: #5d5d5d;
+  font-size: 24px;
+}
+
+.inspiration-info p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #5d5d5d;
+}
+
+.inspiration-btn {
+  border: 0;
+  border-radius: 20px;
+  padding: 12px 30px;
+  margin-top: 30px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #6c63ff;
+}
+
+/* Inspiration Image */
+.inspiration-image {
+  height: 50vh;
+  /* Styles specific to the image container */
+}
+
+.inspiration-image img {
+  max-width: 100%;
+  /* Other styles if needed */
+}

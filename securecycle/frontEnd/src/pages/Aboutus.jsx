@@ -1,5 +1,7 @@
+import styles from "./Aboutus.module.css";
+
 function Aboutus() {
-  return <div>About us</div>;
+  return <div className={styles["about"]}>About us</div>;
 }
 
 export default Aboutus;

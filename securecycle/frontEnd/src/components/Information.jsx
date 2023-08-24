@@ -27,8 +27,8 @@ const Information = () => {
 
   return (
     <Container>
-      <h2 className={styles.h2}>Victorian Cyclist Guidelines</h2>
-      <Container style={{ marginBottom: "10rem" }}>
+      <h2 className={styles.h2Info}>Victorian Cyclist Guidelines</h2>
+      <Container style={{ marginTop: "2rem", marginBottom: "5rem" }}>
         {guidelines.map((guideline, index) => (
           <Row key={index}>
             <Col md="8" className={`${styles.step1} offset-md-2`}>

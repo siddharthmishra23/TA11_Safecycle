@@ -1,0 +1,53 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  background: rgba(7, 7, 7, 0.859);
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 9999999;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 4rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--color-light--2);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: color 0.2s; /* smooth color transition */
+}
+
+.nav a:hover,
+.nav a:focus {
+  color: var(--color-brand--2);
+  outline: none; /* Removing default outline for focus for a cleaner look */
+}
+
+/* CSS Modules feature */
+.nav a:global(.active) {
+  color: var(--color-brand--2);
+}
+
+a.ctaLink {
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--0);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+  transition: background-color 0.2s, color 0.2s; /* smooth transitions for color changes */
+}
+
+a.ctaLink:hover,
+a.ctaLink:focus {
+  background-color: var(
+    --color-dark--0
+  ); /* You can modify this as per design preference */
+  color: var(--color-brand--2);
+}

@@ -9,11 +9,11 @@ import Resources from "./pages/Resources";
 import Aboutus from "./pages/Aboutus";
 
 function App() {
-  //   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  //   if (!isAuthenticated) {
-  //     return <Login onLogin={() => setIsAuthenticated(true)} />;
-  //   }
+  if (!isAuthenticated) {
+    return <Login onLogin={() => setIsAuthenticated(true)} />;
+  }
   return (
     <div>
       <BrowserRouter>

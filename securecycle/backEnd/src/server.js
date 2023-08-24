@@ -1,11 +1,22 @@
+import exp from "constants";
 import express from "express";
-
+import mysql from "mysql";
+import cors from "cors";
 const app = express();
+app.use(express.json());
+app.use(cors());
 
-app.get("/hello", (req, res) => {
-  res.send("hello!");
+const db = mysql.createConnection({
+  host: "cyclestreet.mysql.database.azure.com",
+  user: "cyclestreetdb",
+  password: "Monash23",
 });
 
-app.listen(8000, () => {
-  console.log("server is listening on 8000");
+db.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+app.listen(8003, () => {
+  console.log("server running on 8003");
 });

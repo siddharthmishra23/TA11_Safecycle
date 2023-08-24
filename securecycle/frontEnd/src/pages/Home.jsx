@@ -5,6 +5,7 @@ import Nav from "../components/Nav";
 import "./Home.scss";
 import Information from "../components/Information";
 import GetStarted from "../components/GetStarted";
+import Testimonial from "../components/Testimonial";
 
 function Home() {
   useEffect(() => {
@@ -30,6 +31,7 @@ function Home() {
       <Nav />
       <GetStarted />
       <Information />
+      <Testimonial />
     </div>
   );
 }

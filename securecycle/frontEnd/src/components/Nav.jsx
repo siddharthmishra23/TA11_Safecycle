@@ -17,6 +17,11 @@ function Navigation() {
         </NavLink>
       </NavItem>
       <NavItem>
+        <NavLink tag={RRNavLink} to="/resources" activeClassName="active">
+          Resources
+        </NavLink>
+      </NavItem>
+      <NavItem>
         <NavLink tag={RRNavLink} to="/aboutus" activeClassName="active">
           About us
         </NavLink>

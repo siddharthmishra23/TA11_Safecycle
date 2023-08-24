@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Home from "./pages/Home";
 import Travel from "./pages/Travel";
 import Resources from "./pages/Resources";
+import Aboutus from "./pages/Aboutus";
 
 function App() {
   //   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/travel" element={<Travel />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/aboutus" element={<Aboutus />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

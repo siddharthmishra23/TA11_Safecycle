@@ -1,5 +1,10 @@
+import Nav from "../components/Nav";
 function Resources() {
-  return <div>Resources</div>;
+  return (
+    <div>
+      <Nav />
+    </div>
+  );
 }
 
 export default Resources;

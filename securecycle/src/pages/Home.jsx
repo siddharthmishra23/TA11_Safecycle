@@ -3,6 +3,8 @@ import Hero from "../components/Hero";
 import Nav from "../components/Nav";
 
 import "./Home.scss";
+import Information from "../components/Information";
+import GetStarted from "../components/GetStarted";
 
 function Home() {
   useEffect(() => {
@@ -26,6 +28,8 @@ function Home() {
     <div className="App">
       <Hero />
       <Nav />
+      <GetStarted />
+      <Information />
     </div>
   );
 }

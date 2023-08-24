@@ -12,10 +12,10 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.get(/^(?!\/api).+/, (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist/index.html"));
-});
-app.use(express.static(path.join(__dirname, "../build")));
+// app.get(/^(?!\/api).+/, (req, res) => {
+//   res.sendFile(path.join(__dirname, "../dist/index.html"));
+// });
+app.use(express.static(path.join(__dirname, "../dist")));
 
 const db = mysql.createConnection({
   host: "cyclestreet.mysql.database.azure.com",

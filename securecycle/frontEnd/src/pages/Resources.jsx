@@ -6,14 +6,14 @@ import styles from "./Resources.module.scss"; // Assuming you have a CSS file na
 const sampleMovie = [
   {
     title: "Vic Roads",
-    posterImage: "./public/vicroads.jpeg",
+    posterImage: "/vicroads2.jpeg",
     description:
       "The new Department of Transport and Planning gives us a singular, integrated focus on tackling the big issues – from improving buses in growing suburbs to making it easier to walk and cycle places and embrace new technology. ",
     ref: "https://www.vicroads.vic.gov.au/traffic-and-road-use/cycling",
   },
   {
     title: "Victoria Legal Aid",
-    posterImage: "./public/victorialegalaid.png",
+    posterImage: "/victorialegalaid2.png",
     description:
       "We help people with their legal problems. We focus on protecting the rights of Victorians and representing those who need it the most.",
     ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",

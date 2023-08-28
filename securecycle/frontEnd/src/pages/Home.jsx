@@ -27,8 +27,8 @@ function Home() {
 
   return (
     <div className="App">
-      <Hero />
       <Nav />
+      <Hero />
       <GetStarted />
       <Information />
       <Testimonial />

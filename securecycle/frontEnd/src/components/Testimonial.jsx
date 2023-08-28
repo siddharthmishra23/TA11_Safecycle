@@ -6,6 +6,15 @@ function Testimonial() {
     <section>
       <Container>
         <Row md="4" className={styles.rowModified}>
+        <Col md="6">
+            <figure className={styles["testimonial-image"]}>
+              <img
+                src="/c_2bikers.png"
+                alt="Descriptive image description"
+                className="img-fluid"
+              />
+            </figure>
+          </Col>
           <Col md="6">
             <article className={styles["testimonial-info"]}>
               <h1>Cycling in Victoria: Rules, Regulations, and Safety!</h1>
@@ -34,15 +43,7 @@ function Testimonial() {
             </article>
           </Col>
 
-          <Col md="6">
-            <figure className={styles["testimonial-image"]}>
-              <img
-                src="/rules.jpeg"
-                alt="Descriptive image description"
-                className="img-fluid"
-              />
-            </figure>
-          </Col>
+
         </Row>
       </Container>
     </section>

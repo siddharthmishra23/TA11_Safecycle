@@ -11,9 +11,6 @@ function Hero() {
       <div className="parallax-layer layer-3"></div>
       <div className="parallax-layer layer-2"></div>
       <div className="parallax-layer layer-1"></div>
-      <div className="logo">
-        <img src="/logo.svg" alt="" />
-      </div>
     </div>
   );
 }

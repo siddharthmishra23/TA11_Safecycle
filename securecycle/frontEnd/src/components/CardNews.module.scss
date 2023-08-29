@@ -1,0 +1,142 @@
+/* Designer credit: https://dribbble.com/shots/1978243-Latest-News */
+
+.app-header {
+  display: block;
+  padding: 30px;
+}
+
+.app-title-content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+
+  @media (min-width: 768px) {
+    width: auto;
+    position: absolute;
+    text-align: left;
+  }
+}
+
+.app-cardnews-list {
+  display: grid;
+  width: 100%;
+  white-space: normal;
+  overflow-x: scroll;
+  gap: 1rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    width: 80%;
+    white-space: nowrap;
+    margin-top: 0;
+  }
+
+  .cardnews {
+    margin: 60px 30px;
+    display: inline-block;
+
+    .cardnews-body {
+      white-space: normal;
+    }
+  }
+}
+
+.designer-link {
+  display: inline-block;
+  padding-top: 40px;
+}
+
+.cardnews-header {
+  height: 50vh;
+}
+
+.newsCard {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  display: none; /* Hide by default */
+}
+
+.newsCard.active {
+  display: block; /* Only show the active post */
+}
+
+.carousel-container {
+  position: relative;
+}
+
+.arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  cursor: pointer;
+  z-index: 100;
+  color: #fff;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+/* On hover of the container or when it's focused, show the arrows */
+.carousel-container:hover .arrow,
+.carousel-container:focus-within .arrow {
+  display: block;
+}
+
+.app-cardnews-list {
+  display: flex;
+  overflow: hidden;
+  gap: 1rem;
+  justify-content: center;
+  padding: 0 15%; /* to show part of adjacent cards */
+
+  .newsCard {
+    flex: 0 0 auto;
+    transform: scale(0.9); /* slightly scale down to distinguish from active */
+    transition: transform 0.3s;
+  }
+
+  .newsCard.active {
+    transform: scale(1); /* active card at full size */
+  }
+}
+.carousel-container {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 100;
+  background: rgba(178, 176, 176, 0.7); /* semi-transparent background */
+  padding: 5px 10px;
+  border-radius: 5px; /* rounded edges */
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+}
+
+.arrow.right {
+  right: 15%;
+}
+
+.arrow:not(.right) {
+  left: 15%;
+}
+.body-content {
+  text-wrap: wrap;
+}

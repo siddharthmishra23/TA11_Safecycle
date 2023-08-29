@@ -1,15 +1,19 @@
 .nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  display: grid;
+
   height: 4rem;
-  background: rgba(47, 45, 45, 0.859);
+  background: rgb(179 190 240 / 68);
   margin: 0;
   position: sticky;
   top: 0;
   z-index: 9999999;
+  grid-template-columns: 1fr 1fr;
 }
-
+.navflex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 .nav ul {
   list-style: none;
   display: flex;
@@ -50,4 +54,8 @@ a.ctaLink:focus {
     --color-dark--0
   ); /* You can modify this as per design preference */
   color: var(--color-brand--2);
+}
+
+.logo {
+  height: 5.2rem;
 }

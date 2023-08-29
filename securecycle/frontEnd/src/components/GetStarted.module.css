@@ -28,7 +28,6 @@
 
 /* Inspiration Info */
 .inspiration-info {
-  height: 50vh;
   display: grid;
   align-content: center;
 }
@@ -58,11 +57,11 @@
 
 /* Inspiration Image */
 .inspiration-image {
-  height: 50vh;
   /* Styles specific to the image container */
 }
 
 .inspiration-image img {
   max-width: 100%;
+  border-radius: 50%;
   /* Other styles if needed */
 }

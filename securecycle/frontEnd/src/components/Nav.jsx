@@ -1,4 +1,4 @@
-import { NavLink as RRNavLink } from "react-router-dom"; // Rename to avoid conflict
+import { NavLink as RRNavLink, Link } from "react-router-dom"; // Rename to avoid conflict
 import { Nav, NavItem, NavLink } from "reactstrap";
 import styles from "./Nav.module.css";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
@@ -6,26 +6,31 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 function Navigation() {
   return (
     <Nav className={styles.nav}>
-      <NavItem>
-        <NavLink tag={RRNavLink} exact to="/" activeClassName="active">
-          Home
-        </NavLink>
-      </NavItem>
-      <NavItem>
+      <Link to="/">
+        <img src="/new_logo.png" alt="Safe cycle" className={styles.logo} />
+      </Link>
+      <div className={styles.navflex}>
+        <NavItem>
+          <NavLink tag={RRNavLink} exact to="/" activeClassName="active">
+            Home
+          </NavLink>
+        </NavItem>
+        {/* <NavItem>
         <NavLink tag={RRNavLink} to="/travel" activeClassName="active">
           Travel
         </NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink tag={RRNavLink} to="/resources" activeClassName="active">
-          Resources
-        </NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink tag={RRNavLink} to="/aboutus" activeClassName="active">
-          About us
-        </NavLink>
-      </NavItem>
+      </NavItem> */}
+        <NavItem>
+          <NavLink tag={RRNavLink} to="/resources" activeClassName="active">
+            Resources
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink tag={RRNavLink} to="/aboutus" activeClassName="active">
+            About us
+          </NavLink>
+        </NavItem>
+      </div>
     </Nav>
   );
 }

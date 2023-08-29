@@ -31,15 +31,6 @@
   grid-template-columns: 1fr 1fr 3fr;
 }
 
-.box {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(5px);
-  border: 4px solid rgba(255, 255, 255, 0.18);
-  border-radius: 40px;
-  z-index: 1;
-  width: 50%;
-}
-
 .chartSummary {
   height: 50vh;
 }
@@ -77,11 +68,6 @@
 
 /* For tablets */
 @media (max-width: 768px) {
-  .box {
-    width: 70vh;
-    height: 300px;
-  }
-
   .wrapper {
     grid-template-columns: 1fr;
   }
@@ -97,21 +83,10 @@
       width: 70%;
     }
   }
-
-  .box {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-  }
 }
 
 /* For mobile devices */
 @media (max-width: 480px) {
-  .box {
-    width: 90vw;
-    height: 250px;
-  }
-
   .content {
     h2 {
       font-size: 2em;

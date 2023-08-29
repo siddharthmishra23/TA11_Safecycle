@@ -6,7 +6,7 @@ import BarChart from "../components/BarChart";
 import CardNews from "../components/CardNews";
 import PolarChart from "../components/PolarChart";
 import Fatality from "../components/fatality";
-
+import { useEffect, useState, useRef } from "react";
 const sampleMovie = [
   {
     title: "Vic Roads",
@@ -23,12 +23,45 @@ const sampleMovie = [
 ];
 
 const Resources = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1, // adjust this if you want the animation to start earlier or later
+      }
+    );
+
+    const { current } = elementRef;
+
+    if (current) {
+      observer.observe(current);
+    }
+
+    return () => {
+      if (current) {
+        observer.unobserve(current);
+      }
+    };
+  }, []);
   return (
     <div>
       <Navigation />
       <div className={styles["resources-container"]}></div>
       <section>
-        <p className={styles["paragraph-resource"]}>Safety Statistics</p>
+        <p
+          ref={elementRef}
+          className={`${styles["paragraph-resource"]} ${
+            isVisible ? "animate__fadeInUp animate__animated" : ""
+          }`}
+        >
+          Safety Statistics
+        </p>
 
         <div className={styles["chart-container2"]}>
           <div className={styles["importantInfo"]}>
@@ -82,13 +115,25 @@ const Resources = () => {
         </div>
       </section>
       <section>
-        <p className={styles["paragraph-resource"]}>Related News and updates</p>
+        <p
+          ref={elementRef}
+          className={`${styles["paragraph-resource"]} ${
+            isVisible ? "animate__fadeInUp animate__animated" : ""
+          }`}
+        >
+          Related News and updates
+        </p>
         <CardNews />
       </section>
 
       <section>
-        <p className={styles["paragraph-resource"]}>
-          Links to Important Websites
+        <p
+          ref={elementRef}
+          className={`${styles["paragraph-resource"]} ${
+            isVisible ? "animate__fadeInUp animate__animated" : ""
+          }`}
+        >
+          Links to important resources
         </p>
         <div className={styles["wrapper"]}>
           {sampleMovie.map((movie, index) => (

@@ -14,9 +14,9 @@ const GetStarted = () => {
                 Join our community of cycling enthusiasts and discover the best
                 routes, safety tips, and gear recommendations tailored for you.
               </p>
-              <NavLink to="/travel">
+              <NavLink to="/resources">
                 <Button color="primary" className={styles["inspiration-btn"]}>
-                  Let's Go Travel
+                  Let's Explore
                 </Button>
               </NavLink>
             </article>

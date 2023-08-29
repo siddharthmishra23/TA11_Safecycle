@@ -33,11 +33,11 @@ const Information = () => {
           <Row key={index}>
             <Col md="8" className={`${styles.step1} offset-md-2`}>
               <Row
-                className={`animate__animated animate__bounceIn${
-                  guideline.direction
-                } animate__delay-${index + 1}s ${styles.box} ${
-                  styles[`shape-${index + 1}`]
-                } ${styles.animated}`}
+                className={`a bounceIn${guideline.direction} animate__delay-${
+                  index + 1
+                }s ${styles.box} ${styles[`shape-${index + 1}`]} ${
+                  styles.animated
+                }`}
               >
                 <Col xs="7" sm="4" md="4" className={styles.shape}>
                   <div className={styles.number}>

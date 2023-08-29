@@ -6,10 +6,10 @@ function Testimonial() {
     <section>
       <Container>
         <Row md="4" className={styles.rowModified}>
-        <Col md="6">
+          <Col md="6">
             <figure className={styles["testimonial-image"]}>
               <img
-                src="/c_2bikers.png"
+                src="/2bikers.png"
                 alt="Descriptive image description"
                 className="img-fluid"
               />
@@ -42,8 +42,6 @@ function Testimonial() {
               </div>
             </article>
           </Col>
-
-
         </Row>
       </Container>
     </section>

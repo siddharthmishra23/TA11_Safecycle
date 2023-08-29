@@ -9,17 +9,17 @@ import Resources from "./pages/Resources";
 import Aboutus from "./pages/Aboutus";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  if (!isAuthenticated) {
-    return <Login onLogin={() => setIsAuthenticated(true)} />;
-  }
+  // if (!isAuthenticated) {
+  //   return <Login onLogin={() => setIsAuthenticated(true)} />;
+  // }
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/travel" element={<Travel />} />
+          {/*<Route path="/travel" element={<Travel />} />*/}
           <Route path="/resources" element={<Resources />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="*" element={<PageNotFound />} />

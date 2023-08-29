@@ -1,14 +1,16 @@
-import exp from "constants";
 import express from "express";
-import mysql from "mysql";
 import cors from "cors";
 import path from "path";
 import "dotenv/config";
+import { fileURLToPath } from "url";
+import accidentInfoRouter from "../routes/getAccident.js";
+import severityRouter from "../routes/getSeverity.js";
+import accidentTimeRouter from "../routes/getAccidentTime.js";
+
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -17,15 +19,20 @@ const __dirname = path.dirname(__filename);
 // });
 app.use(express.static(path.join(__dirname, "../dist")));
 
-const db = mysql.createConnection({
-  host: "cyclestreet.mysql.database.azure.com",
-  user: "cyclestreetdb",
-  password: process.env.AZURE_PASSWORD,
-});
+// Use the accidentInfoRouter
+app.use("/accidentDays", accidentInfoRouter);
+app.use("/severity", severityRouter);
+app.use("/accidentTime", accidentTimeRouter);
 
-db.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected!");
+// should always the last
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
+});
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  console.error(err.message, err.stack);
+  res.status(statusCode).json({ message: err.message });
+  return;
 });
 
 const PORT = process.env.PORT || 8003;

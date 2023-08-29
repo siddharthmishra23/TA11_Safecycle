@@ -1,10 +1,5 @@
-import Nav from "../components/Nav";
 function Travel() {
-  return (
-    <div>
-      <Nav />
-    </div>
-  );
+  return <div></div>;
 }
 
 export default Travel;

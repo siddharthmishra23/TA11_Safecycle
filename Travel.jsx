@@ -1,3 +1,5 @@
+//npm install @react-google-maps/api
+
 import React, { useState } from 'react';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 import Nav from "../components/Nav";

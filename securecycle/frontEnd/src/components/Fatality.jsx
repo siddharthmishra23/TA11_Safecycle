@@ -16,7 +16,7 @@ const Fatality = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiUrl = "http://localhost:8003/severity";
+    const apiUrl = "/severity";
 
     fetch(apiUrl)
       .then((response) => {

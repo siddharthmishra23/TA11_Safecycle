@@ -38,7 +38,7 @@ function BarChart() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:8003/accidentDays`);
+        const response = await fetch(`/accidentDays`);
         const data = await response.json();
 
         const labels = data.data.map((item) => item.Value);

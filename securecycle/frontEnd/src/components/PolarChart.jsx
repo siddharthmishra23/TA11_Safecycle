@@ -22,7 +22,7 @@ function PolarChart() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:8003/accidentTime`);
+        const response = await fetch(`/accidentTime`);
         const data = await response.json();
 
         const labels = data.data.map((item) => item.Value);

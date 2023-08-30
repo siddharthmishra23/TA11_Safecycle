@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
 .card {
   position: relative;
-  width: 15rem;
-  height: 20rem;
+  width: 20rem;
+  height: 10rem;
   overflow: hidden;
   box-shadow: 0 30px 30px rgba(117, 110, 110, 0.2);
   transform: translateY(0); /* Start position */
   transition: transform 0.3s ease; /* Transition effect */
+  font-family: 'Roboto', sans-serif;
 }
 .card:hover {
   transform: translateY(-10px); /* Move card up by 10 pixels on hover */
@@ -54,17 +56,18 @@
   bottom: -100%;
   left: 0;
   width: 100%;
-  height: 70%;
+  height:100%;
   padding: 1.5em 1.5em 2em;
-  background: #000a;
+  background: rgba(29, 29, 29, 0.496);
   backdrop-filter: blur(16px) saturate(120%);
   transition: 0.3s;
-  color: #fff;
+  color: white;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  font-family: 'Roboto', sans-serif;
 }
 
 .card:hover .details {
@@ -97,7 +100,6 @@
 
 .details .tags span {
   padding: 0.35rem 0.65rem;
-  color: #fff;
   border: 1.5px solid rgba(255 255 255 / 0.4);
   border-radius: 4px;
   border-radius: 50px;
@@ -120,4 +122,8 @@
 }
 .card:hover .info-link {
   opacity: 1;
+}
+
+.button {
+  color:green;
 }

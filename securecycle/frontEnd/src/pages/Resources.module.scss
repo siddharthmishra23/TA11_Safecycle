@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
 .resources-container {
-  font-family: Arial, sans-serif;
-  background: url("/accident_roadgeo.png") no-repeat center;
-  background-size: cover;
-  height: 40vh;
+  font-family: 'Roboto', sans-serif;
+  background: url("/new_logo.png") no-repeat center;
+  background-size: 30%;
+  height: 30vh;
   width: 100%;
   transition: all 0.3s ease;
+}
+
+.resources-main{
+  background-color: rgba(237, 192, 69, 0.18);
 }
 
 .content {
@@ -102,6 +107,7 @@
   .wrapper {
     padding: 10px;
     gap: 12px;
+
   }
 
   .chartSummary {
@@ -115,9 +121,9 @@
   text-align: center; /* Centers the text */
   position: relative;
   padding-bottom: 10px; /* Adds some space for the underline */
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  letter-spacing: 1rem;
+  letter-spacing: 0.1rem;
   margin: 1rem 0;
   text-align: center;
   text-transform: uppercase;
@@ -134,13 +140,12 @@
   }
 }
 section:nth-child(odd) {
-  background-color: rgba(
-    191,
-    224,
-    249,
-    0.18
-  ); // replace with the color you want
+  background-color: rgba(255, 255, 255, 0.18); // replace with the color you want
 }
+
+// section {
+//   background-color: rgba(237, 192, 69, 0.18); // replace with the color you want
+// }
 .chart-container1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -178,5 +183,5 @@ section:nth-child(odd) {
   }
 }
 
-.severity-container {
-}
+// .severity-container {
+// }

@@ -1,12 +1,13 @@
 import { Container, Row, Col, Media } from "reactstrap";
 import "./Fatality.css";
 import React, { useState, useEffect } from "react";
+import DonutChart from "./Donut";
 
 const computePercentages = (data) => {
   const total = data.reduce((acc, curr) => acc + curr.Count, 0);
   return data.map((item) => ({
     ...item,
-    percent: ((item.Count / total) * 100).toFixed(2) + "%",
+    percent: ((item.Count / total) * 100).toFixed(2),
   }));
 };
 
@@ -16,7 +17,7 @@ const Fatality = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiUrl = "/severity";
+    const apiUrl = "http://localhost:8003/severity";
 
     fetch(apiUrl)
       .then((response) => {
@@ -54,25 +55,25 @@ const Fatality = () => {
     "title-yellow",
   ];
 
+  const donutColors = [
+    "donut-segment-1",
+    "donut-segment-2",
+    "donut-segment-3",
+    "donut-segment-4",
+    // Add more colors if needed
+  ];
+
   return (
     <Container>
       <h1 className="infographic__title">Severity Percentages</h1>
       <Row className="infographic__grid">
         {percentages.map((item, index) => (
           <Col sm="4" className="infographic__grid__item" key={index}>
-            <Media
-              middle
-              src="" // Determine the image URL logic based on your requirements
-              className="infographic__grid__item__img"
+            <DonutChart
+              percentage={parseFloat(item.percent)} // Parse the string to float
+              color={donutColors[index % donutColors.length]}
+              data={item.Value}
             />
-            <h2
-              className={`infographic__grid__item__title ${
-                colors[index % colors.length]
-              }`}
-            >
-              {item.percent}
-            </h2>
-            <p className="infographic__grid__item__p">{item.Value}</p>
           </Col>
         ))}
       </Row>

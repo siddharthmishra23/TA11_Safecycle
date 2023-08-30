@@ -46,14 +46,7 @@ const Fatality = () => {
 
   const percentages = computePercentages(data);
 
-  const colors = [
-    "title-dkblue",
-    "title-orange",
-    "title-ltblue",
-    "title-red",
-    "title-green",
-    "title-yellow",
-  ];
+  const colors = ["title-green", "title-orange", "title-red"];
 
   const donutColors = [
     "donut-segment-1",

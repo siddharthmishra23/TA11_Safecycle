@@ -30,13 +30,18 @@
   stroke: #ff6200;
 }
 
+.donut-segment-1 {
+  stroke: rgba(64, 176, 23, 0.607);
+  animation: donut1 3s;
+}
+
 .donut-segment-2 {
-  stroke: aqua;
+  stroke: rgba(53, 72, 216, 0.703);
   animation: donut1 3s;
 }
 
 .donut-segment-3 {
-  stroke: #d9e021;
+  stroke: #e021219d;
   animation: donut2 3s;
 }
 
@@ -76,7 +81,6 @@
     stroke-dasharray: 0, 100;
   }
   100% {
-    stroke-dasharray: 69, 31;
   }
 }
 
@@ -85,7 +89,6 @@
     stroke-dasharray: 0, 100;
   }
   100% {
-    stroke-dasharray: 30, 70;
   }
 }
 
@@ -94,7 +97,6 @@
     stroke-dasharray: 0, 100;
   }
   100% {
-    stroke-dasharray: 1, 99;
   }
 }
 
@@ -148,9 +150,13 @@ html {
   display: inline-block;
 }
 
-.donut-segment.title-dkblue {
+.donut-segment.title-green {
   stroke: #ed1e79;
 }
 .donut-segment.title-orange {
+  stroke: #ed471e;
+}
+
+.donut-segment.title-red {
   stroke: #ed471e;
 }

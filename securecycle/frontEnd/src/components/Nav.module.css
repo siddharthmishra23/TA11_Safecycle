@@ -1,8 +1,8 @@
 .nav {
   display: grid;
 
-  height: 4rem;
-  background: rgb(179 190 240 / 68);
+  height: 5rem;
+  background: #f9a73cf7;
   margin: 0;
   position: sticky;
   top: 0;
@@ -23,6 +23,7 @@
 .nav a {
   text-decoration: none;
   color: var(--color-light--2);
+  margin-left: 1.5rem;
   text-transform: uppercase;
   font-size: 1.5rem;
   font-weight: 600;
@@ -57,5 +58,6 @@ a.ctaLink:focus {
 }
 
 .logo {
-  height: 5.2rem;
+  height: 6rem;
+  margin-left: 1rem;
 }

@@ -6,9 +6,12 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 function Navigation() {
   return (
     <Nav className={styles.nav}>
-      <Link to="/">
-        <img src="/new_logo.png" alt="Safe cycle" className={styles.logo} />
-      </Link>
+      <div className={styles["logo-flex"]}>
+        <Link to="/">
+          <img src="/new_logo.png" alt="Safe cycle" className={styles.logo} />
+        </Link>
+      </div>
+
       <div className={styles.navflex}>
         <NavItem>
           <NavLink tag={RRNavLink} exact to="/" activeClassName="active">

@@ -58,6 +58,10 @@ a.ctaLink:focus {
 }
 
 .logo {
-  height: 6rem;
-  margin-left: 1rem;
+  height: 5rem;
+}
+
+.logo-flex {
+  display: flex;
+  justify-content: flex-start;
 }

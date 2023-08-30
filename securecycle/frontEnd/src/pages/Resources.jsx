@@ -20,44 +20,32 @@ const sampleMovie = [
     description: "For legal problems",
     ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
   },
+  {
+    title: "Victoria Legal Aid",
+    posterImage: "/victorialegalaid2.png",
+    description: "For legal problems",
+    ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
+  },
+  {
+    title: "Victoria Legal Aid",
+    posterImage: "/victorialegalaid2.png",
+    description: "For legal problems",
+    ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
+  }
 ];
 
 const Resources = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.1, // adjust this if you want the animation to start earlier or later
-      }
-    );
-
-    const { current } = elementRef;
-
-    if (current) {
-      observer.observe(current);
-    }
-
-    return () => {
-      if (current) {
-        observer.unobserve(current);
-      }
-    };
-  }, []);
+  
+  
   return (
-    <div>
+    <div className= {styles["resources-main"]}>
       <Navigation />
       <div className={styles["resources-container"]}></div>
       <section>
         <p
-          ref={elementRef}
+          
           className={`${styles["paragraph-resource"]} ${
-            isVisible ? "animate__fadeInUp animate__animated" : ""
+            "animate__fadeInUp animate__animated" 
           }`}
         >
           Safety Statistics
@@ -116,9 +104,9 @@ const Resources = () => {
       </section>
       <section>
         <p
-          ref={elementRef}
+          
           className={`${styles["paragraph-resource"]} ${
-            isVisible ? "animate__fadeInUp animate__animated" : ""
+            "animate__fadeInUp animate__animated" 
           }`}
         >
           Related News and updates
@@ -128,9 +116,8 @@ const Resources = () => {
 
       <section>
         <p
-          ref={elementRef}
           className={`${styles["paragraph-resource"]} ${
-            isVisible ? "animate__fadeInUp animate__animated" : ""
+            "animate__fadeInUp animate__animated" 
           }`}
         >
           Links to important resources

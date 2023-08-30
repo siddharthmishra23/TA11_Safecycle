@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
 .team {
-  width: 90%;
+  width: 80%;
   position: relative;
   height: 100vh; /* Set the container height to the full viewport height */
+  font-family: 'Roboto', sans-serif;;
 }
 
 .team img {
@@ -16,14 +18,14 @@
 }
 
 .aboutus {
-  font-family: 'Raleway', sans-serif;
-  background-color: rgba(34, 156, 213, 0.973);
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(237, 192, 69, 0.18);
   height: 110%;
 }
 
 .header-text {
   position: absolute;
-  color: rgb(243, 238, 222);
+  color: rgb(67, 66, 61);
   display: inline-block;
   flex-direction: column;
   justify-content: center;
@@ -33,11 +35,11 @@
   bottom: 0;
   left: 10px; /* Added 'px' unit */
   right: 0;
-  margin-top: 20vh;
+  margin-top: 10vh;
   margin-left: 7vw;
-  padding: 25vh;
-  font-weight: 700;
-  font-size: calc(0.4rem + 1vw);
+  padding: 40vh;
+  font-weight: 400;
+  font-size: calc(0.2rem + 1vw);
 }
 
 .header-text h2 {
@@ -45,13 +47,14 @@
   font-size: calc(1.0rem + 0.5vw);
   text-transform: uppercase;
   line-height: 1;
-  color: rgb(7, 33, 60);
+  color: rgb(24, 61, 143);
 }
 
 .header-text span {
   display: block;
   font-weight: 900;
-  font-size: calc(4rem + 1vw);
+  font-size: calc(2.5rem + 1vw);
+  color: rgb(195, 66, 14);
 }
 
 .description {

@@ -29,7 +29,6 @@ function Home() {
     <div className="App">
       <Nav />
       <Hero />
-      <GetStarted />
       <Information />
       <Testimonial />
     </div>

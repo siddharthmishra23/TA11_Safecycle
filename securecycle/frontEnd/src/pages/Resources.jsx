@@ -32,37 +32,36 @@ const sampleMovie = [
     posterImage: "/vic_police.png",
     description: "Bike theft",
     ref: "https://www.police.vic.gov.au/bike-theft",
-  }
+  },
 ];
 
 const Resources = () => {
-  
-  
   return (
-    <div className= {styles["resources-main"]}>
+    <div className={styles["resources-main"]}>
       <Navigation />
-      <div className={styles["resources-container"]}>
-        RESOURCES
+      <div className={styles["resource-container"]}>
+        <img
+          className={styles["resource-img"]}
+          src="/Resource-new.png"
+          alt=""
+        />
       </div>
       <section>
-        <p
-          
-          className={`${styles["paragraph-resource"]} ${
-            "animate__fadeInUp animate__animated" 
-          }`}
-        >
+        <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
           Safety Statistics
         </p>
         <div>
-        {/* <video className={styles["video"]} controls autoPlay muted>
+          {/* <video className={styles["video"]} controls autoPlay muted>
               <source src="../Videos/intro.mp4" type="video/mp4" />
             </video> */}
-
         </div>
 
         <div className={styles["chart-container2"]}>
-
-          <div className={styles["importantInfo"]}>
+          <div
+            className={styles["importantInfo"]}
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+          >
             <h4>Accident Timing Analysis</h4>
             The graph highlights the timeframes during which accidents
             frequently occur: daytime, dawn, or nighttime. Recognizing these
@@ -99,7 +98,11 @@ const Resources = () => {
             </p>
           </div>
 
-          <div className={styles["importantInfo"]}>
+          <div
+            className={styles["importantInfo"]}
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+          >
             <h4>Accidents Overview</h4>
             This chart provides insights into the number of accidents that
             occurred on each day of the week. Analyzing this data can help city
@@ -113,51 +116,48 @@ const Resources = () => {
         </div>
       </section>
       <section>
-        <p
-          
-          className={`${styles["paragraph-resource"]} ${
-            "animate__fadeInUp animate__animated" 
-          }`}
-        >
+        <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
           Regulations
         </p>
         <CardNews />
       </section>
       <div>
-        <p
-          className={`${styles["paragraph-resource"]} ${
-            "animate__fadeInUp animate__animated" 
-          }`}
-        >
-          Video
+        <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
+          Videos
         </p>
-        <div class={styles["video-container"]}>
+        <div className={styles["video-container"]}>
           <iframe
-          className={styles["video"]}
-          src="https://www.youtube.com/embed/a60UqyoX04w"
-          title="YouTube Video"
-          allowFullScreen
+            className={styles["videoResources"]}
+            src="https://www.youtube.com/embed/a60UqyoX04w"
+            title="YouTube Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
           />
+          <iframe
+            className={styles["videoResources"]}
+            src="https://www.youtube.com/embed/PT1-mDlVyaI?si=bWmQwOn7SbpQJEzE"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+          <iframe
+            className={styles["videoResources"]}
+            src="https://www.youtube.com/embed/280oreUTr6o?si=a9fMUQ9hXgR0vV7c"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
         </div>
-
       </div>
 
-      <p
-          className={`${styles["paragraph-resource"]} ${
-            "animate__fadeInUp animate__animated" 
-          }`}
-        >
-          News
-        </p>
-      <Testimonial/>
+      <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
+        News and Updates
+      </p>
+      <Testimonial />
 
-      <section>
-        <p
-          className={`${styles["paragraph-resource"]} ${
-            "animate__fadeInUp animate__animated" 
-          }`}
-        >
-          Links
+      <section className={styles["newsSection"]}>
+        <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
+          Important Links
         </p>
         <div className={styles["wrapper"]}>
           {sampleMovie.map((movie, index) => (

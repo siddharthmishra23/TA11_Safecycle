@@ -137,8 +137,7 @@ const NewsCard = ({ details, isActive }) => {
         style={{
           backgroundImage: `url(${image})`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "85%",
-          backgroundPosition: "top left",
+          backgroundSize: "cover",
         }}
       >
         <h4>{category}</h4>

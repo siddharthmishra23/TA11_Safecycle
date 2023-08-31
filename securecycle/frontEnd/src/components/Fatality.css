@@ -4,9 +4,10 @@
 }
 .infographic__title {
   color: #545454;
-  font-size: 20px;
-  text-transform: uppercase !important;
+  font-size: 1.5rem;
+  text-transform: uppercase;
   text-align: center;
+  font-weight: 600;
 }
 .infographic__grid {
   display: flex;

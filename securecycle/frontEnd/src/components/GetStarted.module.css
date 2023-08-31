@@ -1,9 +1,9 @@
 /* GetStarted.module.css */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
 .content-container {
   display: flex;
   align-items: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   justify-content: space-between;
   gap: 140px;
   min-height: calc(100vh - 30vh);
@@ -37,7 +37,7 @@
 .inspiration-info h1 {
   color: #0b0d7b;
   font-size: 60px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 900;
   padding: 20px;
   margin: 0;
@@ -63,7 +63,7 @@
   cursor: pointer;
   color: #fff;
   font-weight: 900;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #291fe8;
 }
 
@@ -85,5 +85,10 @@
   z-index: 1;
   width: 50%;
   padding: 20px;
+}
 
+.hero-p {
+  font-weight: bold;
+  color: #3b3ee2ea;
+  font-size: 1.4rem;
 }

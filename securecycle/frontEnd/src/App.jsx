@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/*<Route path="/travel" element={<Travel />} />*/}
+          {/* <Route path="/travel" element={<Travel />} /> */}
           <Route path="/resources" element={<Resources />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="*" element={<PageNotFound />} />

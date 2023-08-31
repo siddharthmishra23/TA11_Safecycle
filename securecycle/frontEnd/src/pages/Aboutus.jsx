@@ -5,16 +5,19 @@ function Aboutus() {
   return <div>
     <Nav />
         <header class={styles["aboutus"]}>
+        <div className={styles["resources-container"]}>
+        ABOUT US
+       </div>
 
         <div className={styles["team"]}>
         <img src="/teambig.png" alt="" /></div>
 
         <div class={styles["header-text"]}>
-          <h1>
+          {/* <h1>
             
             <span>About Us</span>
           </h1>
-          <br />
+          <br /> */}
           <p>Welcome to Secure Cycling, your dedicated platform committed to enhancing the safety and security of cyclists worldwide. Our mission is to create a safer cycling environment by providing valuable resources, innovative products, and a supportive community that empowers cyclists to ride with confidence.</p>
           <br />
           <h2>Our Commitment to Cyclists' Safety</h2>

@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
 .resources-container {
   font-family: 'Roboto', sans-serif;
-  background: url("/new_logo.png") no-repeat center;
   background-size: 30%;
   height: 30vh;
   width: 100%;
+  font-size: 100px;
+  font-weight: 900;
+  padding: 50px;
   transition: all 0.3s ease;
+  color:#007bff;
+  background-color: #cde8f7;
 }
 
 .resources-main{
-  background-color: rgba(237, 192, 69, 0.18);
+  background-color: rgb(255, 254, 254);
 }
 
 .content {
@@ -121,7 +125,7 @@
   text-align: center; /* Centers the text */
   position: relative;
   padding-bottom: 10px; /* Adds some space for the underline */
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
   margin: 1rem 0;
@@ -134,8 +138,10 @@
     left: 50%;
     transform: translateX(-50%); /* Centers the underline */
     bottom: 0;
-    width: 60%; /* Adjust as needed */
+    width: 50%; /* Adjust as needed */
     height: 2px;
+    color: white;
+    padding-bottom: 1rem;
     background-color: currentColor;
   }
 }
@@ -185,3 +191,7 @@ section:nth-child(odd) {
 
 // .severity-container {
 // }
+.video {
+  width: 600px;
+  height: 400px;
+}

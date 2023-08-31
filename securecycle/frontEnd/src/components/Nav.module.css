@@ -2,7 +2,7 @@
   display: grid;
 
   height: 5rem;
-  background: #f9a73cf7;
+  background: #1a26acf7;
   margin: 0;
   position: sticky;
   top: 0;
@@ -23,7 +23,7 @@
 .nav a {
   text-decoration: none;
   color: var(--color-light--2);
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   text-transform: uppercase;
   font-size: 1.5rem;
   font-weight: 600;
@@ -58,7 +58,7 @@ a.ctaLink:focus {
 }
 
 .logo {
-  height: 5rem;
+  height: 6rem;
 }
 
 .logo-flex {

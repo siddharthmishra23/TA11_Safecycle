@@ -7,10 +7,11 @@ import CardNews from "../components/CardNews";
 import PolarChart from "../components/PolarChart";
 import Fatality from "../components/fatality";
 import { useEffect, useState, useRef } from "react";
+import Testimonial from "../components/Testimonial";
 const sampleMovie = [
   {
     title: "Vic Roads",
-    posterImage: "/vicroads2.jpeg",
+    posterImage: "/vicroad2.png",
     description: "Victorian government cycle guidelines",
     ref: "https://www.vicroads.vic.gov.au/traffic-and-road-use/cycling",
   },
@@ -21,16 +22,16 @@ const sampleMovie = [
     ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
   },
   {
-    title: "Victoria Legal Aid",
-    posterImage: "/victorialegalaid2.png",
-    description: "For legal problems",
-    ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
+    title: "Public Transport Victoria",
+    posterImage: "/ptv.png",
+    description: "Bike and public transport",
+    ref: "https://www.ptv.vic.gov.au/more/travelling-on-the-network/bikes-on-public-transport/",
   },
   {
-    title: "Victoria Legal Aid",
-    posterImage: "/victorialegalaid2.png",
-    description: "For legal problems",
-    ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
+    title: "Victoria Police",
+    posterImage: "/vic_police.png",
+    description: "Bike theft",
+    ref: "https://www.police.vic.gov.au/bike-theft",
   }
 ];
 
@@ -40,7 +41,9 @@ const Resources = () => {
   return (
     <div className= {styles["resources-main"]}>
       <Navigation />
-      <div className={styles["resources-container"]}></div>
+      <div className={styles["resources-container"]}>
+        RESOURCES
+      </div>
       <section>
         <p
           
@@ -50,8 +53,15 @@ const Resources = () => {
         >
           Safety Statistics
         </p>
+        <div>
+        {/* <video className={styles["video"]} controls autoPlay muted>
+              <source src="../Videos/intro.mp4" type="video/mp4" />
+            </video> */}
+
+        </div>
 
         <div className={styles["chart-container2"]}>
+
           <div className={styles["importantInfo"]}>
             <h4>Accident Timing Analysis</h4>
             The graph highlights the timeframes during which accidents
@@ -109,10 +119,37 @@ const Resources = () => {
             "animate__fadeInUp animate__animated" 
           }`}
         >
-          Related News and updates
+          Regulations
         </p>
         <CardNews />
       </section>
+      <div>
+        <p
+          className={`${styles["paragraph-resource"]} ${
+            "animate__fadeInUp animate__animated" 
+          }`}
+        >
+          Video
+        </p>
+        <div class={styles["video-container"]}>
+          <iframe
+          className={styles["video"]}
+          src="https://www.youtube.com/embed/a60UqyoX04w"
+          title="YouTube Video"
+          allowFullScreen
+          />
+        </div>
+
+      </div>
+
+      <p
+          className={`${styles["paragraph-resource"]} ${
+            "animate__fadeInUp animate__animated" 
+          }`}
+        >
+          News
+        </p>
+      <Testimonial/>
 
       <section>
         <p
@@ -120,7 +157,7 @@ const Resources = () => {
             "animate__fadeInUp animate__animated" 
           }`}
         >
-          Links to important resources
+          Links
         </p>
         <div className={styles["wrapper"]}>
           {sampleMovie.map((movie, index) => (

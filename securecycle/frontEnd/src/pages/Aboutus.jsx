@@ -36,12 +36,20 @@ function Aboutus() {
           </div>
           <div className="row gy-4">
             <img
-              style={{ right: "25%", position: "relative" }}
+              style={{
+                display: "grid",
+                placeItems: "center",
+                right: "25%",
+                position: "relative",
+              }}
               src="/teambig.png"
               alt="team"
             />
           </div>
-          <div className="row gy-1">
+          <div
+            className="row gy-1"
+            style={{ display: "grid", placeItems: "center" }}
+          >
             <img src="/About-whyus.png" alt="why us" />
           </div>
           <section id="why-us" className={styles["why-us section-bg"]}>

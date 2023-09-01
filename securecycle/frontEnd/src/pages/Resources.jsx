@@ -48,7 +48,7 @@ const Resources = () => {
       </div>
       <section>
         <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
-          Safety Statistics
+          By the Numbers: Why Safety Matters
         </p>
         <div>
           {/* <video className={styles["video"]} controls autoPlay muted>
@@ -117,13 +117,13 @@ const Resources = () => {
       </section>
       <section>
         <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
-          Regulations
+          Safety Rules at a Glance
         </p>
         <CardNews />
       </section>
       <div>
         <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
-          Videos
+          Watch & Learn: Safety Tutorials
         </p>
         <div className={styles["video-container"]}>
           <iframe
@@ -151,13 +151,13 @@ const Resources = () => {
       </div>
 
       <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
-        News and Updates
+        Latest in Bicycle Safety News
       </p>
       <Testimonial />
 
       <section className={styles["newsSection"]}>
         <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
-          Important Links
+          Essential Resources for Every Cyclist
         </p>
         <div className={styles["wrapper"]}>
           {sampleMovie.map((movie, index) => (

@@ -17,11 +17,11 @@ function App() {
       // duration: 1000,
     });
   }, []);
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // if (!isAuthenticated) {
-  //   return <Login onLogin={() => setIsAuthenticated(true)} />;
-  // }
+  if (!isAuthenticated) {
+    return <Login onLogin={() => setIsAuthenticated(true)} />;
+  }
   return (
     <div>
       <BrowserRouter>

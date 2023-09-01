@@ -1,17 +1,22 @@
-//npm install @react-google-maps/api
-
-import React, { useState } from 'react';
-import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import React, { useState, useEffect, useCallback } from 'react';
+import { GoogleMap, LoadScript, DirectionsRenderer, Marker } from '@react-google-maps/api';
 import Nav from "../components/Nav";
+
+const LIBRARIES = ['places'];
 
 const Travel = () => {
     const [origin, setOrigin] = useState('Melbourne Central, VIC');
     const [destination, setDestination] = useState('');
     const [response, setResponse] = useState(null);
-    const [language, setLanguage] = useState('en');  // 默认语言为英文
+    const [language, setLanguage] = useState('en');
+    const [accidents, setAccidents] = useState([]);
+    const [showAccidents, setShowAccidents] = useState(false);
+    const [originSuggestions, setOriginSuggestions] = useState([]);
+    const [destinationSuggestions, setDestinationSuggestions] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const mapStyles = {
-        height: "500px",
+        height: "725px",
         width: "100%"
     };
 
@@ -20,31 +25,67 @@ const Travel = () => {
         lng: 144.9629
     };
 
-    const directionsCallback = (res) => {
-        if (res !== null && (response === null || response.status !== res.status)) {
-            setResponse(res);
-        }
-    };
+    useEffect(() => {
+        // Fetch accidents data from API
+        setIsLoading(true);
+        fetch('https://your-api-url.com/accidents')
+        .then(response => response.json())
+        .then(data => {
+            setAccidents(data);
+            setIsLoading(false);
+        })
+        .catch(error => {
+            console.error("Error fetching accidents data: ", error);
+            setIsLoading(false);
+        });
+    }, []);
 
-    const getDirections = () => {
+    const getDirections = useCallback(() => {
+        setIsLoading(true);
         if (window.google && window.google.maps) {
             const directionsService = new window.google.maps.DirectionsService();
-
-            directionsService.route(
-                {
-                    destination: destination,
-                    origin: origin,
-                    travelMode: 'BICYCLING'
-                },
-                (result, status) => {
-                    if (status === window.google.maps.DirectionsStatus.OK) {
-                        setResponse(result);
-                    } else {
-                        console.error(`error fetching directions ${result}`);
-                    }
+            directionsService.route({
+                destination: destination,
+                origin: origin,
+                travelMode: 'BICYCLING'
+            }, (result, status) => {
+                setIsLoading(false);
+                if (status === window.google.maps.DirectionsStatus.OK) {
+                    setResponse(result);
+                } else {
+                    console.error(`error fetching directions ${result}`);
+                    // Here you might want to give a user-friendly alert or some feedback
                 }
-            );
+            });
+        } else {
+            setIsLoading(false);
         }
+    }, [origin, destination]);
+
+    const toggleAccidents = () => {
+        setShowAccidents(!showAccidents);
+    };
+
+    const fetchSuggestions = (value, setter) => {
+        if (!window.google) return;
+        const autocomplete = new window.google.maps.places.AutocompleteService();
+        if (value === '') {
+            setter([]);
+            return;
+        }
+        autocomplete.getPlacePredictions({ input: value }, (predictions) => {
+            setter(predictions || []);
+        });
+    };
+
+    const handleOriginSuggestionClick = (suggestion) => {
+        setOrigin(suggestion.description);
+        setOriginSuggestions([]);
+    };
+
+    const handleDestinationSuggestionClick = (suggestion) => {
+        setDestination(suggestion.description);
+        setDestinationSuggestions([]);
     };
 
     return (
@@ -55,37 +96,66 @@ const Travel = () => {
                 <option value="zh-CN">中文</option>
                 <option value="es">Español</option>
                 <option value="fr">Français</option>
-                // 您可以继续添加其他语言选项
             </select>
             <input 
                 type="text" 
                 placeholder="Enter starting point" 
                 value={origin} 
-                onChange={(e) => setOrigin(e.target.value)} 
+                onChange={(e) => {
+                    setOrigin(e.target.value);
+                    fetchSuggestions(e.target.value, setOriginSuggestions);
+                }} 
             />
+            <ul>
+                {originSuggestions.map(suggestion => (
+                    <li key={suggestion.place_id} onClick={() => handleOriginSuggestionClick(suggestion)}>
+                        {suggestion.description}
+                    </li>
+                ))}
+            </ul>
             <input 
                 type="text" 
                 placeholder="Enter destination" 
                 value={destination} 
-                onChange={(e) => setDestination(e.target.value)} 
+                onChange={(e) => {
+                    //setDestination(e.target.value);
+                    fetchSuggestions(e.target.value, setDestinationSuggestions);
+                }} 
             />
-            <button onClick={getDirections}>Get Directions</button>
-            <LoadScript googleMapsApiKey='AIzaSyBP7qbMu0s7fPJmZj_y66VdnG1Q_JZ0eVY' language={language}>
+            <ul>
+                {destinationSuggestions.map(suggestion => (
+                    <li key={suggestion.place_id} onClick={() => handleDestinationSuggestionClick(suggestion)}>
+                        {suggestion.description}
+                    </li>
+                ))}
+            </ul>
+            <button onClick={getDirections} disabled={isLoading}>Get Directions</button>
+            <button onClick={toggleAccidents}>
+                {showAccidents ? "Hide Accidents" : "Show Accidents"}
+            </button>
+            {isLoading && <p>Loading...</p>}
+            <LoadScript 
+                googleMapsApiKey='AIzaSyBP7qbMu0s7fPJmZj_y66VdnG1Q_JZ0eVY'
+                libraries={LIBRARIES}
+                language={language}
+            >
                 <GoogleMap
                     mapContainerStyle={mapStyles}
                     zoom={13}
                     center={defaultCenter}
                 >
-                    {
-                        response !== null && (
-                            <DirectionsRenderer
-                                // required
-                                options={{ 
-                                    directions: response
-                                }}
-                            />
-                        )
-                    }
+                    {response !== null && (
+                        <DirectionsRenderer options={{ directions: response }}/>
+                    )}
+                    {showAccidents && accidents.map((accident, index) => (
+                        <Marker 
+                            key={index}
+                            position={{
+                                lat: parseFloat(accident.LATITUDE),
+                                lng: parseFloat(accident.LONGITUDE)
+                            }}
+                        />
+                    ))}
                 </GoogleMap>
             </LoadScript>
         </div>

@@ -1,3 +1,5 @@
+//npm install @react-google-maps/api --save
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { GoogleMap, LoadScript, DirectionsRenderer, Marker } from '@react-google-maps/api';
 import Nav from "../components/Nav";
@@ -118,7 +120,7 @@ const Travel = () => {
                 placeholder="Enter destination" 
                 value={destination} 
                 onChange={(e) => {
-                    //setDestination(e.target.value);
+                    setDestination(e.target.value);
                     fetchSuggestions(e.target.value, setDestinationSuggestions);
                 }} 
             />

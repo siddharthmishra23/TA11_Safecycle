@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import Hero from "../components/Hero";
 import Nav from "../components/Nav";
-
+// import { NavLink } from "react-router-dom";
+// import { Button } from "reactstrap";
 import "./Home.scss";
 import Information from "../components/Information";
 import GetStarted from "../components/GetStarted";
 import Testimonial from "../components/Testimonial";
+import BarChart from "../components/BarChart";
 
 function Home() {
   useEffect(() => {
@@ -29,23 +31,45 @@ function Home() {
     <div className="App">
       <Nav />
       <Hero />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+      <div id="begin"></div>
       <div id="intro">
-      <h3>WHAT DO WE DO HERE?</h3>
-      <video controls autoPlay muted>
-              <source src="/intro.mp4" type="video/mp4" />
-      </video>
+        <h3 data-aos="fade-up">WHAT DO WE DO HERE?</h3>
+        {/* <div>
+          <iframe
+            className="videoHome"
+            src="https://www.youtube.com/embed/MnMa0Hbx3tg?si=SmR47rGiFlz9Visz&loop=1&autoplay=1&mute=1&loop=1"
+            title="Welcome to Cycle Street"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div> */}
+              <div className="wrapper">
+                <div>
+                We provide valuable insights into accident trends, contributing factors, and geographical hotspots, empowering you with knowledge to make informed decisions.
+                  <button class="btn"><i class="fa-solid fa-car-burst icon-size"></i></button>
+                </div>
+                <div>
+                Stay informed about the latest bike regulations and learn how to protect yourself and others on the road with practical tips, ensuring a safer biking experience for all.
+                  <button class="btn"><i class="fas fa-person-biking icon-size"></i></button>
+                </div>
+                <div>
+                Plan your journeys confidently with our safe route navigation tools. Coming soon...
+                  <button class="btn"><i class="fa-solid fa-route icon-size"></i></button>
+                </div>
+              </div>
+              <div className="clearfix"></div>
       </div>
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       <Information />
       <div>
-      <button className="btn">Go to RESOURCES</button>
+      <a className="toregulation" href="./resources"> Learn more about Bike Regulations in Victoria</a>
+      {/* <NavLink to="/resources">
+            <Button color="primary" className={styles["inspiration-btn"]}>
+              Let's Begin
+            </Button>
+          </NavLink> */}
+      
       </div>
-      {/* <Testimonial /> */}
+                
     </div>
   );
 }

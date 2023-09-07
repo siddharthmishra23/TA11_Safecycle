@@ -26,7 +26,11 @@ const GetStarted = () => {
           </p>
           <NavLink to="/resources">
             <Button color="primary" className={styles["inspiration-btn"]}>
+<<<<<<< Updated upstream
               Let's begin
+=======
+              Let's Exploree
+>>>>>>> Stashed changes
             </Button>
           </NavLink>
         </article>

@@ -30,12 +30,15 @@ function Home() {
       <Nav />
       <Hero />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <div id="intro">
       <h3>WHAT DO WE DO HERE?</h3>
       <video controls autoPlay muted>
               <source src="/intro.mp4" type="video/mp4" />
       </video>
       </div>
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       <Information />

@@ -6,11 +6,7 @@ const GetStarted = () => {
   return (
     <section className={styles["content-section"]}>
       <Container className={styles["content-container"]}>
-<<<<<<< Updated upstream
-            <article className={styles["inspiration-info"]}>
-=======
             <article className={styles["box-home"]}>
->>>>>>> Stashed changes
               <h1>PEDAL TOWARDS SAFETY!</h1>
               <p>
                 Join our community of cycling enthusiasts and discover the best

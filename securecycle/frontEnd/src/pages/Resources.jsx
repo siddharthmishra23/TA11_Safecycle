@@ -22,6 +22,7 @@ const sampleMovie = [
     ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
   },
   {
+<<<<<<< Updated upstream
     title: "Public Transport Victoria",
     posterImage: "/ptv.png",
     description: "Bike and public transport",
@@ -32,6 +33,18 @@ const sampleMovie = [
     posterImage: "/vic_police.png",
     description: "Bike theft",
     ref: "https://www.police.vic.gov.au/bike-theft",
+=======
+    title: "Victoria Legal Aid",
+    posterImage: "/victorialegalaid2.png",
+    description: "For legal problems",
+    ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
+  },
+  {
+    title: "Victoria Legal Aid",
+    posterImage: "/victorialegalaid2.png",
+    description: "For legal problems",
+    ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
+>>>>>>> Stashed changes
   }
 ];
 
@@ -152,12 +165,17 @@ const Resources = () => {
       <Testimonial/>
 
       <section>
+<<<<<<< Updated upstream
         <p
           className={`${styles["paragraph-resource"]} ${
             "animate__fadeInUp animate__animated" 
           }`}
         >
           Links
+=======
+        <p className={styles["paragraph-resource"]}>
+          Important Links
+>>>>>>> Stashed changes
         </p>
         <div className={styles["wrapper"]}>
           {sampleMovie.map((movie, index) => (

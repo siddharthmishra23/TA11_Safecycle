@@ -32,14 +32,22 @@
 
 .aboutus {
   font-family: 'Roboto', sans-serif;
+<<<<<<< Updated upstream
   background-color: rgba(255, 255, 255, 0.949);
+=======
+  background-color: rgba(237, 192, 69, 0.18);
+>>>>>>> Stashed changes
   height: 110%;
 }
 
 .header-text {
   position: absolute;
   color: rgb(67, 66, 61);
+<<<<<<< Updated upstream
   display: block;
+=======
+  display: inline-block;
+>>>>>>> Stashed changes
   flex-direction: column;
   justify-content: center;
   text-align: center;
@@ -66,9 +74,14 @@
 .header-text span {
   display: block;
   font-weight: 900;
+<<<<<<< Updated upstream
   text-transform: uppercase;
   font-size: calc(2.5rem + 1vw);
   color: rgb(25, 25, 24);
+=======
+  font-size: calc(2.5rem + 1vw);
+  color: rgb(195, 66, 14);
+>>>>>>> Stashed changes
 }
 
 .description {

@@ -2,7 +2,11 @@
   display: grid;
 
   height: 5rem;
+<<<<<<< Updated upstream
   background: #1a26acf7;
+=======
+  background: #f9a73cf7;
+>>>>>>> Stashed changes
   margin: 0;
   position: sticky;
   top: 0;
@@ -23,7 +27,11 @@
 .nav a {
   text-decoration: none;
   color: var(--color-light--2);
+<<<<<<< Updated upstream
   margin-left: 1rem;
+=======
+  margin-left: 1.5rem;
+>>>>>>> Stashed changes
   text-transform: uppercase;
   font-size: 1.5rem;
   font-weight: 600;
@@ -59,9 +67,13 @@ a.ctaLink:focus {
 
 .logo {
   height: 6rem;
+<<<<<<< Updated upstream
 }
 
 .logo-flex {
   display: flex;
   justify-content: flex-start;
+=======
+  margin-left: 1rem;
+>>>>>>> Stashed changes
 }

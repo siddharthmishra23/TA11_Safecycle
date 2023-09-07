@@ -1,13 +1,11 @@
 // Testimonial.module.scss
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
 section {
-  padding: 20px 0;
-  background-color: #ffffff;
+  background-color: #84848613;
 }
 
 .container {
   max-width: calc(100vw - 20vw);
-  
 }
 
 .testimonial-info {
@@ -18,12 +16,18 @@ section {
   position: relative;
   z-index: 1;
   justify-content: center;
+  transition: transform 0.3s, background-color 0.3s; // transition for smooth animation
+
+  &:hover {
+    transform: scale(1.05); // scales the element up by 5%
+    background-color: #1a63ea18; // changes the background color on hover
+  }
 
   h1 {
     color: #333;
     font-size: 1.4em;
     margin-bottom: 20px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 900;
   }
 

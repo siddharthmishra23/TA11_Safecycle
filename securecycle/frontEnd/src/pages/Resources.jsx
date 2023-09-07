@@ -42,7 +42,7 @@ const Resources = () => {
       <div className={styles["resource-container"]}>
         <img
           className={styles["resource-img"]}
-          src="/resources.png"
+          src="/Resource-new.png"
           alt=""
         />
       </div>

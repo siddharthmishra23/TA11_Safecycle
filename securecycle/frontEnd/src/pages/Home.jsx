@@ -34,7 +34,7 @@ function Home() {
       <div id="begin"></div>
       <div id="intro">
         <h3 data-aos="fade-up">WHAT DO WE DO HERE?</h3>
-        {/* <div>
+        <div>
           <iframe
             className="videoHome"
             src="https://www.youtube.com/embed/MnMa0Hbx3tg?si=SmR47rGiFlz9Visz&loop=1&autoplay=1&mute=1&loop=1"
@@ -42,34 +42,9 @@ function Home() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>
-        </div> */}
-              <div className="wrapper">
-                <div>
-                We provide valuable insights into accident trends, contributing factors, and geographical hotspots, empowering you with knowledge to make informed decisions.
-                  <button class="btn"><i class="fa-solid fa-car-burst icon-size"></i></button>
-                </div>
-                <div>
-                Stay informed about the latest bike regulations and learn how to protect yourself and others on the road with practical tips, ensuring a safer biking experience for all.
-                  <button class="btn"><i class="fas fa-person-biking icon-size"></i></button>
-                </div>
-                <div>
-                Plan your journeys confidently with our safe route navigation tools. Coming soon...
-                  <button class="btn"><i class="fa-solid fa-route icon-size"></i></button>
-                </div>
-              </div>
-              <div className="clearfix"></div>
+        </div>
       </div>
       <Information />
-      <div>
-      <a className="toregulation" href="./resources"> Click here to learn more about Bike Regulations in Victoria</a>
-      {/* <NavLink to="/resources">
-            <Button color="primary" className={styles["inspiration-btn"]}>
-              Let's Begin
-            </Button>
-          </NavLink> */}
-      
-      </div>
-                
     </div>
   );
 }

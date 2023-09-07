@@ -13,7 +13,6 @@ function Aboutus() {
           </p>
         </div>
         <div className={styles["aboutus-container"]}>
-        <div className={styles["aboutus-container-upper"]}>
           <div className={styles["header-text"]} data-aos="flip-right">
             <h2>Our Mission</h2>
             <p>
@@ -40,26 +39,18 @@ function Aboutus() {
               style={{
                 display: "grid",
                 placeItems: "center",
-                position: "relative"
+                right: "25%",
+                position: "relative",
               }}
-              src="/aboutus2.png"
+              src="/teambig.png"
               alt="team"
             />
           </div>
-          </div>
-          <div className={styles["aboutus-container-lower"]}>
           <div
             className="row gy-1"
             style={{ display: "grid", placeItems: "center" }}
           >
-            <img style={{
-                display: "grid",
-                placeItems: "center",
-                position: "relative",
-                left: "20%",
-                top: "10%"
-              }}
-              src="/aboutus1.png" alt="why us" />
+            <img src="/About-whyus.png" alt="why us" />
           </div>
           <section id="why-us" className={styles["why-us section-bg"]}>
             <div className={styles["container"]} data-aos="fade-up">
@@ -134,7 +125,6 @@ function Aboutus() {
               </div>
             </div>
           </section>
-          </div>
         </div>
       </header>
     </div>

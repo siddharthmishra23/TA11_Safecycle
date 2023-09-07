@@ -2,29 +2,16 @@
 
 .aboutus-container {
   display: grid;
-  grid-template-rows: 40% 60%;
-  /* padding: 4rem; */
-}
-
-.aboutus-container-upper {
-  display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 4rem;
 }
-
-.aboutus-container-lower {
-  display: grid;
-  grid-template-columns: 20% 80%;
-  padding: 4rem;
-}
-
 .team {
   font-family: "Roboto", sans-serif;
 }
-/* .img {
+.team img {
   width: 100%;
-  height: 80vh;
-} */
+  height: 50vh;
+}
 
 .aboutus {
   font-family: "Roboto", sans-serif;
@@ -106,12 +93,12 @@
 }
 
 .section-header p span {
-  color: #3da2e1;
+  color: #ce1212;
 }
 
 .why-box {
   padding: 30px;
-  background: #3da2e1;
+  background: #ce1212;
   color: #fff;
 }
 

@@ -15,21 +15,22 @@ const GetStarted = () => {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            Discover Safe Routes Near You and Master Bike Regulations
+            Explore the safest cycling routes, gain essential safety tips, and
+            find
           </p>
           <p
             className={styles["hero-p"]}
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            Explore, Navigate, and Stay Safe with Us. <br></br>Your Journey to Safe Cycling Begins Here!
+            gear recommendations tailored just for you. Prioritize your safety
+            with every ride.
           </p>
-          <a className={styles["begin"]} href="#begin">Let's begin</a>
-          {/* <NavLink to="/resources">
+          <NavLink to="/resources">
             <Button color="primary" className={styles["inspiration-btn"]}>
               Let's Explore
             </Button>
-          </NavLink> */}
+          </NavLink>
         </article>
       </Container>
     </section>

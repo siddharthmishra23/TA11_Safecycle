@@ -1,8 +1,8 @@
 /* Designer credit: https://dribbble.com/shots/1978243-Latest-News */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
 
 .app-header {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   display: block;
   padding: 30px;
 }
@@ -37,13 +37,13 @@
     width: 80%;
     white-space: nowrap;
     margin-top: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
   }
 
   .cardnews {
     margin: 60px 30px;
     display: inline-block;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 
     .cardnews-body {
       white-space: normal;
@@ -57,8 +57,8 @@
 }
 
 .cardnews-header {
-  height: 60vh;
-  width: 110vh;
+  height: 100%;
+  width: 100%;
 }
 
 .newsCard {

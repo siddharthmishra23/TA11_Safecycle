@@ -27,7 +27,9 @@ const Information = () => {
 
   return (
     <Container>
-      <h2 className={styles.h2Info}>Victorian Cyclist Guidelines</h2>
+      <h2 className={styles.h2Info} data-aos="fade-up">
+        Victorian Cyclist Guidelines
+      </h2>
       <Container style={{ marginTop: "2rem", marginBottom: "5rem" }}>
         {guidelines.map((guideline, index) => (
           <Row key={index}>

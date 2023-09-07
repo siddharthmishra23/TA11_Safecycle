@@ -26,7 +26,7 @@ const GetStarted = () => {
           </p>
           <NavLink to="/resources">
             <Button color="primary" className={styles["inspiration-btn"]}>
-              Let's Explore
+              Let's begin
             </Button>
           </NavLink>
         </article>

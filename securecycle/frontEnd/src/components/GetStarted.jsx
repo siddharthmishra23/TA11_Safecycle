@@ -16,15 +16,13 @@ const GetStarted = () => {
             data-aos-duration="3000"
           >
             Explore the safest cycling routes, gain essential safety tips, and
-            find
           </p>
           <p
             className={styles["hero-p"]}
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            gear recommendations tailored just for you. Prioritize your safety
-            with every ride.
+            Prioritize your safety with every ride.
           </p>
           <NavLink to="/resources">
             <Button color="primary" className={styles["inspiration-btn"]}>

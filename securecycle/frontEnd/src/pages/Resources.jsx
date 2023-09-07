@@ -42,10 +42,16 @@ const Resources = () => {
       <div className={styles["resource-container"]}>
         <img
           className={styles["resource-img"]}
-          src="/Resource-new.png"
-          alt=""
+          src="/resources.png"
+          alt="Resources"
         />
       </div>
+      <section>
+        <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
+          Safety Rules at a Glance
+        </p>
+        <CardNews />
+      </section>
       <section>
         <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
           By the Numbers: Why Safety Matters
@@ -115,12 +121,7 @@ const Resources = () => {
           <Fatality />
         </div>
       </section>
-      <section>
-        <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
-          Safety Rules at a Glance
-        </p>
-        <CardNews />
-      </section>
+     
       <div>
         <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
           Watch & Learn: Safety Tutorials

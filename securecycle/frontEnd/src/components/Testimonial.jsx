@@ -50,7 +50,7 @@ function Testimonial() {
           <Col md="6">
             <figure className={styles["testimonial-image"]}>
               <img
-                src="/ecobiker.png"
+                src="/news_protest.png"
                 alt="Descriptive image description"
                 className="img-fluid"
               />
@@ -59,7 +59,7 @@ function Testimonial() {
           <Col md="6">
             <figure className={styles["testimonial-image"]}>
               <img
-                src="/2biker2.png"
+                src="/news_bettery.png"
                 alt="Descriptive image description"
                 className="img-fluid"
               />

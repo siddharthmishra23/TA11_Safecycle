@@ -1,8 +1,9 @@
 /* GetStarted.module.css */
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
 .content-container {
   display: flex;
   align-items: center;
+  font-family: "Roboto", sans-serif;
   justify-content: space-between;
   gap: 140px;
   min-height: calc(100vh - 30vh);
@@ -28,41 +29,66 @@
 
 /* Inspiration Info */
 .inspiration-info {
-  height: 50vh;
   display: grid;
   align-content: center;
+  margin-bottom: 20px;
 }
 
 .inspiration-info h1 {
-  color: #5d5d5d;
-  font-size: 45px;
-  font-weight: 700px;
+  color: #0b0d7b;
+  font-size: 60px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  padding: 20px;
+  margin: 0;
 }
 
-.inspiration-info p {
+/* .inspiration-info span {
   margin: 0;
-  line-height: 1.6;
-  font-size: 15px;
+  width: 800px;
+  line-height: 1.2;
+  font-size: 20px;
+  padding: 20px;
+  font-weight: 400;
+  background-color: rgba(255, 255, 255, 0.857);
+  font-family: 'Roboto', sans-serif;
   color: #5d5d5d;
-}
+} */
 
 .inspiration-btn {
   border: 0;
   border-radius: 20px;
   padding: 12px 30px;
-  margin-top: 30px;
+  margin-top: 80px;
   cursor: pointer;
   color: #fff;
-  background-color: #6c63ff;
+  font-weight: 900;
+  font-family: "Roboto", sans-serif;
+  background-color: #291fe8;
 }
 
 /* Inspiration Image */
-.inspiration-image {
-  height: 50vh;
+/* .inspiration-image {
   /* Styles specific to the image container */
-}
+/* } */
 
 .inspiration-image img {
   max-width: 100%;
+  border-radius: 50%;
   /* Other styles if needed */
+}
+
+.box-home {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  z-index: 1;
+  width: 50%;
+  padding: 20px;
+}
+
+.hero-p {
+  font-weight: bold;
+  color: black;
+  font-size: 1.4rem;
 }

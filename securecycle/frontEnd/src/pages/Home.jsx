@@ -27,11 +27,21 @@ function Home() {
 
   return (
     <div className="App">
-      <Hero />
       <Nav />
-      <GetStarted />
+      <Hero />
+      <div id="intro">
+        <h3 data-aos="fade-up">WHAT DO WE DO HERE?</h3>
+        <div>
+          <iframe
+            className="videoHome"
+            src="https://www.youtube.com/embed/MnMa0Hbx3tg?si=SmR47rGiFlz9Visz&loop=1&autoplay=1&mute=1&loop=1"
+            title="Welcome to Cycle Street"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
       <Information />
-      <Testimonial />
     </div>
   );
 }

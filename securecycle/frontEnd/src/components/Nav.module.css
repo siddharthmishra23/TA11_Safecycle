@@ -1,15 +1,19 @@
 .nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 4rem;
-  background: rgba(7, 7, 7, 0.859);
+  display: grid;
+
+  height: 5rem;
+  background: #1a26acf7;
   margin: 0;
   position: sticky;
   top: 0;
   z-index: 9999999;
+  grid-template-columns: 1fr 1fr;
 }
-
+.navflex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 .nav ul {
   list-style: none;
   display: flex;
@@ -19,6 +23,7 @@
 .nav a {
   text-decoration: none;
   color: var(--color-light--2);
+  margin-left: 1rem;
   text-transform: uppercase;
   font-size: 1.5rem;
   font-weight: 600;
@@ -50,4 +55,14 @@ a.ctaLink:focus {
     --color-dark--0
   ); /* You can modify this as per design preference */
   color: var(--color-brand--2);
+}
+
+.logo {
+  height: 5rem;
+}
+
+.logo-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }

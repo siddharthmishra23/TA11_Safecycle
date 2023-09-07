@@ -61,7 +61,7 @@ function Home() {
       </div>
       <Information />
       <div>
-      <a className="toregulation" href="./resources"> Learn more about Bike Regulations in Victoria</a>
+      <a className="toregulation" href="./resources"> Click here to learn more about Bike Regulations in Victoria</a>
       {/* <NavLink to="/resources">
             <Button color="primary" className={styles["inspiration-btn"]}>
               Let's Begin

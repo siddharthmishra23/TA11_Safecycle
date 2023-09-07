@@ -6,19 +6,31 @@ const GetStarted = () => {
   return (
     <section className={styles["content-section"]}>
       <Container className={styles["content-container"]}>
-            <article className={styles["box-home"]}>
-              <h1>PEDAL TOWARDS SAFETY!</h1>
-              <p>
-                Join our community of cycling enthusiasts and discover the best
-                routes, safety tips, and gear recommendations tailored for you.
-              </p>
-              <NavLink to="/resources" >
-                <Button color="primary" className={styles["inspiration-btn"]}>
-                  Let's Explore
-                </Button>
-              </NavLink>
-            </article>
-
+        <article className={styles["inspiration-info"]}>
+          <h1 data-aos="fade-up" data-aos-duration="3000">
+            PEDAL TOWARDS SAFETY
+          </h1>
+          <p
+            className={styles["hero-p"]}
+            data-aos="fade-up"
+            data-aos-duration="3000"
+          >
+            Discover Safe Routes Near You and Master Bike Regulations
+          </p>
+          <p
+            className={styles["hero-p"]}
+            data-aos="fade-up"
+            data-aos-duration="3000"
+          >
+            Explore, Navigate, and Stay Safe with Us. <br></br>Your Journey to Safe Cycling Begins Here!
+          </p>
+          <a className={styles["begin"]} href="#begin">Let's begin</a>
+          {/* <NavLink to="/resources">
+            <Button color="primary" className={styles["inspiration-btn"]}>
+              Let's Explore
+            </Button>
+          </NavLink> */}
+        </article>
       </Container>
     </section>
   );

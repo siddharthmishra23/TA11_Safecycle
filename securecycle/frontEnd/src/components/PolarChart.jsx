@@ -1,8 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 function PolarChart() {
   const [chartData, setChartData] = useState(null);
@@ -66,7 +83,7 @@ function PolarChart() {
       enabled: false,
     },
   };
-  return <Pie data={chartData} options={options} />;
+  return <Line data={chartData} options={options} />;
 }
 
 export default PolarChart;

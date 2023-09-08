@@ -94,7 +94,9 @@ const Travel = () => {
       <Nav />
       <Row className="mt-4">
         <Col md="5" className="pr-5" style={{ padding: "2rem" }}>
-          <h4 className="mb-4">Travel Directions</h4>
+          <h2 className="mb-4" style={{ color: "#0b0d7b" }}>
+            Travel Directions
+          </h2>
           <Autocomplete
             value={origin}
             options={originSuggestions}

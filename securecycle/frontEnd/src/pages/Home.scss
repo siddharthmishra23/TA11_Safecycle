@@ -156,7 +156,7 @@ nav {
   margin: 0 auto;
 }
 
-h3 {
+h2 {
   font-family: "Roboto", sans-serif;
   text-align: center;
   text-transform: uppercase;
@@ -200,18 +200,15 @@ h3 {
     font-family: "Roboto", sans-serif;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
     overflow: hidden;
-
-    
   }
 }
 
 .icon-size {
   font-size: 5rem;
-
 }
 
-
-.clearfix:before, .clearfix:after {
+.clearfix:before,
+.clearfix:after {
   content: "";
   clear: both;
   display: block;

@@ -27,7 +27,11 @@ const Information = () => {
 
   return (
     <Container>
-      <h2 className={styles.h2Info} data-aos="fade-up">
+      <h2
+        className={styles.h2Info}
+        data-aos="fade-up"
+        style={{ color: "#0b0d7b" }}
+      >
         Victorian Cyclist Guidelines
       </h2>
       <Container style={{ marginTop: "2rem", marginBottom: "5rem" }}>

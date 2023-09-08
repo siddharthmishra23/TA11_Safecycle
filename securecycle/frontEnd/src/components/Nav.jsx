@@ -18,11 +18,11 @@ function Navigation() {
             Home
           </NavLink>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <NavLink tag={RRNavLink} to="/travel" activeClassName="active">
             Discover
           </NavLink>
-        </NavItem>
+        </NavItem> */}
         <NavItem>
           <NavLink tag={RRNavLink} to="/resources" activeClassName="active">
             Resources

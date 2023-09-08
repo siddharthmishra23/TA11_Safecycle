@@ -52,6 +52,39 @@ const Resources = () => {
         </p>
         <CardNews />
       </section>
+
+      <div>
+        <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
+          Watch & Learn: Safety Tutorials
+        </p>
+        <div className={styles["video-container"]}>
+          <iframe
+            className={styles["videoResources"]}
+            src="https://www.youtube.com/embed/a60UqyoX04w"
+            title="YouTube Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+          <iframe
+            className={styles["videoResources"]}
+            src="https://www.youtube.com/embed/PT1-mDlVyaI?si=bWmQwOn7SbpQJEzE"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+          <iframe
+            className={styles["videoResources"]}
+            src="https://www.youtube.com/embed/280oreUTr6o?si=a9fMUQ9hXgR0vV7c"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+      <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
+        Latest in Bicycle Safety News
+      </p>
+      <Testimonial />
       <section>
         <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
           By the Numbers: Why Safety Matters
@@ -121,40 +154,6 @@ const Resources = () => {
           <Fatality />
         </div>
       </section>
-     
-      <div>
-        <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
-          Watch & Learn: Safety Tutorials
-        </p>
-        <div className={styles["video-container"]}>
-          <iframe
-            className={styles["videoResources"]}
-            src="https://www.youtube.com/embed/a60UqyoX04w"
-            title="YouTube Video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-          <iframe
-            className={styles["videoResources"]}
-            src="https://www.youtube.com/embed/PT1-mDlVyaI?si=bWmQwOn7SbpQJEzE"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
-          <iframe
-            className={styles["videoResources"]}
-            src="https://www.youtube.com/embed/280oreUTr6o?si=a9fMUQ9hXgR0vV7c"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </div>
-
-      <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
-        Latest in Bicycle Safety News
-      </p>
-      <Testimonial />
 
       <section className={styles["newsSection"]}>
         <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">

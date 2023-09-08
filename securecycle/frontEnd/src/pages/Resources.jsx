@@ -22,7 +22,7 @@ const sampleMovie = [
     ref: "https://www.legalaid.vic.gov.au/cycling-and-skating",
   },
   {
-    title: "Public Transport Victoria",
+    title: "Public Transport",
     posterImage: "/ptv.png",
     description: "Bike and public transport",
     ref: "https://www.ptv.vic.gov.au/more/travelling-on-the-network/bikes-on-public-transport/",

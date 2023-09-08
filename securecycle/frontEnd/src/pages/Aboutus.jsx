@@ -13,44 +13,55 @@ function Aboutus() {
           </p>
         </div>
         <div className={styles["aboutus-container"]}>
-          <div className={styles["header-text"]} data-aos="flip-right">
-            <h2>Our Mission</h2>
-            <p>
-              Welcome to Secure Cycling, your dedicated platform committed to
-              enhancing the safety and security of cyclists worldwide. Our
-              mission is to create a safer cycling environment by providing
-              valuable resources, innovative products, and a supportive
-              community that empowers cyclists to ride with confidence.
-            </p>
+          <div className={styles["aboutus-container-upper"]}>
+                <div className={styles["header-text"]} data-aos="flip-right">
+                  <h2>Our Mission</h2>
+                  <p>
+                    Welcome to Secure Cycling, your dedicated platform committed to
+                    enhancing the safety and security of cyclists worldwide. Our
+                    mission is to create a safer cycling environment by providing
+                    valuable resources, innovative products, and a supportive
+                    community that empowers cyclists to ride with confidence.
+                  </p>
 
-            <h2>Our Commitment to Cyclist's Safety</h2>
+                  <h2>Our Commitment to Cyclist's Safety</h2>
 
-            <p>
-              At Secure Cycling, we recognize the importance of cyclist safety
-              on the road. Whether you're a seasoned cyclist or just starting
-              out, we believe that every pedal stroke should be accompanied by
-              peace of mind. Our team of cycling enthusiasts and safety
-              advocates have come together to address the unique challenges that
-              cyclists face and offer effective solutions.
-            </p>
-          </div>
-          <div className="row gy-4">
-            <img
-              style={{
-                display: "grid",
-                placeItems: "center",
-                right: "25%",
-                position: "relative",
-              }}
-              src="/teambig.png"
-              alt="team"
-            />
-          </div>
+                  <p>
+                    At Secure Cycling, we recognize the importance of cyclist safety
+                    on the road. Whether you're a seasoned cyclist or just starting
+                    out, we believe that every pedal stroke should be accompanied by
+                    peace of mind. Our team of cycling enthusiasts and safety
+                    advocates have come together to address the unique challenges that
+                    cyclists face and offer effective solutions.
+                  </p>
+                </div>
+                <div className="row gy-4">
+                  <img
+                    style={{
+                      display: "grid",
+                      placeItems: "center",
+                      position: "relative"
+                      
+                    }}
+                    src="/aboutus2.png"
+                    alt="team"
+                  />
+                </div>
+            </div>
+          <div className={styles["aboutus-container-lower"]}>
           <div
             className="row gy-1"
             style={{ display: "grid", placeItems: "center" }}
           >
-            <img src="/About-whyus.png" alt="why us" />
+            <img style={{
+                display: "grid",
+                placeItems: "center",
+                position: "relative",
+                left: "20%",
+                top: "20%",
+                zIndex: "1"
+              }} 
+              src="/aboutus1.png" alt="why us" />
           </div>
           <section id="why-us" className={styles["why-us section-bg"]}>
             <div className={styles["container"]} data-aos="fade-up">
@@ -125,6 +136,7 @@ function Aboutus() {
               </div>
             </div>
           </section>
+          </div>
         </div>
       </header>
     </div>

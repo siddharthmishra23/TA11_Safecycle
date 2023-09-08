@@ -24,9 +24,9 @@ const GetStarted = () => {
           >
             Prioritize your safety with every ride.
           </p>
-          <NavLink to="/resources">
+          <NavLink to="/travel">
             <Button color="primary" className={styles["inspiration-btn"]}>
-              begin
+              Let's begin
             </Button>
           </NavLink>
         </article>

@@ -2,9 +2,21 @@
 
 .aboutus-container {
   display: grid;
+  grid-template-rows: 40% 60%;
+  padding: 4rem;
+}
+.aboutus-container-upper {
+  display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 4rem;
 }
+
+.aboutus-container-lower {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  padding: 4rem;
+}
+
 .team {
   font-family: "Roboto", sans-serif;
 }
@@ -93,26 +105,34 @@
 }
 
 .section-header p span {
-  color: #ce1212;
+  color: #3da2e1;
 }
 
 .why-box {
-  padding: 30px;
-  background: #ce1212;
+  padding: 40px;
+  background: #3da2e1;
   color: #fff;
 }
 
 .why-box h3 {
   font-weight: 700;
-  font-size: 34px;
-  margin-bottom: 30px;
+  font-size: 35px;
+  margin-bottom: 10px;
 }
 
 .why-box p {
   margin-bottom: 30px;
+  padding: 40px;
 }
 @media (min-width: 1200px) {
   .why-us .icon-box:hover {
     transform: scale(1.1);
   }
 }
+
+h4 {
+  font-weight: 600;
+  font-size: 30px;
+  margin-bottom: 10%;
+}
+

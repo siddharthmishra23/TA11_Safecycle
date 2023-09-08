@@ -23,6 +23,15 @@ const Travel = () => {
   const [destinationSuggestions, setDestinationSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "es", label: "Spanish" },
+    { code: "fr", label: "French" },
+    { code: "zh-CN", label: "Chinese" },
+
+    // ... (add other languages as needed)
+  ];
+
   const mapStyles = {
     height: "725px",
     width: "100%",
@@ -97,6 +106,24 @@ const Travel = () => {
           <h2 className="mb-4" style={{ color: "#0b0d7b" }}>
             Travel Directions
           </h2>
+          <div className="mb-3">
+            <label>Select Language:</label>
+            <Autocomplete
+              value={languages.find((lang) => lang.code === language)}
+              options={languages}
+              getOptionLabel={(option) => option.label}
+              onChange={(event, newValue) => {
+                if (newValue) {
+                  setLanguage(newValue.code);
+                } else {
+                  setLanguage("en"); // default to English if not selected
+                }
+              }}
+              renderInput={(params) => (
+                <TextField {...params} variant="outlined" fullWidth />
+              )}
+            />
+          </div>
           <Autocomplete
             value={origin}
             options={originSuggestions}

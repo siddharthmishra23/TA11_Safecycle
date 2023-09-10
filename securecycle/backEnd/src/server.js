@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import accidentInfoRouter from "../routes/getAccident.js";
 import severityRouter from "../routes/getSeverity.js";
 import accidentTimeRouter from "../routes/getAccidentTime.js";
+import langLatRouter from "../routes/getLongLat.js";
 
 const app = express();
 app.use(express.json());
@@ -23,7 +24,7 @@ app.use(express.static(path.join(__dirname, "../dist")));
 app.use("/accidentDays", accidentInfoRouter);
 app.use("/severity", severityRouter);
 app.use("/accidentTime", accidentTimeRouter);
-
+app.use("/LongLat", langLatRouter);
 // should always the last
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));

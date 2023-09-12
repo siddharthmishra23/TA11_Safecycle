@@ -6,7 +6,7 @@ import {
   Marker,
 } from "@react-google-maps/api";
 import Nav from "../components/Nav";
-import { Button, Container, Row, Col, Input } from "reactstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
@@ -22,14 +22,13 @@ const Travel = () => {
   const [originSuggestions, setOriginSuggestions] = useState([]);
   const [destinationSuggestions, setDestinationSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [estimatedTime, setEstimatedTime] = useState(null);
+  const [currentLocation, setCurrentLocation] = useState(null);
   const languages = [
     { code: "en", label: "English" },
     { code: "es", label: "Spanish" },
     { code: "fr", label: "French" },
     { code: "zh-CN", label: "Chinese" },
-
-    // ... (add other languages as needed)
   ];
 
   const mapStyles = {
@@ -42,13 +41,28 @@ const Travel = () => {
     lng: 144.9629,
   };
 
+  const getMarkerColor = (severity) => {
+    switch (severity) {
+      case "Fatal accident":
+        return "red";
+      case "Serious injury accident":
+        return "orange";
+      case "Other injury accident":
+        return "yellow";
+      case "Non injury accident":
+        return "green";
+      default:
+        return null;
+    }
+  };
+
   useEffect(() => {
-    // Fetch accidents data from API
     setIsLoading(true);
-    fetch("https://your-api-url.com/accidents")
+    getCurrentLocation();
+    fetch("http://localhost:8003/LongLat")
       .then((response) => response.json())
       .then((data) => {
-        setAccidents(data);
+        setAccidents(data.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -57,6 +71,37 @@ const Travel = () => {
       });
   }, []);
 
+  const getCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        setCurrentLocation({
+          lat: lat,
+          lng: lng,
+        });
+        getHumanReadableAddress(lat, lng); // Convert lat, lng to address
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  };
+
+  const getHumanReadableAddress = (lat, lng) => {
+    const geocoder = new window.google.maps.Geocoder();
+    const latlng = { lat: lat, lng: lng };
+    geocoder.geocode({ location: latlng }, (results, status) => {
+      if (status === "OK") {
+        if (results[0]) {
+          setOrigin(results[0].formatted_address);
+        } else {
+          window.alert("No results found");
+        }
+      } else {
+        window.alert("Geocoder failed due to: " + status);
+      }
+    });
+  };
   const getDirections = useCallback(() => {
     setIsLoading(true);
     if (window.google && window.google.maps) {
@@ -71,9 +116,10 @@ const Travel = () => {
           setIsLoading(false);
           if (status === window.google.maps.DirectionsStatus.OK) {
             setResponse(result);
+            const timeEstimation = result.routes[0].legs[0].duration.text;
+            setEstimatedTime(timeEstimation);
           } else {
             console.error(`error fetching directions ${result}`);
-            // Here you might want to give a user-friendly alert or some feedback
           }
         }
       );
@@ -116,7 +162,7 @@ const Travel = () => {
                 if (newValue) {
                   setLanguage(newValue.code);
                 } else {
-                  setLanguage("en"); // default to English if not selected
+                  setLanguage("en");
                 }
               }}
               renderInput={(params) => (
@@ -129,9 +175,6 @@ const Travel = () => {
             options={originSuggestions}
             getOptionLabel={(option) =>
               typeof option === "string" ? option : option.description
-            }
-            isOptionEqualToValue={(option, value) =>
-              option.description === value
             }
             onInputChange={(event, newValue) => {
               fetchSuggestions(newValue, setOriginSuggestions);
@@ -158,9 +201,6 @@ const Travel = () => {
               options={destinationSuggestions}
               getOptionLabel={(option) =>
                 typeof option === "string" ? option : option.description
-              }
-              isOptionEqualToValue={(option, value) =>
-                option.description === value
               }
               onInputChange={(event, newValue) => {
                 fetchSuggestions(newValue, setDestinationSuggestions);
@@ -189,12 +229,13 @@ const Travel = () => {
               disabled={isLoading}
             >
               Get Directions
-            </Button>{" "}
+            </Button>
             <Button color="secondary" onClick={toggleAccidents}>
               {showAccidents ? "Hide Accidents" : "Show Accidents"}
             </Button>
           </div>
           {isLoading && <p>Loading...</p>}
+          {estimatedTime && <p>Estimated Time: {estimatedTime}</p>}
         </Col>
         <Col md="7">
           <LoadScript
@@ -205,21 +246,30 @@ const Travel = () => {
             <GoogleMap
               mapContainerStyle={mapStyles}
               zoom={13}
-              center={defaultCenter}
+              center={currentLocation || defaultCenter}
             >
               {response !== null && (
                 <DirectionsRenderer options={{ directions: response }} />
               )}
               {showAccidents &&
-                accidents.map((accident, index) => (
-                  <Marker
-                    key={index}
-                    position={{
-                      lat: parseFloat(accident.LATITUDE),
-                      lng: parseFloat(accident.LONGITUDE),
-                    }}
-                  />
-                ))}
+                accidents.map((accident, index) => {
+                  const markerColor = getMarkerColor(accident.SEVERITY);
+                  if (!markerColor) return null;
+
+                  return (
+                    <Marker
+                      key={index}
+                      position={{
+                        lat: parseFloat(accident.LATITUDE),
+                        lng: parseFloat(accident.LONGITUDE),
+                      }}
+                      icon={{
+                        url: `http://maps.google.com/mapfiles/ms/icons/${markerColor}-dot.png`,
+                      }}
+                      title={accident.SEVERITY}
+                    />
+                  );
+                })}
             </GoogleMap>
           </LoadScript>
         </Col>

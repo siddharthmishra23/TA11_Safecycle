@@ -6,7 +6,6 @@ import BarChart from "../components/BarChart";
 import CardNews from "../components/CardNews";
 import PolarChart from "../components/PolarChart";
 import Fatality from "../components/fatality";
-import { useEffect, useState, useRef } from "react";
 import Testimonial from "../components/Testimonial";
 const sampleMovie = [
   {
@@ -39,13 +38,13 @@ const Resources = () => {
   return (
     <div className={styles["resources-main"]}>
       <Navigation />
-      <div className={styles["resource-container"]}>
+      {/* <div className={styles["resource-container"]}>
         <img
           className={styles["resource-img"]}
           src="/resources.png"
           alt="Resources"
         />
-      </div>
+      </div> */}
       <section>
         <p className={styles["paragraph-resource"]} data-aos="zoom-in-up">
           Safety Rules at a Glance

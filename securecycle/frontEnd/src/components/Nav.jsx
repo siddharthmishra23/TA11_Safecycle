@@ -20,12 +20,12 @@ function Navigation() {
         </NavItem>
         <NavItem>
           <NavLink tag={RRNavLink} to="/travel" activeClassName="active">
-            Discover
+            Hazard Spotter
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink tag={RRNavLink} to="/resources" activeClassName="active">
-            Resources
+            Pedalpedia
           </NavLink>
         </NavItem>
         <NavItem>

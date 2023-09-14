@@ -7,55 +7,29 @@ import { NavLink } from "react-router-dom";
 const PostsData = [
   {
     category: "",
-    title:
-      "ACT government proposes rethink of transport planning to promote safer cycling, walking options",
-    text: "ACT government proposes rethink of transport planning to promote safer cycling, walking options",
-    image: "/rule_1.png",
-    // ref: "https://www.abc.net.au/news/2023-07-29/pushing-bikes-in-the-car-capital/102659800",
-  },
-  {
-    category: "",
     title: "Test your knowledge on Australia's tricky road rules",
     text: "Australia is the land of some strange and wacky road rules - not all of them well-known - but just how strictly are they enforced?",
-    image: "/rule_5.png",
-    // ref: "https://www.9news.com.au/national/road-rules-australia-you-might-not-know-confusing-drivers-motorists-safety-news/9b740104-caf1-4909-a5af-bc50185a323d",
+    image: "/rule_3.png",
   },
   {
     category: "",
     title: "Test your knowledge on Australia's tricky road rules",
     text: "Australia is the land of some strange and wacky road rules - not all of them well-known - but just how strictly are they enforced?",
     image: "/rule_4.png",
-    // ref: "https://www.9news.com.au/national/road-rules-australia-you-might-not-know-confusing-drivers-motorists-safety-news/9b740104-caf1-4909-a5af-bc50185a323d",
   },
   {
     category: "",
     title: "Test your knowledge on Australia's tricky road rules",
     text: "Australia is the land of some strange and wacky road rules - not all of them well-known - but just how strictly are they enforced?",
-    image: "/rule_3.png",
-    // ref: "https://www.9news.com.au/national/road-rules-australia-you-might-not-know-confusing-drivers-motorists-safety-news/9b740104-caf1-4909-a5af-bc50185a323d",
+    image: "/rule_5.png",
   },
+
   {
     category: "",
     title: "Test your knowledge on Australia's tricky road rules",
     text: "Australia is the land of some strange and wacky road rules - not all of them well-known - but just how strictly are they enforced?",
     image: "/rule_2.png",
-    // ref: "https://www.9news.com.au/national/road-rules-australia-you-might-not-know-confusing-drivers-motorists-safety-news/9b740104-caf1-4909-a5af-bc50185a323d",
   },
-  // {
-  //   category: "News",
-  //   title:
-  //     "ACT government proposes rethink of transport planning to promote safer cycling, walking options",
-  //   text: "ACT government proposes rethink of transport planning to promote safer cycling, walking options",
-  //   image: "/news1.avif",
-  //   ref: "https://www.abc.net.au/news/2023-07-29/pushing-bikes-in-the-car-capital/102659800",
-  // },
-  // {
-  //   category: "News",
-  //   title: "Test your knowledge on Australia's tricky road rules",
-  //   text: "Australia is the land of some strange and wacky road rules - not all of them well-known - but just how strictly are they enforced?",
-  //   image: "/resource.jpeg",
-  //   ref: "https://www.9news.com.au/national/road-rules-australia-you-might-not-know-confusing-drivers-motorists-safety-news/9b740104-caf1-4909-a5af-bc50185a323d",
-  // },
 ];
 const CardNews = () => {
   const [posts, setPosts] = useState([]);

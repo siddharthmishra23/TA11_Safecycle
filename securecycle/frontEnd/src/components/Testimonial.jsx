@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function Testimonial() {
   return (
     <section>
-      <Container>
+      <Container style={{ padding: "2rem" }}>
         <Row md="4" className={styles.rowModified}>
           <Col md="6">
             <figure className={styles["testimonial-image"]}>

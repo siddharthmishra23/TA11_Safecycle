@@ -1,34 +1,73 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import {
   GoogleMap,
-  LoadScript,
+  LoadScriptNext,
   DirectionsRenderer,
   Marker,
 } from "@react-google-maps/api";
 import Nav from "../components/Nav";
-import { Button, Container, Row, Col } from "reactstrap";
+import { Checkbox } from "@mui/material";
+import {
+  Button,
+  Container,
+  Row,
+  Col,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-
+import Switch from "@mui/material/Switch";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import styles from "./Travel.module.css";
 const LIBRARIES = ["places"];
 
 const Travel = () => {
-  const [origin, setOrigin] = useState("Melbourne Central, VIC");
+  const [origin, setOrigin] = useState(null);
+  const [isOriginSetFromCurrentLocation, setIsOriginSetFromCurrentLocation] =
+    useState(false);
+  const [hasSetInitialOrigin, setHasSetInitialOrigin] = useState(false);
   const [destination, setDestination] = useState("");
   const [response, setResponse] = useState(null);
   const [language, setLanguage] = useState("en");
   const [accidents, setAccidents] = useState([]);
+  const [totalAccidents, setTotalAccidents] = useState([]);
   const [showAccidents, setShowAccidents] = useState(false);
   const [originSuggestions, setOriginSuggestions] = useState([]);
   const [destinationSuggestions, setDestinationSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [estimatedTime, setEstimatedTime] = useState(null);
   const [currentLocation, setCurrentLocation] = useState(null);
+  const [dayFilters, setDayFilters] = useState([]);
+  const [severityFilters, setSeverityFilters] = useState([]);
+  const [dropdownDayOpen, setDropdownDayOpen] = useState(false);
+  const [dropdownSeverityOpen, setDropdownSeverityOpen] = useState(false);
+  const [autocompleteKey, setAutocompleteKey] = useState(0);
+  const [directionsKey, setDirectionsKey] = useState(0);
+  const directionsRendererRef = useRef(null);
+  const [selectedAccident, setSelectedAccident] = useState(null);
+  const toggleDayDropdown = () => setDropdownDayOpen((prevState) => !prevState);
+  const toggleSeverityDropdown = () =>
+    setDropdownSeverityOpen((prevState) => !prevState);
+
   const languages = [
     { code: "en", label: "English" },
     { code: "es", label: "Spanish" },
     { code: "fr", label: "French" },
     { code: "zh-CN", label: "Chinese" },
+  ];
+
+  const weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
   ];
 
   const mapStyles = {
@@ -44,11 +83,11 @@ const Travel = () => {
   const getMarkerColor = (severity) => {
     switch (severity) {
       case "Fatal accident":
-        return "red";
+        return "#b50303d6";
       case "Serious injury accident":
-        return "orange";
+        return "#b55e03e6";
       case "Other injury accident":
-        return "yellow";
+        return "#b5b003d6";
       case "Non injury accident":
         return "green";
       default:
@@ -60,9 +99,9 @@ const Travel = () => {
     setIsLoading(true);
     getCurrentLocation();
     fetch("http://localhost:8003/LongLat")
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
-        setAccidents(data.data);
+        setTotalAccidents(data.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -73,60 +112,99 @@ const Travel = () => {
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-        setCurrentLocation({
-          lat: lat,
-          lng: lng,
-        });
-        getHumanReadableAddress(lat, lng); // Convert lat, lng to address
-      });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          setCurrentLocation({ lat: lat, lng: lng });
+          //setOriginAsCurrentLocation(lat, lng);
+        },
+        (error) => {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              alert("User denied the request for Geolocation.");
+              break;
+            case error.POSITION_UNAVAILABLE:
+              alert("Location information is unavailable.");
+              break;
+            case error.TIMEOUT:
+              alert("The request to get user location timed out.");
+              break;
+            case error.UNKNOWN_ERROR:
+              alert("An unknown error occurred.");
+              break;
+            default:
+              alert("An unknown error occurred.");
+          }
+        }
+      );
     } else {
       alert("Geolocation is not supported by this browser.");
     }
   };
 
-  const getHumanReadableAddress = (lat, lng) => {
-    const geocoder = new window.google.maps.Geocoder();
-    const latlng = { lat: lat, lng: lng };
-    geocoder.geocode({ location: latlng }, (results, status) => {
-      if (status === "OK") {
-        if (results[0]) {
-          setOrigin(results[0].formatted_address);
-        } else {
-          window.alert("No results found");
-        }
-      } else {
-        window.alert("Geocoder failed due to: " + status);
-      }
-    });
-  };
   const getDirections = useCallback(() => {
     setIsLoading(true);
-    if (window.google && window.google.maps) {
-      const directionsService = new window.google.maps.DirectionsService();
-      directionsService.route(
-        {
-          destination: destination,
-          origin: origin,
-          travelMode: "BICYCLING",
-        },
-        (result, status) => {
-          setIsLoading(false);
-          if (status === window.google.maps.DirectionsStatus.OK) {
-            setResponse(result);
-            const timeEstimation = result.routes[0].legs[0].duration.text;
-            setEstimatedTime(timeEstimation);
-          } else {
-            console.error(`error fetching directions ${result}`);
+
+    // Create a new promise to ensure sequential state updates
+    new Promise((resolve) => {
+      setResponse(null);
+      resolve();
+    })
+      .then(() => {
+        const directionsService = new window.google.maps.DirectionsService();
+        return new Promise((resolve, reject) => {
+          directionsService.route(
+            {
+              destination: destination,
+              origin: origin,
+              travelMode: "BICYCLING",
+            },
+            (result, status) => {
+              if (status === window.google.maps.DirectionsStatus.OK) {
+                resolve(result);
+              } else {
+                reject(`error fetching directions ${result}`);
+              }
+            }
+          );
+        });
+      })
+      .then((result) => {
+        setDirectionsKey((prevKey) => prevKey + 1);
+        setResponse(null);
+        setResponse(result);
+        const timeEstimation = result.routes[0].legs[0].duration.text;
+        setEstimatedTime(timeEstimation);
+
+        const path = result.routes[0].overview_path;
+        const filteredAccidentsBasedOnPath = totalAccidents.filter(
+          (accident) => {
+            const accidentPoint = new window.google.maps.LatLng(
+              accident.LATITUDE,
+              accident.LONGITUDE
+            );
+
+            return path.some((pathPoint) => {
+              // Check if the accident is within 0.5km of the path
+              return (
+                window.google.maps.geometry.spherical.computeDistanceBetween(
+                  accidentPoint,
+                  pathPoint
+                ) < 500
+              );
+            });
           }
-        }
-      );
-    } else {
-      setIsLoading(false);
-    }
-  }, [origin, destination]);
+        );
+        setShowAccidents(true);
+        setAccidents(filteredAccidentsBasedOnPath);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.error(error);
+      });
+  }, [origin, destination, totalAccidents]);
 
   const toggleAccidents = () => {
     setShowAccidents(!showAccidents);
@@ -144,137 +222,282 @@ const Travel = () => {
     });
   };
 
-  return (
-    <Container fluid>
-      <Nav />
-      <Row className="mt-4">
-        <Col md="5" className="pr-5" style={{ padding: "2rem" }}>
-          <h2 className="mb-4" style={{ color: "#0b0d7b" }}>
-            Travel Directions
-          </h2>
-          <div className="mb-3">
-            <label>Select Language:</label>
-            <Autocomplete
-              value={languages.find((lang) => lang.code === language)}
-              options={languages}
-              getOptionLabel={(option) => option.label}
-              onChange={(event, newValue) => {
-                if (newValue) {
-                  setLanguage(newValue.code);
-                } else {
-                  setLanguage("en");
-                }
-              }}
-              renderInput={(params) => (
-                <TextField {...params} variant="outlined" fullWidth />
-              )}
-            />
-          </div>
-          <Autocomplete
-            value={origin}
-            options={originSuggestions}
-            getOptionLabel={(option) =>
-              typeof option === "string" ? option : option.description
-            }
-            onInputChange={(event, newValue) => {
-              fetchSuggestions(newValue, setOriginSuggestions);
-            }}
-            onChange={(event, newValue) => {
-              if (newValue) {
-                setOrigin(newValue.description);
-              } else {
-                setOrigin("");
-              }
-            }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Enter starting point"
-                variant="outlined"
-                fullWidth
-              />
-            )}
-          />
-          <div className="my-3">
-            <Autocomplete
-              value={destination}
-              options={destinationSuggestions}
-              getOptionLabel={(option) =>
-                typeof option === "string" ? option : option.description
-              }
-              onInputChange={(event, newValue) => {
-                fetchSuggestions(newValue, setDestinationSuggestions);
-              }}
-              onChange={(event, newValue) => {
-                if (newValue) {
-                  setDestination(newValue.description);
-                } else {
-                  setDestination("");
-                }
-              }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Enter destination"
-                  variant="outlined"
-                  fullWidth
-                />
-              )}
-            />
-          </div>
-          <div className="my-3">
-            <Button
-              color="primary"
-              onClick={getDirections}
-              disabled={isLoading}
-            >
-              Get Directions
-            </Button>
-            <Button color="secondary" onClick={toggleAccidents}>
-              {showAccidents ? "Hide Accidents" : "Show Accidents"}
-            </Button>
-          </div>
-          {isLoading && <p>Loading...</p>}
-          {estimatedTime && <p>Estimated Time: {estimatedTime}</p>}
-        </Col>
-        <Col md="7">
-          <LoadScript
-            googleMapsApiKey="AIzaSyBP7qbMu0s7fPJmZj_y66VdnG1Q_JZ0eVY"
-            libraries={LIBRARIES}
-            language={language}
-          >
-            <GoogleMap
-              mapContainerStyle={mapStyles}
-              zoom={13}
-              center={currentLocation || defaultCenter}
-            >
-              {response !== null && (
-                <DirectionsRenderer options={{ directions: response }} />
-              )}
-              {showAccidents &&
-                accidents.map((accident, index) => {
-                  const markerColor = getMarkerColor(accident.SEVERITY);
-                  if (!markerColor) return null;
+  const toggleFilter = (filterType, value) => {
+    if (filterType === "day") {
+      setDayFilters((prevState) => {
+        if (prevState.includes(value)) {
+          return prevState.filter((item) => item !== value);
+        } else {
+          return [...prevState, value];
+        }
+      });
+    } else if (filterType === "severity") {
+      setSeverityFilters((prevState) => {
+        if (prevState.includes(value)) {
+          return prevState.filter((item) => item !== value);
+        } else {
+          return [...prevState, value];
+        }
+      });
+    }
+  };
 
-                  return (
+  const filteredAccidents = accidents.filter((accident) => {
+    return (
+      (!dayFilters.length || dayFilters.includes(accident.DAY_OF_WEEK)) &&
+      (!severityFilters.length || severityFilters.includes(accident.SEVERITY))
+    );
+  });
+
+  return (
+    <div>
+      <Nav />
+      <Container fluid>
+        <Row>
+          <Col md="4" className={styles["autocomplete-container"]}>
+            <div className={styles["autocomplete-field"]}>
+              <Autocomplete
+                key={`origin-${autocompleteKey}`}
+                options={originSuggestions}
+                getOptionLabel={(option) => option.description}
+                onInputChange={(_, newInputValue) => {
+                  fetchSuggestions(newInputValue, setOriginSuggestions);
+                }}
+                onChange={(_, newValue) => {
+                  setOrigin(newValue ? newValue.description : "");
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Starting location"
+                    variant="outlined"
+                    fullWidth
+                  />
+                )}
+              />
+            </div>
+            <div className={styles["autocomplete-field"]}>
+              <Autocomplete
+                key={`destination-${autocompleteKey}`}
+                options={destinationSuggestions}
+                getOptionLabel={(option) => option.description}
+                onInputChange={(_, newInputValue) => {
+                  fetchSuggestions(newInputValue, setDestinationSuggestions);
+                }}
+                onChange={(_, newValue) => {
+                  setDestination(newValue ? newValue.description : "");
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Your Destination"
+                    variant="outlined"
+                    fullWidth
+                  />
+                )}
+              />
+            </div>
+            <div className={styles["autocomplete-field"]}>
+              <Autocomplete
+                options={languages}
+                getOptionLabel={(option) => option.label}
+                value={languages.find((lang) => lang.code === language)}
+                onChange={(_, newValue) => {
+                  setLanguage(newValue ? newValue.code : "en");
+                  setOrigin(null);
+                  setDestination("");
+                  setEstimatedTime(null);
+                  setAutocompleteKey((prevKey) => prevKey + 1);
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Language"
+                    variant="outlined"
+                    fullWidth
+                  />
+                )}
+              />
+            </div>
+            {origin && destination && (
+              <div className={styles["time-info"]}>
+                <h5 className="mt-4">
+                  Estimated Travel Time: {estimatedTime || "0"}
+                </h5>
+              </div>
+            )}
+
+            <div className={styles["advance-filter"]}>
+              {
+                <Button
+                  disabled={!origin && !destination}
+                  color="primary"
+                  onClick={getDirections}
+                >
+                  Get Directions
+                </Button>
+              }
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={showAccidents}
+                      onChange={toggleAccidents}
+                      inputProps={{ "aria-label": "controlled" }}
+                    />
+                  }
+                  label="Show Accidents"
+                />
+              </FormGroup>
+            </div>
+
+            <div className={styles["advance-filter"]}>
+              <Dropdown
+                isOpen={dropdownDayOpen}
+                toggle={toggleDayDropdown}
+                className="mt-4"
+              >
+                <DropdownToggle caret>Day of the Week</DropdownToggle>
+                <DropdownMenu>
+                  {weekdays.map((day) => (
+                    <DropdownItem
+                      key={day}
+                      onClick={() => toggleFilter("day", day)}
+                    >
+                      <Checkbox checked={dayFilters.includes(day)} />
+                      {day}
+                    </DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </Dropdown>
+
+              <Dropdown
+                isOpen={dropdownSeverityOpen}
+                toggle={toggleSeverityDropdown}
+                className="mt-4"
+              >
+                <DropdownToggle caret>Severity</DropdownToggle>
+                <DropdownMenu>
+                  {[
+                    "Fatal accident",
+                    "Serious injury accident",
+                    "Other injury accident",
+                    "Non injury accident",
+                  ].map((severity) => (
+                    <DropdownItem
+                      key={severity}
+                      onClick={() => toggleFilter("severity", severity)}
+                    >
+                      <Checkbox checked={severityFilters.includes(severity)} />
+                      {severity}
+                    </DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </Dropdown>
+            </div>
+            {origin && destination && showAccidents && (
+              <div
+                className={`${styles["reported-msg"]} ${
+                  accidents.length ? styles["show"] : ""
+                }`}
+                data-aos="zoom-in-up"
+              >
+                {`There are ${accidents.length} reported cases on the path.`}
+              </div>
+            )}
+          </Col>
+          <Col md="8">
+            <LoadScriptNext
+              key={language}
+              googleMapsApiKey="AIzaSyBP7qbMu0s7fPJmZj_y66VdnG1Q_JZ0eVY"
+              libraries={LIBRARIES}
+              language={language}
+              //preventGoogleFontsLoading={true}
+            >
+              <GoogleMap
+                mapContainerStyle={mapStyles}
+                zoom={10}
+                center={currentLocation || defaultCenter}
+                onLoad={(map) => {
+                  // Create a div to hold the button.
+                  const controlDiv = document.createElement("div");
+
+                  // Set CSS for the control border.
+                  controlDiv.style.backgroundColor = "#fff";
+                  controlDiv.style.border = "2px solid #fff";
+                  controlDiv.style.borderRadius = "5px";
+                  controlDiv.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+                  controlDiv.style.cursor = "pointer";
+                  controlDiv.style.marginBottom = "22px";
+                  controlDiv.style.marginRight = "10px";
+                  controlDiv.style.textAlign = "center";
+                  controlDiv.title = "Click to get current location";
+                  controlDiv.style.margin = "10px";
+
+                  // Set CSS for the control interior.
+                  const controlText = document.createElement("div");
+                  controlText.style.color = "rgb(25,25,25)";
+                  controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+                  controlText.style.fontSize = "16px";
+                  controlText.style.lineHeight = "38px";
+                  controlText.style.paddingLeft = "5px";
+                  controlText.style.paddingRight = "5px";
+                  controlText.innerHTML = "Current Location";
+                  controlDiv.appendChild(controlText);
+
+                  // Attach event listener
+                  controlDiv.addEventListener("click", function () {
+                    getCurrentLocation();
+                  });
+
+                  // Add the button to the map
+                  map.controls[
+                    window.google.maps.ControlPosition.TOP_RIGHT
+                  ].push(controlDiv);
+
+                  setIsLoading(false);
+                }}
+                onClick={(e) => {
+                  console.log(e.latLng.lat(), e.latLng.lng());
+                }}
+              >
+                {currentLocation && (
+                  <Marker
+                    position={currentLocation}
+                    title="Your Current Location"
+                  />
+                )}
+                {response && (
+                  <DirectionsRenderer
+                    directions={response}
+                    key={directionsKey}
+                  />
+                )}
+                {showAccidents &&
+                  filteredAccidents.map((accident, index) => (
                     <Marker
                       key={index}
                       position={{
                         lat: parseFloat(accident.LATITUDE),
                         lng: parseFloat(accident.LONGITUDE),
                       }}
+                      title={`Accident: ${accident.SEVERITY}`}
                       icon={{
-                        url: `http://maps.google.com/mapfiles/ms/icons/${markerColor}-dot.png`,
+                        path: window.google.maps.SymbolPath.CIRCLE,
+                        scale: 8,
+                        fillColor: getMarkerColor(accident.SEVERITY),
+                        fillOpacity: 1,
+                        strokeColor: "white",
+                        strokeWeight: 0.5,
                       }}
-                      title={accident.SEVERITY}
                     />
-                  );
-                })}
-            </GoogleMap>
-          </LoadScript>
-        </Col>
-      </Row>
-    </Container>
+                  ))}
+              </GoogleMap>
+            </LoadScriptNext>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ function Login({ onLogin }) {
     e.preventDefault();
 
     // For demonstration, using static values 'admin' and 'password123'
-    if (username === "admin" && password === "password123") {
+    if (username === "admin" && password === "admin321") {
       onLogin();
     } else {
       setErrorMessage("Incorrect credentials");

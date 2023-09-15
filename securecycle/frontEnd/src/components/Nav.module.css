@@ -7,7 +7,7 @@
   position: sticky;
   top: 0;
   z-index: 9999999;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
 }
 .navflex {
   display: flex;

@@ -217,9 +217,12 @@ const Travel = () => {
       setter([]);
       return;
     }
-    autocomplete.getPlacePredictions({ input: value }, (predictions) => {
-      setter(predictions || []);
-    });
+    autocomplete.getPlacePredictions(
+      { input: value, componentRestrictions: { country: "AU" } },
+      (predictions) => {
+        setter(predictions || []);
+      }
+    );
   };
 
   const toggleFilter = (filterType, value) => {

@@ -3,10 +3,12 @@ import Navigation from "../components/Nav";
 import NewsInfo from "../components/newsInfo";
 import styles from "./Resources.module.scss";
 import BarChart from "../components/BarChart";
+import MapBarhartHour from "../components/MapBarchartHour";
 import CardNews from "../components/CardNews";
 import PolarChart from "../components/PolarChart";
 import Fatality from "../components/fatality";
 import Testimonial from "../components/Testimonial";
+import MapBarchartHour from "../components/MapBarchartHour";
 const sampleMovie = [
   {
     title: "Vic Roads",
@@ -100,13 +102,8 @@ const Resources = () => {
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
           >
-            <h4>Accident Timing Analysis</h4>
-            The graph highlights the timeframes during which accidents
-            frequently occur: daytime, dawn, or nighttime. Recognizing these
-            patterns can help drivers and pedestrians to be particularly
-            cautious during high-risk times. It's essential to adapt your
-            driving behavior according to the visibility and conditions of each
-            time frame.
+            <h4>Increasing cyclists in Victoria</h4>
+            In recent years, Victoria has witnessed a surge in its cycling population. Data from 2009 to 2017 indicates a marked increase in the number of cyclists commuting into Melbourne city for work or school, especially between the hours of 7 to 10 am. This trend emphasizes the significance of providing safe routes and infrastructure for these commuters, given the inherent vulnerabilities faced by cyclists in traffic.
           </div>
 
           <div className={styles["chartSummary"]}>
@@ -117,12 +114,20 @@ const Resources = () => {
                 style={{ color: "grey", textDecoration: "underline" }}
                 href="https://www.crimestatistics.vic.gov.au/crime-statistics/latest-crime-data-by-area"
               >
-                Latest crime data by area
+                City of Melbourne
               </a>
             </p>
           </div>
         </div>
         <div className={styles["chart-container1"]}>
+        <div
+            className={styles["importantInfo"]}
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+          >
+            <h4>Top 5 accident vehicle in Victoria</h4>
+            The bar chart illustrates how the frequency of accidents involving different types of vehicles has changed over the last two decades. Notably, bikes have emerged as one of the top five vehicles most frequently involved in accidents in Victoria.
+          </div>
           <div className={styles["chartSummarybox"]}>
             <BarChart />
             <p style={{ color: "grey", fontSize: "10px" }}>
@@ -131,27 +136,42 @@ const Resources = () => {
                 style={{ color: "grey", textDecoration: "underline" }}
                 href="https://vicroadsopendata-vicroadsmaps.opendata.arcgis.com/datasets/vicroadsmaps::road-crashes-for-five-years-victoria/explore?location=-36.523327%2C145.286240%2C14.53"
               >
-                Road Crashes 5 Years for Victoria
+                Road Crashes Victoria
               </a>
             </p>
           </div>
 
-          <div
+          
+        </div>
+
+        <div className={styles["severity-container"]}>
+        <div></div>
+        <div
             className={styles["importantInfo"]}
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
           >
-            <h4>Accidents Overview</h4>
-            This chart provides insights into the number of accidents that
-            occurred on each day of the week. Analyzing this data can help city
-            planners and residents to be more vigilant and take precautions on
-            specific days. Always remember to drive safely and follow all
-            traffic rules.
+            <h4>High chance to get serious injury</h4>
+            Based on our analysis, there is a significant likelihood of experiencing a severe injury, with a 34% probability, and a 1% chance of it resulting in a fatality. Only 64% of cases are expected to result in minor injuries or no injuries at all.
+          </div>
+          
+          
+        </div>
+        <Fatality />
+        <div className={styles["severity-container"]}>
+        <div></div>
+        <div
+            className={styles["importantInfo"]}
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+          >
+            <h4>Stay safe with our insights</h4>
+            This chart provides insights into the number of accidents in the past that
+            occurred at different time of the day by each day of the week.
           </div>
         </div>
-        <div className={styles["severity-container"]}>
-          <Fatality />
-        </div>
+        <MapBarhartHour />
+
       </section>
 
       <section className={styles["newsSection"]}>

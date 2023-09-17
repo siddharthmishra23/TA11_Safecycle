@@ -38,16 +38,20 @@ function BarChart() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`/accidentDays`);
+        const response = await fetch(`http://localhost:8003/CarType`);
         const data = await response.json();
 
-        const labels = data.data.map((item) => item.Value);
-        const chartDataValues = data.data.map((item) => item.Count);
+        const labels = data.data.map((item) => item.vehicle_type);
+        const chartDataValues = data.data.map((item) => item.count);
 
-        const backgroundColors = labels.map((_, index) => colors[index % 7]);
+        //const backgroundColors = labels.map((_, index) => colors[index % 7]);
         const borderColorValues = labels.map(
           (_, index) => borderColors[index % 7]
         );
+
+        const backgroundColors= data.data.map(item => {
+          return item.vehicle_type === 'Bicycle' ? '#2417AD' : '#1EB0EA';
+        });
 
         setChartData({
           labels: labels,
@@ -56,8 +60,8 @@ function BarChart() {
               label: "Number of Accidents",
               data: chartDataValues,
               backgroundColor: backgroundColors,
-              borderColor: borderColorValues,
-              borderWidth: 1,
+              // borderColor: borderColorValues,
+              // borderWidth: 1,
             },
           ],
         });

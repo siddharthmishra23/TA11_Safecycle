@@ -25,27 +25,27 @@
   stroke: #ebebeb;
 }
 
-.donut-segment {
+/* .donut-segment {
   transform-origin: center;
   stroke: #ff6200;
-}
+} */
 
 .donut-segment-1 {
-  stroke: rgba(64, 176, 23, 0.607);
+  stroke: #33921D;
   animation: donut1 3s;
 }
 
 .donut-segment-2 {
-  stroke: rgba(53, 72, 216, 0.703);
+  stroke: #EDCE42;
   animation: donut1 3s;
 }
 
 .donut-segment-3 {
-  stroke: #e021219d;
+  stroke: #BE2121;
   animation: donut2 3s;
 }
 
-.donut-segment-4 {
+/* .donut-segment-4 {
   stroke: #ed1e79;
   animation: donut3 3s;
 }
@@ -61,7 +61,7 @@
 }
 .segment-4 {
   fill: #ed1e79;
-}
+} */
 
 .donut-percent {
   animation: donutfadelong 1s;
@@ -102,9 +102,10 @@
 
 .donut-text {
   font-family: Arial, Helvetica, sans-serif;
-  fill: #ff6200;
+  fill: #1b7ac7;
+  font-size: 90%;
 }
-.donut-text-1 {
+/* .donut-text-1 {
   fill: aqua;
 }
 .donut-text-2 {
@@ -112,25 +113,25 @@
 }
 .donut-text-3 {
   fill: #ed1e79;
-}
+} */
 
-.donut-label {
-  font-size: 0.28em;
+/* .donut-label {
+  font-size: 1em;
   font-weight: 700;
   line-height: 1;
   fill: #000;
   transform: translateY(0.25em);
-}
+} */
 
 .donut-percent {
-  font-size: 0.5em;
+  font-size: 0.43em;
   line-height: 1;
   transform: translateY(0.5em);
   font-weight: bold;
 }
 
 .donut-data {
-  font-size: 0.12em;
+  font-size: 0.2em;
   line-height: 1;
   transform: translateY(0.5em);
   text-align: center;
@@ -148,9 +149,11 @@ html {
 .svg-item {
   max-width: 60%;
   display: inline-block;
+  margin: 10px;
 }
 
-.donut-segment.title-green {
+
+/* .donut-segment.title-green {
   stroke: #ed1e79;
 }
 .donut-segment.title-orange {
@@ -159,4 +162,4 @@ html {
 
 .donut-segment.title-red {
   stroke: #ed471e;
-}
+} */

@@ -98,7 +98,7 @@ const Travel = () => {
   useEffect(() => {
     setIsLoading(true);
     getCurrentLocation();
-    fetch("/LongLat")
+    fetch("http://localhost:8003/LongLat")
       .then((res) => res.json())
       .then((data) => {
         setTotalAccidents(data.data);

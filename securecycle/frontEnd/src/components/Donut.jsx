@@ -20,7 +20,7 @@ const DonutChart = ({ percentage, color, data }) => {
           cx="20"
           cy="20"
           r="15.91549430918954"
-          fill="#fff"
+          fill="transparent"
         />
         <circle
           className="donut-ring"
@@ -28,7 +28,7 @@ const DonutChart = ({ percentage, color, data }) => {
           cy="20"
           r="15.91549430918954"
           fill="transparent"
-          strokeWidth="3.5"
+          strokeWidth="8"
         />
         <circle
           className={`donut-segment ${color}`}
@@ -36,18 +36,18 @@ const DonutChart = ({ percentage, color, data }) => {
           cy="20"
           r="15.91549430918954"
           fill="transparent"
-          strokeWidth="3.5"
+          strokeWidth="8"
           strokeDasharray={strokeValue}
           strokeDashoffset="25"
           style={animationName ? { animation: `${animationName} 3s` } : {}}
         />
         <g className={`donut-text ${color}-text`}>
-          <text y="50%" transform="translate(0, 2)">
+          <text y="50%" transform="translate(0, 1)">
             <tspan x="50%" textAnchor="middle" className="donut-percent">
               {percentage}%
             </tspan>
           </text>
-          <text y="60%" transform="translate(0, 2)">
+          <text y="60%" transform="translate(0, 1)">
             <tspan x="50%" textAnchor="middle" className="donut-data">
               {data}
             </tspan>

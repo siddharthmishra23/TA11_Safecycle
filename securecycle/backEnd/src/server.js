@@ -6,7 +6,9 @@ import { fileURLToPath } from "url";
 import accidentInfoRouter from "../routes/getAccident.js";
 import severityRouter from "../routes/getSeverity.js";
 import accidentTimeRouter from "../routes/getAccidentTime.js";
+import accidentHourRouter from "../routes/getAccidentHour.js";
 import langLatRouter from "../routes/getLongLat.js";
+import CarTypeRouter from "../routes/getCarType.js";
 
 const app = express();
 app.use(express.json());
@@ -24,6 +26,8 @@ app.use(express.static(path.join(__dirname, "../dist")));
 app.use("/accidentDays", accidentInfoRouter);
 app.use("/severity", severityRouter);
 app.use("/accidentTime", accidentTimeRouter);
+app.use("/CarType", CarTypeRouter);
+app.use("/accidentHour", accidentHourRouter);
 app.use("/LongLat", langLatRouter);
 // should always the last
 app.get("*", (req, res) => {

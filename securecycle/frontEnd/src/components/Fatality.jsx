@@ -17,7 +17,7 @@ const Fatality = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const apiUrl = "/severity";
+    const apiUrl = "http://localhost:8003/severity";
 
     fetch(apiUrl)
       .then((response) => {
@@ -58,7 +58,7 @@ const Fatality = () => {
 
   return (
     <Container>
-      <h1 className="infographic__title">Severity Percentages</h1>
+      <h1 className="infographic__title">Bike Accident Severity Percentage</h1>
       <Row className="infographic__grid">
         {percentages.map((item, index) => (
           <Col sm="4" className="infographic__grid__item" key={index}>

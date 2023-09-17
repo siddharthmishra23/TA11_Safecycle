@@ -56,6 +56,7 @@
   height: 50vh;
   width: 100% !important;
   padding: 1rem;
+  margin-left: 50%;
 }
 .chartSummary {
   display: grid;
@@ -119,7 +120,7 @@
   text-align: center; /* Centers the text */
   position: relative;
   padding: 2rem; /* Adds some space for the underline */
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: 0.1rem;
   margin: 1rem 0;
@@ -141,24 +142,24 @@ section:nth-child(odd) {
 // }
 .chart-container1 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 30% 70%;
   place-items: center;
   margin: 1rem;
 }
 .chart-container2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 30% 70%;
   place-items: center;
   margin: 1rem;
 }
 .importantInfo {
-  padding: 20px;
+  width: 60%;
   // background-color: #f9f9f9; // Light grey background
   // border: 1px solid #e0e0e0; // Border for a subtle definition
   border-radius: 5px; // Rounded corners
-  font-size: 14px;
-  margin-bottom: 20px; // Space below the information box
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Adding a subtle shadow
+  font-size: 16px;
+  margin: 3rem 0 2rem 0; // Space below the information box
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Adding a subtle shadow
 
   // If you want to add a title inside the important info box:
   h4 {
@@ -176,6 +177,13 @@ section:nth-child(odd) {
   }
 }
 
+.severity-container {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  place-items: center;
+  margin: 2rem;
+}
+
 // .severity-container {
 // }
 .video-container {
@@ -186,7 +194,7 @@ section:nth-child(odd) {
 }
 
 .videoResources {
-  height: 60vh;
+  height: 35vh;
   width: 100%;
 }
 

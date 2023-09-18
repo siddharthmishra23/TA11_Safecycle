@@ -38,7 +38,7 @@ function BarChart() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:8003/CarType`);
+        const response = await fetch(`/CarType`);
         const data = await response.json();
 
         const labels = data.data.map((item) => item.vehicle_type);
@@ -49,8 +49,8 @@ function BarChart() {
           (_, index) => borderColors[index % 7]
         );
 
-        const backgroundColors= data.data.map(item => {
-          return item.vehicle_type === 'Bicycle' ? '#2417AD' : '#1EB0EA';
+        const backgroundColors = data.data.map((item) => {
+          return item.vehicle_type === "Bicycle" ? "#2417AD" : "#1EB0EA";
         });
 
         setChartData({

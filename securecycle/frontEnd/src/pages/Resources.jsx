@@ -103,7 +103,13 @@ const Resources = () => {
             data-aos-anchor-placement="top-bottom"
           >
             <h4>Increasing cyclists in Victoria</h4>
-            In recent years, Victoria has witnessed a surge in its cycling population. Data from 2009 to 2017 indicates a marked increase in the number of cyclists commuting into Melbourne city for work or school, especially between the hours of 7 to 10 am. This trend emphasizes the significance of providing safe routes and infrastructure for these commuters, given the inherent vulnerabilities faced by cyclists in traffic.
+            In recent years, Victoria has witnessed a surge in its cycling
+            population. Data from 2009 to 2017 indicates a marked increase in
+            the number of cyclists commuting into Melbourne city for work or
+            school, especially between the hours of 7 to 10 am. This trend
+            emphasizes the significance of providing safe routes and
+            infrastructure for these commuters, given the inherent
+            vulnerabilities faced by cyclists in traffic.
           </div>
 
           <div className={styles["chartSummary"]}>
@@ -120,13 +126,16 @@ const Resources = () => {
           </div>
         </div>
         <div className={styles["chart-container1"]}>
-        <div
+          <div
             className={styles["importantInfo"]}
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
           >
             <h4>Top 5 accident vehicle in Victoria</h4>
-            The bar chart illustrates how the frequency of accidents involving different types of vehicles has changed over the last two decades. Notably, bikes have emerged as one of the top five vehicles most frequently involved in accidents in Victoria.
+            The bar chart illustrates how the frequency of accidents involving
+            different types of vehicles has changed over the last two decades.
+            Notably, bikes have emerged as one of the top five vehicles most
+            frequently involved in accidents in Victoria.
           </div>
           <div className={styles["chartSummarybox"]}>
             <BarChart />
@@ -140,38 +149,46 @@ const Resources = () => {
               </a>
             </p>
           </div>
-
-          
         </div>
 
         <div className={styles["severity-container"]}>
-        <div></div>
-        <div
+          <div></div>
+          <div
             className={styles["importantInfo"]}
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
           >
             <h4>High chance to get serious injury</h4>
-            Based on our analysis, there is a significant likelihood of experiencing a severe injury, with a 34% probability, and a 1% chance of it resulting in a fatality. Only 64% of cases are expected to result in minor injuries or no injuries at all.
+            Based on our analysis, there is a significant likelihood of
+            experiencing a severe injury, with a 34% probability, and a 1%
+            chance of it resulting in a fatality. Only 64% of cases are expected
+            to result in minor injuries or no injuries at all.
           </div>
-          
-          
         </div>
         <Fatality />
         <div className={styles["severity-container"]}>
-        <div></div>
-        <div
+          <div></div>
+          <div
             className={styles["importantInfo"]}
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
           >
             <h4>Stay safe with our insights</h4>
-            This chart provides insights into the number of accidents in the past that
-            occurred at different time of the day by each day of the week.
+            This chart provides insights into the number of accidents in the
+            past that occurred at different time of the day by each day of the
+            week.
           </div>
         </div>
-        <MapBarhartHour />
+        <div
+          style={{
+            width: "50%",
 
+            margin: "0 auto",
+            padding: "50px",
+          }}
+        >
+          <MapBarhartHour />
+        </div>
       </section>
 
       <section className={styles["newsSection"]}>

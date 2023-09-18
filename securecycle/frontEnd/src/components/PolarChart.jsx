@@ -33,21 +33,14 @@ function PolarChart() {
   //   "rgba(255, 159, 64)",
   //   "rgba(201, 203, 207)",
   // ];
-  const colors = [
-    "#63ADF2",
-    "#545E75",
-    "#A7CCED",
-    "#304D6D",
-    "#82A0BC",
-  ];
-
+  const colors = ["#63ADF2", "#545E75", "#A7CCED", "#304D6D", "#82A0BC"];
 
   const borderColors = colors.map((color) => color.replace("0.2", "1"));
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:8003/accidentTime`);
+        const response = await fetch(`/accidentTime`);
         const data = await response.json();
 
         const labels = data.data.map((item) => item.survey_year);
@@ -83,7 +76,12 @@ function PolarChart() {
   }
   const options = {
     plugins: {
-      title: {display: true, text: 'Percentage of Bikes as Vehicle Travelling into City Central at 7-10am', font:{size:20}, padding:{bottom:20}},
+      title: {
+        display: true,
+        text: "Percentage of Bikes as Vehicle Travelling into City Central at 7-10am",
+        font: { size: 20 },
+        padding: { bottom: 20 },
+      },
       legend: {
         display: false,
       },
@@ -98,30 +96,31 @@ function PolarChart() {
       x: {
         title: {
           display: true,
-          text: 'Survey Year',
-          color: 'black', // Optionally style the font color
+          text: "Survey Year",
+          color: "black", // Optionally style the font color
           font: {
-              size: 12     // Optionally set the font size
+            size: 12, // Optionally set the font size
           },
-        beginAtZero: true,
-        grid: {
-          display: false,
+          beginAtZero: true,
+          grid: {
+            display: false,
+          },
         },
-      }},
+      },
       y: {
         title: {
           display: true,
-          text: 'Percentage of Bikes',
-          color: 'black', // Optionally style the font color
+          text: "Percentage of Bikes",
+          color: "black", // Optionally style the font color
           font: {
-              size: 12     // Optionally set the font size
+            size: 12, // Optionally set the font size
           },
-        grid: {
-          display: false,
+          grid: {
+            display: false,
+          },
         },
       },
     },
-  }
   };
   return <Line data={chartData} options={options} />;
 }

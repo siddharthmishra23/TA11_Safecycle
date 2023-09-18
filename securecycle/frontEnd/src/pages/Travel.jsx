@@ -23,6 +23,7 @@ import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import styles from "./Travel.module.css";
+import MapBarhartHour from "../components/MapBarchartHour";
 const LIBRARIES = ["places"];
 
 const Travel = () => {
@@ -98,7 +99,7 @@ const Travel = () => {
   useEffect(() => {
     setIsLoading(true);
     getCurrentLocation();
-    fetch("http://localhost:8003/LongLat")
+    fetch("/LongLat")
       .then((res) => res.json())
       .then((data) => {
         setTotalAccidents(data.data);
@@ -398,6 +399,15 @@ const Travel = () => {
                 </DropdownMenu>
               </Dropdown>
             </div>
+            {origin && destination && showAccidents && (
+              <div
+                style={{
+                  margin: "0 auto",
+                }}
+              >
+                <MapBarhartHour />
+              </div>
+            )}
             {origin && destination && showAccidents && (
               <div
                 className={`${styles["reported-msg"]} ${

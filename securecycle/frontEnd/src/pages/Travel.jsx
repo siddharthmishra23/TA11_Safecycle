@@ -188,12 +188,12 @@ const Travel = () => {
             );
 
             return path.some((pathPoint) => {
-              // Check if the accident is within 0.5km of the path
+              // Check if the accident is within 0.2km of the path
               return (
                 window.google.maps.geometry.spherical.computeDistanceBetween(
                   accidentPoint,
                   pathPoint
-                ) < 500
+                ) < 20
               );
             });
           }

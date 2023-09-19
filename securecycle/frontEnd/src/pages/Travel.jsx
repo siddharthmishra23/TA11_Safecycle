@@ -343,18 +343,20 @@ const Travel = () => {
                   Get Directions
                 </Button>
               }
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={showAccidents}
-                      onChange={toggleAccidents}
-                      inputProps={{ "aria-label": "controlled" }}
-                    />
-                  }
-                  label="Show Accidents"
-                />
-              </FormGroup>
+              {origin && destination && clicked && (
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={showAccidents}
+                        onChange={toggleAccidents}
+                        inputProps={{ "aria-label": "controlled" }}
+                      />
+                    }
+                    label="Show Accidents"
+                  />
+                </FormGroup>
+              )}
             </div>
 
             {origin && destination && clicked && (

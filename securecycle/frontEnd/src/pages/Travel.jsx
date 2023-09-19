@@ -416,7 +416,7 @@ const Travel = () => {
                 <MapBarhartHour />
               </div>
             )}
-            {origin && destination && showAccidents && (
+            {origin && destination && showAccidents && clicked && (
               <div
                 className={`${styles["reported-msg"]} ${
                   accidents.length ? styles["show"] : ""

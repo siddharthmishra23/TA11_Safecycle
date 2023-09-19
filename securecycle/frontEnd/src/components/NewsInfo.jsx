@@ -23,7 +23,7 @@ const NewsInfo = ({ news }) => {
       <CardBody className="details animate__animated animate__fadeInUpBig">
         <CardTitle tag="h1">{news.title}</CardTitle>
         <CardText className="desc">{news.description}</CardText>
-        <Link to={news.ref}>
+        <Link to={news.ref} target="_blank">
           <Button>Learn More</Button>
         </Link>
       </CardBody>

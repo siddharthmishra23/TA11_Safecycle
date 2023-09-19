@@ -15,6 +15,7 @@
   display: flex;
   gap: 2rem;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 .advance-filter .dropdown-toggle {

@@ -50,6 +50,7 @@ const Travel = () => {
   const [directionsKey, setDirectionsKey] = useState(0);
   const directionsRendererRef = useRef(null);
   const [selectedAccident, setSelectedAccident] = useState(null);
+  const [clicked, setClicked] = useState(false);
   const toggleDayDropdown = () => setDropdownDayOpen((prevState) => !prevState);
   const toggleSeverityDropdown = () =>
     setDropdownSeverityOpen((prevState) => !prevState);
@@ -200,6 +201,7 @@ const Travel = () => {
         setShowAccidents(true);
         setAccidents(filteredAccidentsBasedOnPath);
         setIsLoading(false);
+        setClicked(true);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -323,7 +325,7 @@ const Travel = () => {
                 )}
               />
             </div>
-            {origin && destination && (
+            {origin && destination && clicked && (
               <div className={styles["time-info"]}>
                 <h5 className="mt-4">
                   Estimated Travel Time: {estimatedTime || "0"}
@@ -355,50 +357,54 @@ const Travel = () => {
               </FormGroup>
             </div>
 
-            <div className={styles["advance-filter"]}>
-              <Dropdown
-                isOpen={dropdownDayOpen}
-                toggle={toggleDayDropdown}
-                className="mt-4"
-              >
-                <DropdownToggle caret>Day of the Week</DropdownToggle>
-                <DropdownMenu>
-                  {weekdays.map((day) => (
-                    <DropdownItem
-                      key={day}
-                      onClick={() => toggleFilter("day", day)}
-                    >
-                      <Checkbox checked={dayFilters.includes(day)} />
-                      {day}
-                    </DropdownItem>
-                  ))}
-                </DropdownMenu>
-              </Dropdown>
+            {origin && destination && clicked && (
+              <div className={styles["advance-filter"]}>
+                <Dropdown
+                  isOpen={dropdownDayOpen}
+                  toggle={toggleDayDropdown}
+                  className="mt-4"
+                >
+                  <DropdownToggle caret>Day of the Week</DropdownToggle>
+                  <DropdownMenu>
+                    {weekdays.map((day) => (
+                      <DropdownItem
+                        key={day}
+                        onClick={() => toggleFilter("day", day)}
+                      >
+                        <Checkbox checked={dayFilters.includes(day)} />
+                        {day}
+                      </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </Dropdown>
 
-              <Dropdown
-                isOpen={dropdownSeverityOpen}
-                toggle={toggleSeverityDropdown}
-                className="mt-4"
-              >
-                <DropdownToggle caret>Severity</DropdownToggle>
-                <DropdownMenu>
-                  {[
-                    "Fatal accident",
-                    "Serious injury accident",
-                    "Other injury accident",
-                    "Non injury accident",
-                  ].map((severity) => (
-                    <DropdownItem
-                      key={severity}
-                      onClick={() => toggleFilter("severity", severity)}
-                    >
-                      <Checkbox checked={severityFilters.includes(severity)} />
-                      {severity}
-                    </DropdownItem>
-                  ))}
-                </DropdownMenu>
-              </Dropdown>
-            </div>
+                <Dropdown
+                  isOpen={dropdownSeverityOpen}
+                  toggle={toggleSeverityDropdown}
+                  className="mt-4"
+                >
+                  <DropdownToggle caret>Severity</DropdownToggle>
+                  <DropdownMenu>
+                    {[
+                      "Fatal accident",
+                      "Serious injury accident",
+                      "Other injury accident",
+                      "Non injury accident",
+                    ].map((severity) => (
+                      <DropdownItem
+                        key={severity}
+                        onClick={() => toggleFilter("severity", severity)}
+                      >
+                        <Checkbox
+                          checked={severityFilters.includes(severity)}
+                        />
+                        {severity}
+                      </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+            )}
             {origin && destination && showAccidents && (
               <div
                 style={{

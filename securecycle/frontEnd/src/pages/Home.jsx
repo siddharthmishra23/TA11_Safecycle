@@ -56,8 +56,7 @@ function Home() {
           </div>
           <div>
             Plan your journeys confidently with our safe route navigation tools.
-            Coming soon...
-            <NavLink to="/resources">
+            <NavLink to="/travel">
               <button className="icon-btn">
                 <i className="fa-solid fa-route icon-size"></i>
               </button>

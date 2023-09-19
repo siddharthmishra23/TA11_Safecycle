@@ -72,7 +72,7 @@ const Travel = () => {
   ];
 
   const mapStyles = {
-    height: "725px",
+    height: "100vh",
     width: "100%",
   };
 

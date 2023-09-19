@@ -7,7 +7,13 @@ function Navigation() {
   return (
     <Nav className={styles.nav}>
       <div className={styles["logo-flex"]}>
-        <Link to="/">
+        <Link
+          to="/"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo(0, 0);
+          }}
+        >
           <img src="/new_logo.png" alt="Safe cycle" className={styles.logo} />
         </Link>
       </div>

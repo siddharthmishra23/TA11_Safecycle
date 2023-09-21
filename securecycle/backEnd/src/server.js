@@ -10,9 +10,31 @@ import accidentHourRouter from "../routes/getAccidentHour.js";
 import langLatRouter from "../routes/getLongLat.js";
 import CarTypeRouter from "../routes/getCarType.js";
 
+import helmet from 'helmet';
+import csurf from 'csurf';
+import morgan from 'morgan';
+
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(helmet());
+
+//configured CORS for our websites
+const corsOptions = {
+  origin: 'https://www.cycliststreet.studio'
+};
+app.use(cors(corsOptions));
+
+//implement CSRF prevention
+app.use(csurf());
+
+//using morgan to record logs
+app.use(morgan('combined'));
+
+
+//limitation of the require size to avoid Dos attack
+app.use(express.json({ limit: '10kb' }));
+
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

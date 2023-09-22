@@ -33,7 +33,7 @@ function Home() {
         <h2 data-aos="fade-up" style={{ color: "#0b0d7b" }}>
           WHAT DO WE DO HERE?
         </h2>
-        <div className="wrapper">
+        <div className="wrapper home-screen">
           <div>
             We provide valuable insights into accident trends, contributing
             factors, and geographical hotspots, empowering you with knowledge to

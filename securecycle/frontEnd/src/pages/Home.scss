@@ -184,8 +184,6 @@ h2 {
 }
 
 .wrapper {
-  margin-left: 15rem;
-  margin-right: 15rem;
   width: 100%;
 
   > div {
@@ -202,7 +200,10 @@ h2 {
     overflow: hidden;
   }
 }
-
+.home-screen {
+  display: flex;
+  justify-content: center;
+}
 .icon-size {
   font-size: 5rem;
 }

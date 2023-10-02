@@ -1,0 +1,18 @@
+.weatherContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+.weatherContainer h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.weatherContainer h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}

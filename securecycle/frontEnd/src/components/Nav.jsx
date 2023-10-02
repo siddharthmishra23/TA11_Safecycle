@@ -13,11 +13,11 @@ function Navigation() {
       </div>
 
       <div className={styles.navflex}>
-        {/* <NavItem>
-          <NavLink tag={RRNavLink} exact to="/" activeClassName="active">
-            Home
+        <NavItem>
+          <NavLink tag={RRNavLink} exact to="/trails" activeClassName="active">
+            Trail Tidbits
           </NavLink>
-        </NavItem> */}
+        </NavItem>
         <NavItem>
           <NavLink tag={RRNavLink} to="/travel" activeClassName="active">
             Hazard Spotter

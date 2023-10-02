@@ -9,6 +9,7 @@ import Resources from "./pages/Resources";
 import Aboutus from "./pages/Aboutus";
 import AOS from "aos";
 import ScrollToTop from "./components/ScrollUp";
+import Trail from "./pages/Trail";
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/travel" element={<Travel />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/aboutus" element={<Aboutus />} />
+          <Route path="/trails" element={<Trail />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

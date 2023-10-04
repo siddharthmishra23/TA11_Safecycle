@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
+.resource-container {
+  height: 55vh;
+  width: 100%;
+  // border-radius: 0 0 50% 50%;
+  background-color: #cde8f7;
+}
+
+.resources-main {
+  background-color: rgb(255, 254, 254);
+}
+
+.content {
+  margin: 20px 50px;
+
+  .resources-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+    font-weight: 900;
+  }
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.chartSummary {
+  height: 50vh;
+}
+
+.content {
+  margin: 20px 50px;
+}
+
+.content h2 {
+  margin-top: 15px;
+
+  font-size: 3.5em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.content p {
+  font-size: 1em;
+}
+
+.chartSummarybox {
+  height: 50vh;
+  width: 100% !important;
+  padding: 1rem;
+  margin-left: 50%;
+}
+.chartSummary {
+  display: grid;
+  place-items: center;
+  height: 50vh;
+  width: 100% !important;
+  padding: 1rem;
+}
+
+/* Media queries for responsiveness */
+
+/* For tablets */
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    h2 {
+      font-size: 2.5em;
+      width: 70%;
+    }
+
+    p {
+      font-size: 0.9em;
+      width: 70%;
+    }
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+  .content {
+    h2 {
+      font-size: 2em;
+      width: 80%;
+    }
+
+    p {
+      font-size: 0.8em;
+      width: 80%;
+    }
+  }
+
+  .wrapper {
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .chartSummary {
+    height: auto;
+    width: 90vw;
+    margin: 0 auto;
+  }
+}
+.newsSection {
+  padding-bottom: 2rem;
+  height: auto;
+}
+.paragraph-resource {
+  text-align: center; /* Centers the text */
+  position: relative;
+  padding: 2rem; /* Adds some space for the underline */
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  margin: 1rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #0b0d7b;
+}
+section:nth-child(odd) {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.18
+  ); // replace with the color you want
+}
+
+// section {
+//   background-color: rgba(237, 192, 69, 0.18); // replace with the color you want
+// }
+.chart-container1 {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  place-items: center;
+  margin: 1rem;
+}
+.chart-container2 {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  place-items: center;
+  margin: 1rem;
+}
+.importantInfo {
+  width: 60%;
+  // background-color: #f9f9f9; // Light grey background
+  // border: 1px solid #e0e0e0; // Border for a subtle definition
+  border-radius: 5px; // Rounded corners
+  font-size: 16px;
+  margin: 3rem 0 2rem 0; // Space below the information box
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Adding a subtle shadow
+
+  // If you want to add a title inside the important info box:
+  h4 {
+    font-weight: 600; // Making the title bold
+    margin-bottom: 10px; // Space below the title
+  }
+
+  // Styling for links inside the box, if any:
+  a {
+    color: #007bff; // Typical link color
+    text-decoration: none; // Removing the underline
+    &:hover {
+      text-decoration: underline; // Underline on hover
+    }
+  }
+}
+
+.severity-container {
+  display: grid;
+  grid-template-rows: 30% 70%;
+  place-items: center;
+  margin: 2rem;
+}
+
+// .severity-container {
+// }
+.video-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0 3rem 0 3rem;
+  gap: 2rem;
+}
+
+.videoResources {
+  height: 35vh;
+  width: 100%;
+}
+
+.resource-img {
+  width: 90%;
+  height: 80vh;
+}

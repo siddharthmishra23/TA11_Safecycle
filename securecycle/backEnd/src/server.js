@@ -53,7 +53,7 @@ app.use("/accidentHour", accidentHourRouter);
 app.use("/LongLat", langLatRouter);
 // should always the last
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist/index.html"));
+  res.sendFile(path.join(__dirname, './../build/index.html'));
 });
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

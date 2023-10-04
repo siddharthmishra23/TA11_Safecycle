@@ -1,0 +1,69 @@
+// Testimonial.module.scss
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
+section {
+  background-color: #84848613;
+}
+
+.container {
+  max-width: calc(100vw - 20vw);
+}
+
+.testimonial-info {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  // border-radius: 8px;
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  transition: transform 0.3s, background-color 0.3s; // transition for smooth animation
+
+  &:hover {
+    transform: scale(1.05); // scales the element up by 5%
+    background-color: #1a63ea18; // changes the background color on hover
+  }
+
+  h1 {
+    color: #333;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+  }
+
+  p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #666;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.testimonial-btn {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+  }
+}
+
+.testimonial-image {
+  img {
+    max-width: 60%;
+    // border-radius: 50%;
+    // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.btnBottom {
+  display: flex;
+  justify-content: center;
+}

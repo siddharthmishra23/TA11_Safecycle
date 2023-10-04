@@ -1,0 +1,95 @@
+.travel-container {
+  padding: 2rem;
+}
+.autocomplete-container {
+  padding: 20px;
+  background-color: #f6f6f6;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.autocomplete-field {
+  margin-bottom: 20px;
+}
+
+.advance-filter {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 20px;
+}
+
+.advance-filter .dropdown-toggle {
+  background-color: white;
+  border: 1px solid #e0e0e0; /* A light grey border */
+  color: #333; /* Dark text */
+  padding: 10px 15px;
+  border-radius: 4px; /* Slightly rounded corners for the button */
+  transition: all 0.3s; /* Smooth transition for hover effects */
+}
+
+.advance-filter .dropdown-toggle:hover {
+  background-color: #f1f1f1; /* A slightly darker grey for hover */
+  border-color: #d0d0d0; /* Darker border for hover */
+}
+
+/* Dropdown menu styles */
+.advance-filter .dropdown-menu {
+  border-radius: 4px; /* Slightly rounded corners for the menu */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* A shadow for the menu */
+  border: none; /* Removing the default border */
+}
+
+.advance-filter .dropdown-item {
+  padding: 8px 15px; /* More comfortable padding for items */
+  transition: all 0.3s; /* Smooth transition for hover effects */
+}
+
+.advance-filter .dropdown-item:hover {
+  background-color: #f1f1f1; /* A slightly darker grey for hover */
+}
+
+.time-info {
+  background: linear-gradient(
+    135deg,
+    #a6c0fe 0%,
+    #f68084 100%
+  ); /* Soft gradient from blue to red */
+  padding: 20px 30px; /* More padding for a spacious look */
+  border-radius: 12px;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centering content */
+  color: white; /* Text color to contrast against gradient */
+  margin-bottom: 1.5rem;
+}
+
+.time-info h5 {
+  font-size: 20px; /* Slightly larger font size for emphasis */
+  font-weight: 700; /* Bold font weight */
+  letter-spacing: 0.5px; /* Small letter spacing for style */
+  margin: 0; /* Removing margin for a clean look */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Slight text shadow for depth */
+}
+
+.reported-msg {
+  position: fixed; /* Position it fixed on the screen */
+  bottom: 20vh; /* Change to 'top: 10px;' if you want it at the top */
+  left: 50%;
+  transform: translateX(-50%); /* Center it horizontally on the screen */
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: #333; /* Dark background for contrast */
+  color: #fff; /* White text */
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  max-width: 90%; /* Ensure it doesn't exceed the screen width */
+  text-align: center; /* Center the text */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1000; /* Make sure it's above other components */
+}
+
+/* Add a modifier class when you want to show the message, for a fade-in effect */
+.reported-msg.show {
+  opacity: 1;
+}

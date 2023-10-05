@@ -316,8 +316,13 @@ const Travel = () => {
             <div className={styles["advance-filter"]}>
               {
                 <Button
-                  disabled={!origin && !destination}
-                  color="primary"
+                  className={`transition duration-300 ease-in-out 
+                           ${
+                             !origin || !destination
+                               ? "bg-blue-200 opacity-50 cursor-not-allowed"
+                               : "bg-blue-500 opacity-100 hover:bg-blue-700"
+                           }`}
+                  disabled={!origin || !destination}
                   onClick={getDirections}
                 >
                   Get Directions

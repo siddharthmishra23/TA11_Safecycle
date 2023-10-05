@@ -6,7 +6,6 @@ import { useSnapshot } from "valtio";
 import state from "../store";
 export function Bike3d(props) {
   const { nodes, materials } = useGLTF("/bike3d.glb");
-  console.log(materials);
   const snap = useSnapshot(state);
   useFrame((state, delta) => {
     const newColor = easing.dampC(

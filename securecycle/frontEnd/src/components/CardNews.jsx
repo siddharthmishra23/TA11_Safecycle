@@ -3,6 +3,7 @@ import { Button, Card, CardHeader, CardBody, Container } from "reactstrap";
 
 import styles from "./CardNews.module.scss";
 import { NavLink } from "react-router-dom";
+import PaginationDots from "./PaginationDot";
 
 const PostsData = [
   {
@@ -15,6 +16,13 @@ const PostsData = [
     category: "",
     title: "Test your knowledge on Australia's tricky road rules",
     text: "Australia is the land of some strange and wacky road rules - not all of them well-known - but just how strictly are they enforced?",
+    image: "/rule_2.png",
+  },
+
+  {
+    category: "",
+    title: "Test your knowledge on Australia's tricky road rules",
+    text: "Australia is the land of some strange and wacky road rules - not all of them well-known - but just how strictly are they enforced?",
     image: "/rule_4.png",
   },
   {
@@ -22,13 +30,6 @@ const PostsData = [
     title: "Test your knowledge on Australia's tricky road rules",
     text: "Australia is the land of some strange and wacky road rules - not all of them well-known - but just how strictly are they enforced?",
     image: "/rule_5.png",
-  },
-
-  {
-    category: "",
-    title: "Test your knowledge on Australia's tricky road rules",
-    text: "Australia is the land of some strange and wacky road rules - not all of them well-known - but just how strictly are they enforced?",
-    image: "/rule_2.png",
   },
 ];
 const CardNews = () => {
@@ -73,10 +74,11 @@ const CardNews = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      style={{ paddingBottom: "2rem" }}
     >
       <div className={styles["carousel-container"]}>
         <Container className={styles["app-cardnews-list"]}>
-          {posts.map((post, index, ref) => (
+          {posts.map((post, index) => (
             <NewsCard
               key={index}
               details={post}
@@ -84,6 +86,8 @@ const CardNews = () => {
             />
           ))}
         </Container>
+
+        <PaginationDots activeIndex={activeIndex} totalPosts={posts.length} />
 
         <div className={styles["arrow"]} onClick={nextPost}>
           &lt;

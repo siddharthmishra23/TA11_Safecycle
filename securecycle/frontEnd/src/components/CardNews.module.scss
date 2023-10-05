@@ -62,7 +62,7 @@
 }
 
 .newsCard {
-  height: 85%;
+  height: 100%;
   width: 100%;
   background: #fff;
   display: none; /* Hide by default */
@@ -145,4 +145,24 @@
 }
 .body-content {
   text-wrap: wrap;
+}
+
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ccc; // inactive dot color
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .active-dot {
+    background-color: #333; // active dot color
+  }
 }

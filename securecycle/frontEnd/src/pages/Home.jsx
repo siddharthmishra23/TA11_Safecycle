@@ -50,7 +50,7 @@ function Home() {
             Click to embark on your next journey
             <NavLink to="/Trails">
               <button className="icon-btn">
-                <i className="fa-solid fa-car-burst icon-size"></i>
+                <i className="fa-solid fa-person-biking icon-size"></i>
               </button>
             </NavLink>
           </div>
@@ -60,7 +60,7 @@ function Home() {
             ensuring a safer biking experience for all.
             <NavLink to="/resources">
               <button className="icon-btn">
-                <i className="fas fa-person-biking icon-size"></i>
+                <i className="fas fa-car-burst icon-size"></i>
               </button>
             </NavLink>
           </div>

@@ -46,6 +46,7 @@ const Design = () => {
             </div>
           </div>
         </div>
+
         <CanvasModel />
       </div>
     </div>

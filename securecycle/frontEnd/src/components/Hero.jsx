@@ -11,8 +11,8 @@ function Hero() {
       <div className="parallax-layer bike-2"></div>
       <div className="parallax-layer layer-3"></div>
       <div className="parallax-layer layer-2"></div>
-      <div className="parallax-layer layer-1">
-      <GetStarted/>
+      <div className="parallax-layer layer-2">
+        <GetStarted />
       </div>
     </div>
   );

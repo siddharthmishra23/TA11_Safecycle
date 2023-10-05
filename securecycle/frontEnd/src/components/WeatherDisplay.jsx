@@ -3,6 +3,7 @@ import "./Weather.css";
 
 function WeatherDisplay({ data }) {
   const background = getBackground(data.main.temp - 273.15);
+  const iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
   function getBackground(temp) {
     if (temp > 10 && temp < 34) {
@@ -16,12 +17,13 @@ function WeatherDisplay({ data }) {
     <div className="weatherContainer" style={{ background: background }}>
       <div>
         <h1>
-          Welcome to {data.name}, {data.sys.country}
+          {data.name}, {data.sys.country}
         </h1>
-        <span> Weather condition: {data.weather[0].description} </span>
-        <span> Feels Like: {Math.round(data.main.feels_like - 273.15)}°C </span>
-        <span> Humidity: {data.main.humidity}% </span>
-        <span> Wind Speed: {data.wind.speed} m/s </span>
+        <img src={iconURL} alt={data.weather[0].description} />
+        <div> Weather condition: {data.weather[0].description} </div>
+        <div> Feels Like: {Math.round(data.main.feels_like - 273.15)}°C </div>
+        <div> Humidity: {data.main.humidity}% </div>
+        <div> Wind Speed: {data.wind.speed} m/s </div>
       </div>
     </div>
   );

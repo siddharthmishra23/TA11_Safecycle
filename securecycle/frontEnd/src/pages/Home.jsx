@@ -35,10 +35,20 @@ function Home() {
         </h2>
         <div className="wrapper home-screen">
           <div>
-            We provide valuable insights into accident trends, contributing
-            factors, and geographical hotspots, empowering you with knowledge to
-            make informed decisions.
-            <NavLink to="/resources">
+            From frames to finishes, personalize every detail of your bicycle to
+            make it uniquely yours. Dive into our design studio and bring your
+            vision to life. Ready to roll in style?
+            <NavLink to="/Design">
+              <button className="icon-btn">
+                <i className="fa-solid fa-spray-can icon-size"></i>
+              </button>
+            </NavLink>
+          </div>
+          <div>
+            From serene woodland routes to exhilarating mountain paths, find the
+            perfect trail tailored to your next ride. Dive into detailed maps, .
+            Click to embark on your next journey
+            <NavLink to="/Trails">
               <button className="icon-btn">
                 <i className="fa-solid fa-car-burst icon-size"></i>
               </button>

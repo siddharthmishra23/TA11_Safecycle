@@ -15,7 +15,7 @@ function MyMap() {
     // const [mapCenter, setMapCenter] = useState(defaultPosition);
     // const [zoom, setZoom] = useState(defaultZoom);
     
-  const mapRef = useRef();
+    const mapRef = useRef();
     function getIconByName(name) {
       let iconUrl;
       
@@ -24,24 +24,24 @@ function MyMap() {
               iconUrl = './marker-parking.png';
               break;
           case 'Picnic table':
-              iconUrl = './marker-picnic.png';
+              iconUrl = './marker_picnic.png';
               break;
           case 'Toilet':
-              iconUrl = './marker-toilet.png';
+              iconUrl = './marker_toilet.png';
               break;
           case 'Water (source unreliable)':
-              iconUrl = './marker-water.png';
+              iconUrl = './marker_water.png';
               break;
           default:
-              iconUrl = './marker-all.png'; // Optional: default icon
+              iconUrl = './marker_all.png'; // Optional: default icon
               break;
       }
   
       return new L.Icon({
           iconUrl: iconUrl,
-          iconSize: [25, 41], // Size of the icon, you may need to adjust this based on your icon's dimensions
-          iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
-          popupAnchor: [0, -41] // Point from which the popup should open relative to the iconAnchor
+          // iconSize: [25, 41], // Size of the icon, you may need to adjust this based on your icon's dimensions
+          // iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
+          // popupAnchor: [0, -41] // Point from which the popup should open relative to the iconAnchor
       });
   }
     
@@ -70,7 +70,7 @@ function MyMap() {
                 case 'Point':
                     layer.setIcon(getIconByName(feature.properties.name));
                     break;
-                // ... handle other geometry types if needed
+ 
             }
         }
       if (feature.properties && feature.properties.trail_name) {
@@ -174,16 +174,15 @@ function MyMap() {
 
         </MapContainer>
 
-        {/* <button onClick={() => {
-          setMapCenter(defaultPosition);
-          setZoom(defaultZoom);
+        <button onClick={() => {
+          // setMapCenter(defaultPosition);
+          // setZoom(defaultZoom);
           // setClickedFeature(null);
-          if (mapRef.current) {
-            mapRef.current.setView(defaultPosition, defaultZoom);
+          setView(defaultPosition, defaultZoom);
           }
-        }}>
+        }>
           Reset
-        </button> */}
+        </button>
         </div>
     );
 }

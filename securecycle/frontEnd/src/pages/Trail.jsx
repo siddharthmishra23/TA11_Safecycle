@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loader from "../components/Loader";
 import Nav from "../components/Nav";
 import WeatherDisplay from "../components/WeatherDisplay";
-import TrailInfo from "../components/TrailInfo";
+
 import MyMap from "../components/GeojsonMap";
 import RotateSlides from "../components/RotateSlides";
 import styles from "./Trail.module.css";
@@ -44,34 +44,38 @@ function Trail() {
   if (isLoading) {
     return <Loader />;
   }
-    // const windData = [
-    //   { lat: location.lat,
-    //     lon: location.long,
-    //     speed: data.wind.speed, 
-    //     direction: data.wind.deg, 
-    //     gust: data.wind.gust }, //... more data points
-    // ];
-    const windData = [
-      { lat: 40, lon: -100, speed: 10, direction: 45, gust: 12 },
-      //... more data points
-    ];
+  // const windData = [
+  //   { lat: location.lat,
+  //     lon: location.long,
+  //     speed: data.wind.speed,
+  //     direction: data.wind.deg,
+  //     gust: data.wind.gust }, //... more data points
+  // ];
+  const windData = [
+    { lat: 40, lon: -100, speed: 10, direction: 45, gust: 12 },
+    //... more data points
+  ];
 
   return (
     <div>
       <Nav />
       <div>explore</div>
-      <div className={styles["trail-slides"]}><RotateSlides /></div>
+      <div className={styles["trail-slides"]}>
+        <RotateSlides />
+      </div>
       <div className={styles["trail-container1"]}>
-      <div className={styles["trail-container1-left"]}>
-      <div className={styles["trail-container1-left-upper"]}><WeatherDisplay data={data} /></div>
-      <div className={styles["trail-container1-left-lower"]}>Trail Info</div>
+        <div>
+          <div className={styles["trail-container1-left-upper"]}>
+            <WeatherDisplay data={data} />
+          </div>
+          <div className={styles["trail-container1-left-lower"]}>
+            Trail Info
+          </div>
+        </div>
+        <div>
+          <MyMap />
+        </div>
       </div>
-      <div className={styles["trail-container1-right"]}><MyMap /></div>
-      </div>
-      
-      
-        
-      
     </div>
   );
 }

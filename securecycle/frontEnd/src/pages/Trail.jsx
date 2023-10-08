@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, onSelect } from "react";
 import Loader from "../components/Loader";
 import Nav from "../components/Nav";
 import WeatherDisplay from "../components/WeatherDisplay";
-
 import MyMap from "../components/GeojsonMap";
 import RotateSlides from "../components/RotateSlides";
 import styles from "./Trail.module.css";
@@ -11,7 +10,12 @@ function Trail() {
   const [location, setLocation] = useState(null);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedTrail, setSelectedTrail] = useState(null);
+  const [selectedTrailFromChild, setSelectedTrailFromChild] = useState('');
+
+  const handleTrailSelect = (trailName) => {
+      setSelectedTrailFromChild(trailName);
+      console.log("Selected trail:", trailName);
+  };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -61,10 +65,10 @@ function Trail() {
 
  
 
-  const handleTrailSelect = (trailName) => {
-    setSelectedTrail(trailName);
-    // Use the selected trail's name as required
-  };
+  // const handleTrailSelect = (trailName) => {
+  //   setSelectedTrail(trailName);
+  //   // Use the selected trail's name as required
+  // };
 
 
 
@@ -81,7 +85,7 @@ function Trail() {
             <WeatherDisplay data={data} />
           </div>
           <div className={styles["trail-container1-left-lower"]}>
-          Wind Information Selected Trail: {selectedTrail}
+          Wind Information
           <div className={styles["wind-container"]}>
           <div>Speed: {speed} m/s</div>
           <div>Gust: {gust} m/s</div>
@@ -91,7 +95,7 @@ function Trail() {
           </div>
         </div>
         <div>
-          <MyMap selected_trail={selectedTrail}/>
+          <MyMap selected_trail={selectedTrailFromChild}/>
         </div>
       </div>
     </div>

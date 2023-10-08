@@ -1,9 +1,10 @@
 import React, { useState, useEffect, onSelect } from "react";
 import styles from "./RotateSlides.module.scss";
 
-function RotateSlides() {
+function RotateSlides({onSelect:handleTrailSelect}) {
   const [ang, setAng] = useState(0);
   const [selectedTrailName, setSelectedTrailName] = useState("");
+  
 
 
   const handlePrevClick = () => {
@@ -49,11 +50,14 @@ function RotateSlides() {
     const trailName = trails[normalizedAngle];
     if (trailName) {
       setSelectedTrailName(trailName);
-      if (onSelect) {
-        onSelect(trailName);
-      }
+      if (handleTrailSelect) {
+        console.log("Calling onSelect with:", trailName);  // <-- Add this
+        handleTrailSelect(trailName);
+     }else {
+        console.log("Trail name not found for angle"); 
     }
-  }, [ang, onSelect, trails]);
+    } 
+  }, [ang, handleTrailSelect, trails]);
   
 
 

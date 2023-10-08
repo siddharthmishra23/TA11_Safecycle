@@ -12,7 +12,7 @@ import "leaflet/dist/leaflet.css";
 import { useState, useEffect, useRef } from "react";
 import L from "leaflet";
 
-function MyMap({selected_trail}) {
+function MyMap({selected_trail, onTrailClick}) {
   const [geojsonData, setGeojsonData] = useState(null);
   const [loadingError, setLoadingError] = useState(null);
   // const [showPointsFor, setShowPointsFor] = useState(null); // Add state to keep track of LineString clicked
@@ -20,11 +20,17 @@ function MyMap({selected_trail}) {
   // const [clickedFeature, setClickedFeature] = useState(null);
   const defaultPosition = [-37.8102, 144.9629];
   const defaultZoom = 8;
+  // const [selectedTrail, setSelectedTrail] = useState(null);
+  // function handleTrailClick(trailName) {
+  //   setSelectedTrail(trailName);
+  //   // ... any other logic you want to execute when a trail is selected
+  // }
+  
 
-  // const mapRef = useRef();
+  const mapRef = useRef();
   function getIconByName(name) {
     let iconUrl;
-    console.log("name", name);
+    //console.log("name", name);
 
     switch (name) {
       case "Car park":
@@ -90,8 +96,14 @@ function MyMap({selected_trail}) {
       if (feature.properties.name) {
         switch (feature.geometry.type) {
           case "Point":
-            console.log("Point name:", feature.properties.name);
+            //console.log("Point name:", feature.properties.name);
             layer.setIcon(getIconByName(feature.properties.name));
+            break;
+          case "LineString":
+            // Handle click on LineString
+            layer.on('click', () => {
+              onTrailClick(feature.properties.vic_trail);
+            });
             break;
         }
       }
@@ -160,7 +172,6 @@ function MyMap({selected_trail}) {
           </Marker>
         ))}
       </MapContainer>
-
     </div>
   );
 }

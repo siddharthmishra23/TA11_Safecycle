@@ -1,11 +1,10 @@
-import React, { useState, useEffect, onSelect } from "react";
+
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./RotateSlides.module.scss";
 
-function RotateSlides({onSelect:handleTrailSelect}) {
+function RotateSlides({selected_trail, sourceOfSelection, onSelect:handleTrailSelectFromSpinner}) {
   const [ang, setAng] = useState(0);
   const [selectedTrailName, setSelectedTrailName] = useState("");
-  
-
 
   const handlePrevClick = () => {
     console.log("prev");
@@ -41,26 +40,26 @@ function RotateSlides({onSelect:handleTrailSelect}) {
     22.5: "East Gippsland Rail Trail",
     0: "Explore Victoria Trails",
   };
+  const prevAngRef = useRef();
 
-  useEffect(() => {
-    // Get the normalized angle (within 0 to 360)
-    let normalizedAngle = ang % 360;
-    if (normalizedAngle < 0) normalizedAngle += 360;
+    useEffect(() => {
+        if (ang !== prevAngRef.current) {
+        // Only execute this logic if `ang` has truly changed
+        let normalizedAngle = ang % 360;
+        if (normalizedAngle < 0) normalizedAngle += 360;
+    
+        const trailName = trails[normalizedAngle];
+        
+        if (trailName && trailName !== selected_trail) {
+            setSelectedTrailName(trailName);
+            if (handleTrailSelectFromSpinner) {
+            console.log("Calling onSelect with:", trailName);
+            handleTrailSelectFromSpinner(trailName);
+            }
+        } 
+        }
+    }, [ang, handleTrailSelectFromSpinner, trails, selected_trail]);
   
-    const trailName = trails[normalizedAngle];
-    if (trailName) {
-      setSelectedTrailName(trailName);
-      if (handleTrailSelect) {
-        console.log("Calling onSelect with:", trailName);  // <-- Add this
-        handleTrailSelect(trailName);
-     }else {
-        console.log("Trail name not found for angle"); 
-    }
-    } 
-  }, [ang, handleTrailSelect, trails]);
-  
-
-
   return (
     <div className={styles.rotateslides}>
       <div className={styles.holder}>

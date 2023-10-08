@@ -10,12 +10,25 @@ function Trail() {
   const [location, setLocation] = useState(null);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedTrailFromChild, setSelectedTrailFromChild] = useState('');
+  const [selectedTrail, setSelectedTrail] = useState('');
+  const [sourceOfSelection, setSourceOfSelection] = useState(null);  // 'spinner' or 'map'
 
-  const handleTrailSelect = (trailName) => {
-      setSelectedTrailFromChild(trailName);
-      console.log("Selected trail:", trailName);
+
+  const handleTrailSelectFromSpinner = (trailName) => {
+    setSelectedTrail(trailName);
+    setSourceOfSelection('spinner');
+    console.log("Selected trail from spinner:", trailName);
   };
+    
+  const handleTrailClickFromMap = (trailName) => {
+    // If the selection was not already made by the spinner, then set the trail
+    if (sourceOfSelection !== 'spinner') {
+      setSelectedTrail(trailName);
+      setSourceOfSelection('map');
+      console.log("Selected trail from map:", trailName);
+    }
+  };
+  
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -63,21 +76,12 @@ function Trail() {
     height: `${gust*1.5}rem`
   };
 
- 
-
-  // const handleTrailSelect = (trailName) => {
-  //   setSelectedTrail(trailName);
-  //   // Use the selected trail's name as required
-  // };
-
-
-
   return (
     <div>
       <Nav />
       <div>explore</div>
       <div className={styles["trail-slides"]}>
-        <RotateSlides onSelect={handleTrailSelect}/>
+        <RotateSlides selected_trail={selectedTrail} onSelect={handleTrailSelectFromSpinner}/>
       </div>
       <div className={styles["trail-container1"]}>
         <div>
@@ -95,7 +99,9 @@ function Trail() {
           </div>
         </div>
         <div>
-          <MyMap selected_trail={selectedTrailFromChild}/>
+        <MyMap selected_trail={selectedTrail} 
+        onTrailClick={handleTrailClickFromMap}/>
+
         </div>
       </div>
     </div>

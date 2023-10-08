@@ -12,7 +12,7 @@ import "leaflet/dist/leaflet.css";
 import { useState, useEffect, useRef } from "react";
 import L from "leaflet";
 
-function MyMap() {
+function MyMap(selected_trail) {
   const [geojsonData, setGeojsonData] = useState(null);
   const [loadingError, setLoadingError] = useState(null);
   const [showPointsFor, setShowPointsFor] = useState(null); // Add state to keep track of LineString clicked

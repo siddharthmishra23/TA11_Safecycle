@@ -47,9 +47,11 @@
   position: absolute;
   background-size: cover;
   background-position: 50% 50%;
-  color: white;
+  color: black;
   //box-shadow: 0 0 5px 3px #0006;
 }
+
+
 
 @for $i from 0 through 15 {
   .panel:nth-child(#{$i + 1}) {
@@ -95,6 +97,7 @@
 }
 
 .a {
+  color: black;
   background-image: url("./explore.jpeg");
 }
 
@@ -162,12 +165,17 @@
 
   button {
     // styles for the button
+    margin-top: 20px;
+    color: white;
+    font-size: 0.6rem;
+    // color: transparent;
     background-color: transparent;
     border-color: transparent;
     &:hover {
       background-color: inherit;
       border-color: transparent;
-      color: inherit;
+      
+      
     }
   }
 }

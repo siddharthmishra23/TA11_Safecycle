@@ -12,7 +12,7 @@ import "leaflet/dist/leaflet.css";
 import { useState, useEffect, useRef } from "react";
 import L from "leaflet";
 
-function MyMap({selected_trail, onTrailClick}) {
+function MyMap({selected_trail, onTrailClick: handleTrailClickFromMap}) {
   const [geojsonData, setGeojsonData] = useState(null);
   const [loadingError, setLoadingError] = useState(null);
   // const [showPointsFor, setShowPointsFor] = useState(null); // Add state to keep track of LineString clicked
@@ -102,7 +102,8 @@ function MyMap({selected_trail, onTrailClick}) {
           case "LineString":
             // Handle click on LineString
             layer.on('click', () => {
-              onTrailClick(feature.properties.vic_trail);
+              console.log("LineString clicked:", feature.properties.vic_trail);
+              handleTrailClickFromMap(feature.properties.vic_trail);
             });
             break;
         }

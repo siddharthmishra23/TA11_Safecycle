@@ -11,22 +11,18 @@ function Trail() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTrail, setSelectedTrail] = useState('');
-  const [sourceOfSelection, setSourceOfSelection] = useState(null);  // 'spinner' or 'map'
+ 
 
 
   const handleTrailSelectFromSpinner = (trailName) => {
     setSelectedTrail(trailName);
-    setSourceOfSelection('spinner');
     console.log("Selected trail from spinner:", trailName);
   };
     
   const handleTrailClickFromMap = (trailName) => {
-    // If the selection was not already made by the spinner, then set the trail
-    if (sourceOfSelection !== 'spinner') {
       setSelectedTrail(trailName);
-      setSourceOfSelection('map');
       console.log("Selected trail from map:", trailName);
-    }
+    
   };
   
 

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, onSelect } from "react";
 import Loader from "../components/Loader";
 import Nav from "../components/Nav";
 import WeatherDisplay from "../components/WeatherDisplay";
-
 import MyMap from "../components/GeojsonMap";
 import RotateSlides from "../components/RotateSlides";
 import styles from "./Trail.module.css";
@@ -11,6 +10,21 @@ function Trail() {
   const [location, setLocation] = useState(null);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedTrail, setSelectedTrail] = useState('');
+ 
+
+
+  const handleTrailSelectFromSpinner = (trailName) => {
+    setSelectedTrail(trailName);
+    console.log("Selected trail from spinner:", trailName);
+  };
+    
+  const handleTrailClickFromMap = (trailName) => {
+      setSelectedTrail(trailName);
+      console.log("Selected trail from map:", trailName);
+    
+  };
+  
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -51,17 +65,19 @@ function Trail() {
   //     direction: data.wind.deg,
   //     gust: data.wind.gust }, //... more data points
   // ];
-  const windData = [
-    { lat: 40, lon: -100, speed: 10, direction: 45, gust: 12 },
-    //... more data points
-  ];
+  const speed = data.wind.speed;
+  const gust = data.wind.gust;
+  const arrowStyle = {
+    transform: `rotate(${data.wind.deg}deg)`,
+    height: `${gust*1.5}rem`
+  };
 
   return (
     <div>
       <Nav />
       <div>explore</div>
       <div className={styles["trail-slides"]}>
-        <RotateSlides />
+        <RotateSlides selected_trail={selectedTrail} onSelect={handleTrailSelectFromSpinner}/>
       </div>
       <div className={styles["trail-container1"]}>
         <div>
@@ -69,11 +85,19 @@ function Trail() {
             <WeatherDisplay data={data} />
           </div>
           <div className={styles["trail-container1-left-lower"]}>
-            Trail Info
+          Wind Information
+          <div className={styles["wind-container"]}>
+          <div>Speed: {speed} m/s</div>
+          <div>Gust: {gust} m/s</div>
+          <div>Direction: {data.wind.deg}°</div>
+          <div className={styles["arrow"]} style={arrowStyle}></div>
+        </div>
           </div>
         </div>
         <div>
-          <MyMap />
+        <MyMap selected_trail={selectedTrail} 
+        onTrailClick={handleTrailClickFromMap}/>
+
         </div>
       </div>
     </div>

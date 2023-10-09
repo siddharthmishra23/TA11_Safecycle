@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./RotateSlides.module.scss";
 
-function RotateSlides() {
+function RotateSlides({selected_trail, sourceOfSelection, onSelect:handleTrailSelectFromSpinner}) {
   const [ang, setAng] = useState(0);
+  const [selectedTrailName, setSelectedTrailName] = useState("");
 
   const handlePrevClick = () => {
     console.log("prev");
@@ -19,6 +21,45 @@ function RotateSlides() {
     "--ang": `${ang}deg`,
   };
 
+  const trails = {
+    360: "Explore Victoria Trails",
+    337.5: "Surf Coast Walk",
+    315: "Great Victorian Rail Trail",
+    292.5: "Mornington Peninsula Walk",
+    270: "Lilydale To Warburton",
+    247.5: "Gippsland Plains Rail Trail",
+    225: "You Yangs Mountain Bike Park",
+    202.5: "Mt Buller Bike Park",
+    180: "Wilsons Promontory Southern",
+    157.5: "Great Ocean Walk",
+    135: "Goldfields Track",
+    112.5: "Forrest Mountain Bike Trails",
+    90: "Great Walhalla Alpine Trail",
+    67.5: "Great South West Walk",
+    45: "Murray To Mountains Rail Trail",
+    22.5: "East Gippsland Rail Trail",
+    0: "Explore Victoria Trails",
+  };
+  const prevAngRef = useRef();
+
+    useEffect(() => {
+        if (ang !== prevAngRef.current) {
+        // Only execute this logic if `ang` has truly changed
+        let normalizedAngle = ang % 360;
+        if (normalizedAngle < 0) normalizedAngle += 360;
+    
+        const trailName = trails[normalizedAngle];
+        
+        if (trailName && trailName !== selected_trail) {
+            setSelectedTrailName(trailName);
+            if (handleTrailSelectFromSpinner) {
+            console.log("Calling onSelect with:", trailName);
+            handleTrailSelectFromSpinner(trailName);
+            }
+        } 
+        }
+    }, [ang, handleTrailSelectFromSpinner, trails, selected_trail]);
+  
   return (
     <div className={styles.rotateslides}>
       <div className={styles.holder}>
@@ -74,6 +115,7 @@ function RotateSlides() {
           {/* <div className={styles.fade}></div> */}
         </div>
       </div>
+      <div>{selectedTrailName}</div>
       <div className={styles.pagination} style={{ rotationStyle }}>
         <button type="button" id="prev" onClick={handlePrevClick}>
           &#8592;
@@ -82,6 +124,7 @@ function RotateSlides() {
           &#8594;
         </button>
       </div>
+      
     </div>
   );
 }

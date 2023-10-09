@@ -12,20 +12,25 @@ import "leaflet/dist/leaflet.css";
 import { useState, useEffect, useRef } from "react";
 import L from "leaflet";
 
-function MyMap() {
+function MyMap({selected_trail, onTrailClick: handleTrailClickFromMap}) {
   const [geojsonData, setGeojsonData] = useState(null);
   const [loadingError, setLoadingError] = useState(null);
-  const [showPointsFor, setShowPointsFor] = useState(null); // Add state to keep track of LineString clicked
-  const [lastClickedTrail, setLastClickedTrail] = useState(null);
-  const [clickedFeature, setClickedFeature] = useState(null);
+  // const [showPointsFor, setShowPointsFor] = useState(null); // Add state to keep track of LineString clicked
+  // const [lastClickedTrail, setLastClickedTrail] = useState(null);
+  // const [clickedFeature, setClickedFeature] = useState(null);
   const defaultPosition = [-37.8102, 144.9629];
   const defaultZoom = 8;
-  // const [mapCenter, setMapCenter] = useState(defaultPosition);
-  // const [zoom, setZoom] = useState(defaultZoom);
+  // const [selectedTrail, setSelectedTrail] = useState(null);
+  // function handleTrailClick(trailName) {
+  //   setSelectedTrail(trailName);
+  //   // ... any other logic you want to execute when a trail is selected
+  // }
+  
 
   const mapRef = useRef();
   function getIconByName(name) {
     let iconUrl;
+    //console.log("name", name);
 
     switch (name) {
       case "Car park":
@@ -37,7 +42,25 @@ function MyMap() {
       case "Toilet":
         iconUrl = "./marker_toilet.png";
         break;
+      case "Toilet (wheelchair accessible)":
+        iconUrl = "./marker_toilet.png";
+        break;
+      case "Toilet disabled flushing":
+        iconUrl = "./marker_toilet.png";
+        break;
+      case "Toilet flushing":
+        iconUrl = "./marker_toilet.png";
+        break;
       case "Water (source unreliable)":
+        iconUrl = "./marker_water.png";
+        break;
+      case "Water (drinking tap)":
+        iconUrl = "./marker_water.png";
+        break;
+      case "Water point unreliable":
+        iconUrl = "./marker_water.png";
+        break;
+      case "Water point":
         iconUrl = "./marker_water.png";
         break;
       default:
@@ -47,14 +70,11 @@ function MyMap() {
 
     return new L.Icon({
       iconUrl: iconUrl,
-      // iconSize: [25, 41], // Size of the icon, you may need to adjust this based on your icon's dimensions
-      // iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
-      // popupAnchor: [0, -41] // Point from which the popup should open relative to the iconAnchor
+      iconSize: [80, 60], 
     });
   }
 
   useEffect(() => {
-    // get data from public folder
     fetch("/vic_trails.geojson")
       .then((response) => {
         if (!response.ok) {
@@ -71,38 +91,24 @@ function MyMap() {
   }, []);
 
   function onEachFeature(feature, layer) {
+    console.log("Feature type:", feature.geometry.type);
     if (feature.properties) {
       if (feature.properties.name) {
         switch (feature.geometry.type) {
           case "Point":
+            //console.log("Point name:", feature.properties.name);
             layer.setIcon(getIconByName(feature.properties.name));
+            break;
+          case "LineString":
+            // Handle click on LineString
+            layer.on('click', () => {
+              console.log("LineString clicked:", feature.properties.vic_trail);
+              handleTrailClickFromMap(feature.properties.vic_trail);
+            });
             break;
         }
       }
-      if (feature.properties && feature.properties.trail_name) {
-        layer.bindPopup(
-          `<div style="font-size: 18px;">${feature.properties.trail_name}</div>`,
-          {
-            offset: L.point(-30, -25),
-          }
-        );
-      }
 
-      // On click of LineString, show the associated Points and update lastClickedTrail
-      layer.on("click", function () {
-        setClickedFeature(layer);
-        setLastClickedTrail(feature.properties.trail_name);
-        if (showPointsFor !== feature.properties.trail_name) {
-          setShowPointsFor(feature.properties.trail_name);
-        }
-      });
-
-      // On close of popup, hide the Points only if the trail_name isn't the same as clicked
-      layer.on("popupclose", function () {
-        if (showPointsFor !== feature.properties.trail_name) {
-          setShowPointsFor(null);
-        }
-      });
     }
   }
 
@@ -113,86 +119,60 @@ function MyMap() {
   if (!geojsonData) {
     return <div>Loading...</div>;
   }
-  // const geojsonData = {
-  //     type: "FeatureCollection",
-  //     features: [
-  //       { "type": "Feature", "properties": { "Name": "Car park", "description": "Car park" }, "geometry": { "type": "Point", "coordinates": [ 146.328747980299994, -36.351956985900003 ] } }
-  //     ]
-  // };
+
   const lineStringData = {
     type: "FeatureCollection",
     features: geojsonData.features.filter(
-      (feature) => feature.geometry.type === "LineString"
+      (feature) => feature.geometry.type === "LineString" 
     ),
   };
-
-  // Get Points associated with the clicked LineString
+  
   const pointsToShow = geojsonData.features.filter(
-    (feature) =>
-      feature.geometry.type === "Point" &&
-      feature.properties.trail_name === showPointsFor
-  );
-  function ZoomToFeature({ feature }) {
-    const map = useMap();
-
-    useEffect(() => {
-      if (feature) {
-        map.fitBounds(feature.getBounds());
+    (feature) => {
+      if (feature.geometry.type !== "Point") return false;
+  
+      if (selected_trail) {
+        return feature.properties.vic_trail === selected_trail;
       }
-    }, [feature, map]);
+      return feature.properties.vic_trail === 'Explore Victoria Trails';
+    }
+  );
 
-    return null;
-  }
 
   return (
     <div>
       <MapContainer
         center={defaultPosition}
         zoom={defaultZoom}
-        // whenCreated={mapInstance => mapRef.current = mapInstance}
-        style={{ width: "100%", height: "600px", marginRight: "2rem" }}
+        style={{ width: "100%", height: "650px", marginRight: "2rem" }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         <GeoJSON data={lineStringData} onEachFeature={onEachFeature} />
-        {/* Render the Points only if they are to be shown */}
-        {pointsToShow.map((point) => (
+
+        {pointsToShow.map((point, index) => (
           <Marker
+            key={index}
             position={[
               point.geometry.coordinates[1],
               point.geometry.coordinates[0],
             ]}
-            eventHandlers={{
-              popupclose: (e) => {
-                if (point.properties.trail_name === lastClickedTrail) {
-                  e.popup.openOn(e.target._map);
-                }
-              },
-            }}
+            icon={getIconByName(point.properties.name)} // Set the icon for the marker
           >
-            {/* <Popup offset={[50, -50]}>
-                  <div style={{ fontSize: '50px' }}>
-                    {point.properties.trail_name}<br />{point.properties.name}
-                  </div>
-                  </Popup> */}
-            <Tooltip>{point.properties.name}</Tooltip>
-            {clickedFeature && <ZoomToFeature feature={clickedFeature} />}
+            
+
+            <Tooltip>
+                <>
+                    <h5>{point.properties.vic_trail}</h5>
+                    <h6>{point.properties.name}</h6>
+                </>
+            </Tooltip>
+
           </Marker>
         ))}
       </MapContainer>
-
-      <button
-        onClick={() => {
-          // setMapCenter(defaultPosition);
-          // setZoom(defaultZoom);
-          // setClickedFeature(null);
-          setView(defaultPosition, defaultZoom);
-        }}
-      >
-        Reset
-      </button>
     </div>
   );
 }

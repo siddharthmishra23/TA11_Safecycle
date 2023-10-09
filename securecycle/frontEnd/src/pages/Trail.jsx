@@ -6,6 +6,7 @@ import MyMap from "../components/GeojsonMap";
 import RotateSlides from "../components/RotateSlides";
 import styles from "./Trail.module.css";
 import TrailInfo from "../components/TrailInfo";
+import PageNotFound from "./PageNotFound";
 
 const trailDetails = {
   "Surf Coast Walk": {
@@ -187,7 +188,7 @@ function Trail() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTrail, setSelectedTrail] = useState("");
-
+  const [geoError, setGeoError] = useState(false);
   const handleTrailSelectFromSpinner = (trailName) => {
     setSelectedTrail(trailName);
   };
@@ -197,12 +198,19 @@ function Trail() {
   };
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      setLocation({
-        lat: position.coords.latitude,
-        long: position.coords.longitude,
-      });
-    });
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        setLocation({
+          lat: position.coords.latitude,
+          long: position.coords.longitude,
+        });
+      },
+      function (error) {
+        console.error("Error getting location:", error);
+        setIsLoading(false); // Set loading to false if there is an error.
+        setGeoError(true); // Set geoError to true if there's a geolocation error.
+      }
+    );
   }, []);
 
   useEffect(() => {
@@ -224,6 +232,9 @@ function Trail() {
       fetchData();
     }
   }, [location]);
+  if (geoError) {
+    return <PageNotFound />;
+  }
 
   if (isLoading) {
     return <Loader />;
@@ -232,6 +243,7 @@ function Trail() {
   return (
     <div>
       <Nav />
+
       <div>
         <div className={styles["bike-trails-header"]}>
           <h1>Cycle the Scenic Way</h1>

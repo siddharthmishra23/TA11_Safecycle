@@ -15,7 +15,7 @@ function Navigation() {
       <div className={styles.navflex}>
         <NavItem>
           <NavLink tag={RRNavLink} exact to="/trails" activeClassName="active">
-            Trail Tidbits
+            TrailQuest
           </NavLink>
         </NavItem>
         <NavItem>

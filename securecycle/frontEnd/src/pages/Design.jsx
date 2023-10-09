@@ -30,7 +30,11 @@ const Design = () => {
       <div style={{ height: "100vh" }}>
         <div className="absolute top-0 left-0 z-10">
           <div className="flex items-center min-h-screen">
-            <div className="editortabs-container tabs">
+            <div
+              className="editortabs-container tabs"
+              style={{ width: "fit-content" }}
+            >
+              <strong style={{ color: "#0b0d7b" }}>Colour Picker</strong>
               {EditorTabs.map((tab) => (
                 <Tab
                   key={tab.name}

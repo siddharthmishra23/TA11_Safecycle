@@ -14,6 +14,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 2rem;
 }
 
 .spinner {
@@ -36,7 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 800px;
+  perspective: 600px;
   perspective-origin: center;
 }
 
@@ -51,16 +53,12 @@
   //box-shadow: 0 0 5px 3px #0006;
 }
 
-
-
 @for $i from 0 through 15 {
   .panel:nth-child(#{$i + 1}) {
     transform: rotateY(#{$i * 22.5deg}) translateZ(400px);
   }
 }
 
-.pagination {
-}
 .pagination button {
   padding: 0;
   border: none;
@@ -98,66 +96,66 @@
 
 .a {
   color: black;
-  background-image: url("./explore.jpeg");
+  background-image: url("/explore.jpeg");
 }
 
 .b {
-  background-image: url("./surf_coast_walk.jpeg");
+  background-image: url("/surf_coast_walk.jpeg");
 }
 
 .c {
-  background-image: url("./great_vic.jpeg");
+  background-image: url("/great_vic.jpeg");
 }
 
 .d {
-  background-image: url("./mornington.jpeg");
+  background-image: url("/mornington.jpeg");
 }
 
 .e {
-  background-image: url("./lily.jpg");
+  background-image: url("/lily.jpg");
 }
 
 .f {
-  background-image: url("./gippsland-plains.jpeg");
+  background-image: url("/gippsland-plains.jpeg");
 }
 
 .g {
-  background-image: url("./you_yong.jpeg");
+  background-image: url("/you_yong.jpeg");
 }
 
 .h {
-  background-image: url("./buller.jpeg");
+  background-image: url("/buller.jpeg");
 }
 
 .i {
-  background-image: url("./wilsons-prom.jpeg");
+  background-image: url("/wilsons-prom.jpeg");
 }
 
 .j {
-  background-image: url("./great_ocean.jpeg");
+  background-image: url("/great_ocean.jpeg");
 }
 
 .k {
-  background-image: url("./goldfield.jpeg");
+  background-image: url("/goldfield.jpeg");
 }
 
 .l {
-  background-image: url("./forrest.jpeg");
+  background-image: url("/forrest.jpeg");
 }
 
 .m {
-  background-image: url("./walha.jpeg");
+  background-image: url("/walha.jpeg");
 }
 .n {
-  background-image: url("./sw.jpeg");
+  background-image: url("/sw.jpeg");
 }
 
 .o {
-  background-image: url("./murray.jpeg");
+  background-image: url("/murray.jpeg");
 }
 
 .p {
-  background-image: url(./east-gippsland.jpeg);
+  background-image: url("/east-gippsland.jpeg");
 }
 
 .panel {
@@ -169,13 +167,12 @@
     color: white;
     font-size: 0.6rem;
     // color: transparent;
+    font-weight: bolder;
     background-color: transparent;
     border-color: transparent;
     &:hover {
       background-color: inherit;
       border-color: transparent;
-      
-      
     }
   }
 }

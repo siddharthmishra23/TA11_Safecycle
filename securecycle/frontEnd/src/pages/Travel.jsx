@@ -75,6 +75,7 @@ const Travel = () => {
   const mapStyles = {
     height: "100vh",
     width: "100%",
+    borderRadius: "2rem",
   };
 
   const defaultCenter = {
@@ -114,80 +115,181 @@ const Travel = () => {
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-        setCurrentLocation({ lat: lat, lng: lng });
-        //setOriginAsCurrentLocation(lat, lng);
-      });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          setCurrentLocation({ lat: lat, lng: lng });
+        },
+        (error) => {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              alert("User denied the request for Geolocation.");
+              break;
+            case error.POSITION_UNAVAILABLE:
+              alert("Location information is unavailable.");
+              break;
+            case error.TIMEOUT:
+              alert("The request to get user location timed out.");
+              break;
+            case error.UNKNOWN_ERROR:
+              alert("An unknown error occurred.");
+              break;
+            default:
+              alert("An unknown error occurred.");
+          }
+        }
+      );
     } else {
       alert("Geolocation is not supported by this browser.");
     }
   };
 
+  // 新增一个 state 用来存储每个路段的颜色
+  const [segmentColors, setSegmentColors] = useState([]);
+
+  // 创建一个 object 用于比较事故的严重性
+  const severityOrder = {
+    "Fatal accident": 3,
+    "Serious injury accident": 2,
+    "Other injury accident": 1,
+    "Non injury accident": 0,
+  };
+
+  const mapRef = useRef(null);
+
+  const [map, setMap] = useState(undefined);
+
+  // 在 DirectionsRenderer 完成渲染后，应用每个路段的颜色
+  useEffect(() => {
+    if (response) {
+      //const map = mapRef.current; // 获取地图对象
+      if (!map) return; // 如果地图未加载，则返回
+      console.log(map);
+      const polylines = [];
+
+      response.routes[0].legs.forEach((leg, legIndex) => {
+        leg.steps.forEach((step, stepIndex) => {
+          const color = segmentColors[legIndex * leg.steps.length + stepIndex];
+          const polyline = new window.google.maps.Polyline({
+            path: step.path,
+            strokeColor: color || "#FF0000", // 设置路径颜色
+            strokeWeight: 4,
+            //map: map, // 设置 Polyline 的地图
+          });
+          polyline.setMap(map);
+          polylines.push(polyline);
+        });
+      });
+
+      return () => {
+        // 当组件卸载时，移除所有 Polyline
+        polylines.forEach((polyline) => polyline.setMap(null));
+      };
+    }
+  }, [map, response, segmentColors]);
+
+  const [polylineOptions, setPolylineOptions] = useState({
+    strokeColor: "defaultColor",
+  }); // default color
+
   const getDirections = useCallback(() => {
     setIsLoading(true);
+    setResponse(null); // 在请求新路线之前清空旧路线
+    clearPreviousRouteColor(); // 清除旧的路线颜色
 
-    // Create a new promise to ensure sequential state updates
-    new Promise((resolve) => {
-      setResponse(null);
-      resolve();
-    })
-      .then(() => {
-        const directionsService = new window.google.maps.DirectionsService();
-        return new Promise((resolve, reject) => {
-          directionsService.route(
-            {
-              destination: destination,
-              origin: origin,
-              travelMode: "BICYCLING",
-            },
-            (result, status) => {
-              if (status === window.google.maps.DirectionsStatus.OK) {
-                resolve(result);
-              } else {
-                reject(`error fetching directions ${result}`);
-              }
-            }
-          );
-        });
-      })
-      .then((result) => {
+    const directionsService = new window.google.maps.DirectionsService();
+
+    directionsService.route(
+      {
+        origin: origin,
+        destination: destination,
+        travelMode: "BICYCLING",
+      },
+      (result, status) => {
+        if (status !== window.google.maps.DirectionsStatus.OK) {
+          console.error(`Error fetching directions ${result}`);
+          setIsLoading(false);
+          return;
+        }
+
         setDirectionsKey((prevKey) => prevKey + 1);
-        setResponse(null);
         setResponse(result);
         const timeEstimation = result.routes[0].legs[0].duration.text;
         setEstimatedTime(timeEstimation);
 
         const path = result.routes[0].overview_path;
+
         const filteredAccidentsBasedOnPath = totalAccidents.filter(
           (accident) => {
             const accidentPoint = new window.google.maps.LatLng(
               accident.LATITUDE,
               accident.LONGITUDE
             );
-
-            return path.some((pathPoint) => {
-              // Check if the accident is within 0.2km of the path
-              return (
+            return path.some(
+              (pathPoint) =>
                 window.google.maps.geometry.spherical.computeDistanceBetween(
                   accidentPoint,
                   pathPoint
                 ) < 20
-              );
-            });
+            );
           }
         );
         setShowAccidents(true);
         setAccidents(filteredAccidentsBasedOnPath);
+
+        let segmentColors = [];
+        result.routes[0].legs.forEach((leg) => {
+          leg.steps.forEach((step) => {
+            let maxSeverity = "Non injury accident"; // 默认为 "无伤害事故"
+            let hasAccident = false; // 假设该路径段上没有事故
+
+            filteredAccidentsBasedOnPath.forEach((accident) => {
+              const accidentPoint = new window.google.maps.LatLng(
+                accident.LATITUDE,
+                accident.LONGITUDE
+              );
+              step.path.some((pathPoint) => {
+                if (
+                  window.google.maps.geometry.spherical.computeDistanceBetween(
+                    accidentPoint,
+                    pathPoint
+                  ) < 20
+                ) {
+                  hasAccident = true; // 如果该路径段上有事故，设置 hasAccident 为 true
+                  if (
+                    severityOrder[accident.SEVERITY] >
+                    severityOrder[maxSeverity]
+                  ) {
+                    maxSeverity = accident.SEVERITY;
+                  }
+                  return true;
+                }
+                return false;
+              });
+            });
+
+            // 如果该路径段上有事故，使用对应事故的颜色，否则使用蓝色作为默认颜色
+            console.log(
+              `Setting color for segment: ${
+                hasAccident ? getMarkerColor(maxSeverity) : "#0000FF"
+              }`
+            );
+            segmentColors.push(
+              hasAccident ? getMarkerColor(maxSeverity) : "#0000FF"
+            );
+          });
+        });
+
+        setSegmentColors(segmentColors);
         setIsLoading(false);
         setClicked(true);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.error(error);
-      });
-  }, [origin, destination, totalAccidents]);
+      }
+    );
+  }, [origin, destination, totalAccidents, getMarkerColor]);
+
+  // 新增一个函数来在生成新的路线时清除旧的路线颜色
+  const clearPreviousRouteColor = () => setSegmentColors([]);
 
   const toggleAccidents = () => {
     setShowAccidents(!showAccidents);
@@ -238,6 +340,12 @@ const Travel = () => {
   return (
     <div>
       <Nav />
+      <div className={styles["travel-hazard-heading"]}>
+        <h1 style={{ color: "#0b0d7b" }}>
+          Travel Smart: Stay Alert on Your Route
+        </h1>
+      </div>
+
       <Container fluid>
         <Row>
           <Col md="4" className={styles["autocomplete-container"]}>
@@ -316,13 +424,8 @@ const Travel = () => {
             <div className={styles["advance-filter"]}>
               {
                 <Button
-                  className={`transition duration-300 ease-in-out 
-                           ${
-                             !origin || !destination
-                               ? "bg-blue-200 opacity-50 cursor-not-allowed"
-                               : "bg-blue-500 opacity-100 hover:bg-blue-700"
-                           }`}
-                  disabled={!origin || !destination}
+                  disabled={!origin && !destination}
+                  color="primary"
                   onClick={getDirections}
                 >
                   Get Directions
@@ -421,6 +524,7 @@ const Travel = () => {
               //preventGoogleFontsLoading={true}
             >
               <GoogleMap
+                ref={mapRef}
                 mapContainerStyle={mapStyles}
                 zoom={10}
                 center={currentLocation || defaultCenter}
@@ -460,7 +564,7 @@ const Travel = () => {
                   map.controls[
                     window.google.maps.ControlPosition.TOP_RIGHT
                   ].push(controlDiv);
-
+                  setMap(map);
                   setIsLoading(false);
                 }}
                 onClick={(e) => {
@@ -477,6 +581,11 @@ const Travel = () => {
                   <DirectionsRenderer
                     directions={response}
                     key={directionsKey}
+                    ref={directionsRendererRef}
+                    options={{
+                      polylineOptions: polylineOptions,
+                      suppressPolylines: true,
+                    }}
                   />
                 )}
                 {showAccidents &&

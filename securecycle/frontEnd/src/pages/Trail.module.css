@@ -1,7 +1,7 @@
 .trail-container1 {
-  height: 800px;
+  height: 50vh;
   display: grid;
-  grid-template-columns: 25% 75%;
+
   padding: 0 1.3rem 0 1.3rem;
   gap: 2rem;
 }
@@ -25,9 +25,6 @@
   /* margin-top: 8%; */
 }
 
-
-
-
 .wind-container {
   position: relative;
   width: 16rem;
@@ -37,12 +34,12 @@
   border-radius: 50%;
   margin: 50px auto;
   padding: 2rem;
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 .arrow {
   position: absolute;
-  bottom: 50%;  
+  bottom: 50%;
   left: 50%;
   width: 0.4rem;
   background-color: #0e60d4;
@@ -61,14 +58,31 @@
   content: "";
   position: absolute;
   top: -0.5rem;
-  left: -0.6rem;  
+  left: -0.6rem;
   width: 0;
   height: 0;
-  border-left: 0.8rem solid transparent;  
+  border-left: 0.8rem solid transparent;
   border-right: 0.8rem solid transparent;
-  border-bottom: 0.8rem solid #d40e0e;  
+  border-bottom: 0.8rem solid #d40e0e;
 }
 
+.bike-trails-header h1 {
+  padding: 2rem 0 0 0;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: #0b0d7b;
+  margin: 0px;
+}
+.trail-container {
+  padding: 2rem;
+}
 
-
-
+.trail-container h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: 900;
+  color: #0b0d7b;
+}

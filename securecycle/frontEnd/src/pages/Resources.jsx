@@ -102,7 +102,9 @@ const Resources = () => {
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
           >
-            <h4>Increasing cyclists in Victoria</h4>
+            <h4 style={{ color: "#0b0d7b" }}>
+              Increasing cyclists in Victoria
+            </h4>
             In recent years, Victoria has witnessed a surge in its cycling
             population. Data from 2009 to 2017 indicates a marked increase in
             the number of cyclists commuting into Melbourne city for work or
@@ -131,7 +133,9 @@ const Resources = () => {
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
           >
-            <h4>Top 5 accident vehicle in Victoria</h4>
+            <h4 style={{ color: "#0b0d7b" }}>
+              Top 5 accident vehicle in Victoria
+            </h4>
             The bar chart illustrates how the frequency of accidents involving
             different types of vehicles has changed over the last two decades.
             Notably, bikes have emerged as one of the top five vehicles most
@@ -158,7 +162,9 @@ const Resources = () => {
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
           >
-            <h4>High chance to get serious injury</h4>
+            <h4 style={{ color: "#0b0d7b" }}>
+              High chance to get serious injury
+            </h4>
             Based on our analysis, there is a significant likelihood of
             experiencing a severe injury, with a 34% probability, and a 1%
             chance of it resulting in a fatality. Only 64% of cases are expected
@@ -173,7 +179,7 @@ const Resources = () => {
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom"
           >
-            <h4>Stay safe with our insights</h4>
+            <h4 style={{ color: "#0b0d7b" }}>Stay safe with our insights</h4>
             This chart provides insights into the number of accidents in the
             past that occurred at different time of the day by each day of the
             week.

@@ -1,8 +1,11 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./RotateSlides.module.scss";
 
-function RotateSlides({selected_trail, sourceOfSelection, onSelect:handleTrailSelectFromSpinner}) {
+function RotateSlides({
+  selected_trail,
+  sourceOfSelection,
+  onSelect: handleTrailSelectFromSpinner,
+}) {
   const [ang, setAng] = useState(0);
   const [selectedTrailName, setSelectedTrailName] = useState("");
 
@@ -42,24 +45,24 @@ function RotateSlides({selected_trail, sourceOfSelection, onSelect:handleTrailSe
   };
   const prevAngRef = useRef();
 
-    useEffect(() => {
-        if (ang !== prevAngRef.current) {
-        // Only execute this logic if `ang` has truly changed
-        let normalizedAngle = ang % 360;
-        if (normalizedAngle < 0) normalizedAngle += 360;
-    
-        const trailName = trails[normalizedAngle];
-        
-        if (trailName && trailName !== selected_trail) {
-            setSelectedTrailName(trailName);
-            if (handleTrailSelectFromSpinner) {
-            console.log("Calling onSelect with:", trailName);
-            handleTrailSelectFromSpinner(trailName);
-            }
-        } 
+  useEffect(() => {
+    if (ang !== prevAngRef.current) {
+      // Only execute this logic if `ang` has truly changed
+      let normalizedAngle = ang % 360;
+      if (normalizedAngle < 0) normalizedAngle += 360;
+
+      const trailName = trails[normalizedAngle];
+
+      if (trailName && trailName !== selected_trail) {
+        setSelectedTrailName(trailName);
+        if (handleTrailSelectFromSpinner) {
+          console.log("Calling onSelect with:", trailName);
+          handleTrailSelectFromSpinner(trailName);
         }
-    }, [ang, handleTrailSelectFromSpinner, trails, selected_trail]);
-  
+      }
+    }
+  }, [ang, handleTrailSelectFromSpinner, trails, selected_trail]);
+
   return (
     <div className={styles.rotateslides}>
       <div className={styles.holder}>
@@ -115,7 +118,7 @@ function RotateSlides({selected_trail, sourceOfSelection, onSelect:handleTrailSe
           {/* <div className={styles.fade}></div> */}
         </div>
       </div>
-      <div>{selectedTrailName}</div>
+      {/* <div>{selectedTrailName}</div> */}
       <div className={styles.pagination} style={{ rotationStyle }}>
         <button type="button" id="prev" onClick={handlePrevClick}>
           &#8592;
@@ -124,7 +127,6 @@ function RotateSlides({selected_trail, sourceOfSelection, onSelect:handleTrailSe
           &#8594;
         </button>
       </div>
-      
     </div>
   );
 }

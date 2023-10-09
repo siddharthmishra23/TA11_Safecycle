@@ -94,3 +94,14 @@
 .reported-msg.show {
   opacity: 1;
 }
+
+.travel-hazard-heading {
+  position: relative;
+  padding: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: #0b0d7b;
+}

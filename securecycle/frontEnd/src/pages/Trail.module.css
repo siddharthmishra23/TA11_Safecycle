@@ -1,8 +1,7 @@
 .trail-container1 {
-  height: 50vh;
   display: grid;
 
-  padding: 0 1.3rem 0 1.3rem;
+  padding: 2rem;
   gap: 2rem;
 }
 
@@ -21,8 +20,19 @@
 
 .trail-container2-right-lower {
   display: grid;
-  /* grid-template-columns: 20% 80%; */
-  /* margin-top: 8%; */
+}
+.trail-weather {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+.trail-weather.active {
+  opacity: 1;
+  visibility: visible;
+  height: auto; /* Adjust as per your need */
 }
 
 .wind-container {
@@ -85,4 +95,63 @@
   margin-bottom: 15px;
   font-weight: 900;
   color: #0b0d7b;
+  padding: 2rem;
+}
+
+.weather-circle {
+  height: 6rem;
+  width: 6rem;
+  background: linear-gradient(
+    135deg,
+    #086bd1,
+    #0a4ba5
+  ); /* Gradient background */
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1999999;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 6rem;
+  right: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for hover effects */
+}
+
+.weather-circle:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.trail-weather {
+  position: absolute;
+  top: 8rem;
+  right: 2rem;
+  width: 600px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softened shadow */
+  border: 1px solid #e0e0e0; /* Lighter border */
+  opacity: 1;
+  height: 100%;
+  overflow: scroll;
+  padding: 1rem; /* Internal padding */
+  transition: box-shadow 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
+  z-index: 0;
+  border-radius: 8px; /* Rounded edges for the dropdown */
+}
+
+.trail-weather.active {
+  opacity: 1;
+  max-height: 100%;
+  z-index: 9999;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Shadow for active state */
+}
+
+.weather-p {
+  color: white;
+  font-size: 1.2rem; /* Increased font size */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Text shadow for depth */
+  margin: 0;
 }

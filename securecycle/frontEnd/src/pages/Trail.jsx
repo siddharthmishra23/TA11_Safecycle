@@ -189,6 +189,8 @@ function Trail() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTrail, setSelectedTrail] = useState("");
   const [geoError, setGeoError] = useState(false);
+  const [isTimeout, setIsTimeout] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const handleTrailSelectFromSpinner = (trailName) => {
     setSelectedTrail(trailName);
   };
@@ -198,19 +200,27 @@ function Trail() {
   };
 
   useEffect(() => {
+    const geoTimeout = setTimeout(() => {
+      setIsTimeout(true);
+    }, 10000); // 10 seconds
+
     navigator.geolocation.getCurrentPosition(
       function (position) {
+        clearTimeout(geoTimeout); // Clear the timeout if we successfully get the position
         setLocation({
           lat: position.coords.latitude,
           long: position.coords.longitude,
         });
       },
       function (error) {
+        clearTimeout(geoTimeout); // Also clear the timeout if there's an error.
         console.error("Error getting location:", error);
-        setIsLoading(false); // Set loading to false if there is an error.
-        setGeoError(true); // Set geoError to true if there's a geolocation error.
+        setIsLoading(false);
+        setGeoError(true);
       }
     );
+
+    return () => clearTimeout(geoTimeout); // Cleanup on unmount
   }, []);
 
   useEffect(() => {
@@ -232,7 +242,7 @@ function Trail() {
       fetchData();
     }
   }, [location]);
-  if (geoError) {
+  if (geoError || isTimeout) {
     return <PageNotFound />;
   }
 
@@ -253,11 +263,23 @@ function Trail() {
           </p>
         </div>
       </div>
-      <section>
-        <div className={styles["trail-container1-left-upper"]}>
+      <div
+        className={styles["weather-circle"]}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <p className={styles["weather-p"]}>Weather Info</p>
+      </div>
+
+      {isHovered && (
+        <section
+          className={`${styles["trail-weather"]} ${
+            isHovered ? styles.active : ""
+          }`}
+        >
           <WeatherDisplay data={data} />
-        </div>
-      </section>
+        </section>
+      )}
       <section className={styles["trail-container"]}>
         <h2 style={{ color: "#0b0d7b" }}>Discover the Path Less Traveled</h2>
         <div className={styles["trail-slides"]}>
@@ -269,7 +291,7 @@ function Trail() {
       </section>
 
       <div className={styles["trail-container1"]}>
-        <div>
+        <div id="mapSection">
           <MyMap
             selected_trail={selectedTrail}
             onTrailClick={handleTrailClickFromMap}
@@ -277,7 +299,7 @@ function Trail() {
         </div>
       </div>
       {selectedTrail && trailDetails[selectedTrail] && (
-        <div className={styles["trailinfo-container"]}>
+        <div className={styles["trailinfo-container"]} id="infoSection">
           <TrailInfo details={trailDetails[selectedTrail]} />
         </div>
       )}

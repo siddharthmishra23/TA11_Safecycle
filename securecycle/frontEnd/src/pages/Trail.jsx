@@ -298,11 +298,11 @@ function Trail() {
           />
         </div>
       </div>
-      {selectedTrail && trailDetails[selectedTrail] && (
+      {/* {selectedTrail && trailDetails[selectedTrail] && (
         <div className={styles["trailinfo-container"]} id="infoSection">
           <TrailInfo details={trailDetails[selectedTrail]} />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

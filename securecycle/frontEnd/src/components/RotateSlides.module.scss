@@ -159,20 +159,43 @@
 }
 
 .panel {
-  // styles for the panel
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-size: cover;
+  background-position: 50% 50%;
+  color: white; // Change text color to white for better readability
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Space content evenly
+  padding: 10px;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
-  button {
-    // styles for the button
-    margin-top: 20px;
-    color: white;
-    font-size: 0.6rem;
-    // color: transparent;
-    font-weight: bolder;
-    background-color: transparent;
-    border-color: transparent;
-    &:hover {
-      background-color: inherit;
-      border-color: transparent;
-    }
+.panel p {
+  margin: 0; // Reset default margins
+  font-size: 0.7rem; // Adjust font size as needed
+  font-weight: 700;
+}
+
+.panel button {
+  margin-top: 5px;
+  color: white;
+  font-size: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 2px 5px;
+  border-radius: 4px;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
   }
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
 }

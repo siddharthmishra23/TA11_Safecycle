@@ -133,8 +133,7 @@ function MyMap({ selected_trail, onTrailClick: handleTrailClickFromMap }) {
         zoom={defaultZoom}
         style={{
           width: "100%",
-          height: "45vh",
-          marginRight: "2rem",
+          height: "600px",
           borderRadius: "2rem",
         }}
       >

@@ -89,12 +89,12 @@ const CardNews = () => {
 
         <PaginationDots activeIndex={activeIndex} totalPosts={posts.length} />
 
-        <div className={styles["arrow"]} onClick={nextPost}>
+        <div className={styles["arrow"]} onClick={prevPost}>
           &lt;
         </div>
         <div
           className={`${styles["arrow"]} ${styles["right"]}`}
-          onClick={prevPost}
+          onClick={nextPost}
         >
           &gt;
         </div>
@@ -115,20 +115,14 @@ const NewsCard = ({ details, isActive }) => {
         style={{
           backgroundImage: `url(${image})`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100%",
+          width: "100%",
+          backgroundSize: "contain",
         }}
       >
         <h4>{category}</h4>
       </CardHeader>
-      {/* <CardBody>
-        <h2>{title}</h2>
-        <p className={styles["body-content"]}>{text}</p>
-        <NavLink to={ref}>
-          <Button color="primary" className={styles["testimonial-btn"]}>
-            Learn More
-          </Button>
-        </NavLink>
-      </CardBody> */}
     </Card>
   );
 };

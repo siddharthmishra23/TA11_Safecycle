@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
 
-body {
-  font-family: "Roboto", sans-serif;
-}
-
 .weatherContainer {
   display: flex;
   align-items: center;
@@ -56,6 +52,7 @@ body {
   transition: transform 0.3s ease-in-out; /* transition effect for smooth zoom-in */
   display: grid;
   align-items: center;
+  align-content: center;
 }
 
 .instructions h2 {

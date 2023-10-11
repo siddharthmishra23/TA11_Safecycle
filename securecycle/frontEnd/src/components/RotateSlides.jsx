@@ -63,59 +63,188 @@ function RotateSlides({
     }
   }, [ang, handleTrailSelectFromSpinner, trails, selected_trail]);
 
+  function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) element.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <div className={styles.rotateslides}>
       <div className={styles.holder}>
         <div className={`${styles.spinner}`} style={{ "--ang": ang }}>
           <div className={styles.panel + " " + styles.a}>
-            <button>Explore Victoria Trails</button>
+            <p>Explore Victoria Trails</p>
+            <div>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.b}>
-            <button>Surf Coast Walk</button>
+            <p>Surf Coast Walk</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.c}>
-            <button>Great Victorian Rail Trail</button>
+            <p>Great Victorian Rail Trail</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.d}>
-            <button>Mornington Peninsula Walk</button>
+            <p>Mornington Peninsula Walk</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.e}>
-            <button>Lilydale To Warburton</button>
+            <p>Lilydale To Warburton</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.f}>
-            <button>Gippsland Plains Rail Trail</button>
+            <p>Gippsland Plains Rail Trail</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.g}>
-            <button>You Yangs Mountain Bike Park</button>
+            <p>You Yangs Mountain Bike Park</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.h}>
-            <button>Mt Buller Bike Park</button>
+            <p>Mt Buller Bike Park</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.i}>
-            <button>Wilsons Promontory Southern</button>
+            <p>Wilsons Promontory Southern</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.j}>
-            <button>Great Ocean Walk</button>
+            <p>Great Ocean Walk</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.k}>
-            <button>Goldfields Track</button>
+            <p>Goldfields Track</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.l}>
-            <button>Forrest Mountain Bike Trails</button>
+            <p>Forrest Mountain Bike Trails</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.m}>
-            <button>Great Walhalla Alpine Trail</button>
+            <p>Great Walhalla Alpine Trail</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.n}>
-            <button>Great South West Walk</button>
+            <p>Great South West Walk</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.o}>
-            <button>Murray To Mountains Rail Trail</button>
+            <p>Murray To Mountains Rail Trail</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
           <div className={styles.panel + " " + styles.p}>
-            <button>East Gippsland Rail Trail</button>
+            <p>East Gippsland Rail Trail</p>
+            <div className={styles.buttons}>
+              <button onClick={() => scrollToSection("mapSection")}>
+                View on Map
+              </button>
+              <button onClick={() => scrollToSection("infoSection")}>
+                More Information
+              </button>
+            </div>
           </div>
-          {/* <div className={styles.fade}></div> */}
         </div>
       </div>
       {/* <div>{selectedTrailName}</div> */}

@@ -4,10 +4,10 @@ import Nav from "../components/Nav";
 import { NavLink } from "react-router-dom";
 import "./Home.scss";
 import Information from "../components/Information";
-import GetStarted from "../components/GetStarted";
-import Testimonial from "../components/Testimonial";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
   useEffect(() => {
     const wf = document.createElement("script");
     wf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
@@ -34,7 +34,7 @@ function Home() {
           WHAT DO WE DO HERE?
         </h2>
         <div className="wrapper home-screen">
-          <div>
+          <div className="clickable-card" onClick={() => navigate("/Design")}>
             From frames to finishes, personalize every detail of your bicycle to
             make it uniquely yours. Dive into our design studio and bring your
             vision to life. Ready to roll in style?
@@ -44,7 +44,7 @@ function Home() {
               </button>
             </NavLink>
           </div>
-          <div>
+          <div className="clickable-card" onClick={() => navigate("/Trails")}>
             From serene woodland routes to exhilarating mountain paths, find the
             perfect trail tailored to your next ride. Dive into detailed maps, .
             Click to embark on your next journey
@@ -54,7 +54,10 @@ function Home() {
               </button>
             </NavLink>
           </div>
-          <div>
+          <div
+            className="clickable-card"
+            onClick={() => navigate("/resources")}
+          >
             Stay informed about the latest bike regulations and learn how to
             protect yourself and others on the road with practical tips,
             ensuring a safer biking experience for all.
@@ -64,7 +67,7 @@ function Home() {
               </button>
             </NavLink>
           </div>
-          <div>
+          <div className="clickable-card" onClick={() => navigate("/travel")}>
             Plan your journeys confidently with our safe route navigation tools.
             <NavLink to="/travel">
               <button className="icon-btn">

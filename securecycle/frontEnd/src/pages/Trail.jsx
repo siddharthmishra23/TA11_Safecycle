@@ -251,12 +251,12 @@ function Trail() {
   }
 
   return (
-    <div>
+    <div className={styles["bike-trails-container"]}>
       <Nav />
 
       <div>
         <div className={styles["bike-trails-header"]}>
-          <h1>Cycle the Scenic Way</h1>
+          <h1><span>Cycle the</span> <span>Scenic Way</span></h1>
           <p>
             Life is Better on a Bike: Discover Scenic Trails Awaiting Your
             Exploration
@@ -268,7 +268,9 @@ function Trail() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <p className={styles["weather-p"]}>Weather Info</p>
+        <p className={styles["weather-p"]}>
+        <img src="./weather.png" alt="Weather" className={styles["weather-icon"]} />
+          Weather Info</p>
       </div>
 
       {isHovered && (

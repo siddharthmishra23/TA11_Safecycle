@@ -7,6 +7,7 @@
   top: 0;
   z-index: 9999999;
   grid-template-columns: 1fr 3fr;
+  
 }
 .navflex {
   display: flex;
@@ -78,9 +79,11 @@ a.ctaLink:focus {
 }
 
 @media (max-width: 768px) {
-  .nav{
+  .nav {
     height: auto;
+    
   }
+
   .hamburger {
     display: block; /* show the hamburger on small screens */
     text-align: right;
@@ -89,28 +92,27 @@ a.ctaLink:focus {
     color: white;
   }
 
-  /* hide the menu by default on small screens */
   .navflex {
     display: none;
     height: auto;
+    justify-content: flex-end; /* push children to the right */
   }
 
   /* show the menu when the hidden checkbox is checked */
   .menuToggle:checked + .hamburger + .navflex {
     display: flex;
     flex-direction: column;
-    max-height: 300px
+    max-height: 300px;
   }
 
   .navflex a {
     display: block;
-    text-align: right;
+    text-align: right; /* make sure links align to the right */
     padding: 0.5rem 0;
   }
 
   .nav a {
     font-size: 1rem;
-
   }
 
   .nav a:hover,
@@ -124,9 +126,8 @@ a.ctaLink:focus {
   }
 
   .logo {
-    /* margin-top: 0.3rem; */
     padding: 0.1rem;
     height: 3rem;
   }
-
 }
+

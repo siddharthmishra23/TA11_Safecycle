@@ -53,13 +53,7 @@ function Aboutus() {
               style={{ display: "grid", placeItems: "center" }}
             >
               <img
-                style={{
-                  display: "grid",
-                  placeItems: "center",
-                  position: "relative",
-                  left: "20%",
-                  zIndex: "1",
-                }}
+                className={styles["responsiveImage"]}
                 src="/aboutus1.png"
                 alt="why us"
               />

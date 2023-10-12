@@ -37,7 +37,7 @@ function Home() {
           <div className="clickable-card" onClick={() => navigate("/Design")}>
             From frames to finishes, personalize every detail of your bicycle to
             make it uniquely yours. Dive into our design studio and bring your
-            vision to life. Ready to roll in style?
+            vision to life.
             <NavLink to="/Design">
               <button className="icon-btn">
                 <i className="fa-solid fa-spray-can icon-size"></i>

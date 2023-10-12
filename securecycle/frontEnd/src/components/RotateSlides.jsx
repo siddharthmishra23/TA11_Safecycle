@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./RotateSlides.module.scss";
-import Modal from "./Modal.jsx";  
+import Modal from "./Modal.jsx";
 
 function RotateSlides({
   selected_trail,
@@ -10,7 +10,6 @@ function RotateSlides({
   const [ang, setAng] = useState(0);
   const [selectedTrailName, setSelectedTrailName] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
 
   const handlePrevClick = () => {
     console.log("prev");
@@ -37,7 +36,6 @@ function RotateSlides({
       console.log("else modal");
     }
   }
-  
 
   const trails = {
     360: "Explore Victoria Trails",
@@ -78,186 +76,75 @@ function RotateSlides({
     }
   }, [ang, handleTrailSelectFromSpinner, trails, selected_trail]);
 
-
-
   return (
     <div className={styles.rotateslides}>
       <div className={styles.holder}>
         <div className={`${styles.spinner}`} style={{ "--ang": ang }}>
           <div className={styles.panel + " " + styles.a}>
             <p>Explore Victoria Trails</p>
-            <div>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.b}>
             <p>Surf Coast Walk</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.c}>
             <p>Great Victorian Rail Trail</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.d}>
             <p>Mornington Peninsula Walk</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.e}>
             <p>Lilydale To Warburton</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.f}>
             <p>Gippsland Plains Rail Trail</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.g}>
             <p>You Yangs Mountain Bike Park</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.h}>
             <p>Mt Buller Bike Park</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.i}>
             <p>Wilsons Promontory Southern</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.j}>
             <p>Great Ocean Walk</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.k}>
             <p>Goldfields Track</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.l}>
             <p>Forrest Mountain Bike Trails</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.m}>
             <p>Great Walhalla Alpine Trail</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.n}>
             <p>Great South West Walk</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.o}>
             <p>Murray To Mountains Rail Trail</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
           <div className={styles.panel + " " + styles.p}>
             <p>East Gippsland Rail Trail</p>
-            <div className={styles.buttons}>
-              <button onClick={() => scrollToSection("mapSection")}>
-                View on Map
-              </button>
-              <button onClick={() => scrollToSection("infoSection")}>
-                More Information
-              </button>
-            </div>
           </div>
         </div>
+      </div>
+      <div className={styles.buttons}>
+        <button
+          onClick={() => scrollToSection("mapSection")}
+          className={styles["button_rotate"]}
+        >
+          View on Map
+        </button>
+        {selectedTrailName != "Explore Victoria Trails" && (
+          <button
+            onClick={() => scrollToSection("infoSection")}
+            className={styles["button_rotate"]}
+          >
+            More Information
+          </button>
+        )}
       </div>
       {/* <div>{selectedTrailName}</div> */}
       <div className={styles.pagination} style={{ rotationStyle }}>
@@ -269,10 +156,10 @@ function RotateSlides({
         </button>
       </div>
       <Modal
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      trailName={selectedTrailName}
-    />
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        trailName={selectedTrailName}
+      />
     </div>
   );
 }

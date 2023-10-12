@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 1.1rem;
+
   margin-top: 2rem;
 }
 
@@ -180,22 +180,23 @@
   font-weight: 700;
 }
 
-.panel button {
+.buttons {
+  display: flex;
+  gap: 5px;
+  position: relative;
+  bottom: 5rem;
   margin-top: 5px;
   color: white;
-  font-size: 4px;
-  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 0.9rem;
+
   border: none;
   padding: 2px 5px;
   border-radius: 4px;
   transition: all 0.2s;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
 }
-
-.buttons {
-  display: flex;
-  gap: 5px;
+.button_rotate {
+  background-color: rgba(0, 0, 0, 0.5);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.28);
+  }
 }

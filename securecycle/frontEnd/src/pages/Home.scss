@@ -256,10 +256,16 @@ nav {
 
 /* Media Queries for Mobile and Tablet Devices */
 @media (max-width: 768px) {
-  /* Font Scaling */
+  .App {
+    overflow: hidden;
+  }
   .App h2 {
     font-size: 3.5vh;
     margin-top: 1rem;
+  }
+
+  .hero{
+    overflow: hidden;
   }
 
   /* Navigation */
@@ -276,6 +282,7 @@ nav {
   .wrapper > div {
     width: 90%;
     margin: 1rem auto;
+
   }
   .home-screen {
     flex-direction: column;
@@ -287,6 +294,7 @@ nav {
     width: 4rem;
     height: 4rem;
     margin: 0.5rem 3rem;
+    align-items: center;
     &:hover {
       background-color: white;
       text-decoration: none;
@@ -295,6 +303,7 @@ nav {
   }
 }
   .icon-size {
-    font-size: 3rem;
+    font-size: 4.5rem;
+    padding-left: 6rem;
   }
 }

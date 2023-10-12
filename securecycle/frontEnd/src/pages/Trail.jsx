@@ -82,7 +82,7 @@ const trailDetails = {
     title: "Mt Buller Bike Park",
     description:
       "Mt Buller Bike Park is home to several firsts in Aussie mountain biking, including Australia’s first flow trail, Copperhead, and the Southern Hemisphere’s first and only IMBA Epic Trail, the infamous 40+km wilderness MTB trail, the Australian Alpine Epic.",
-    length: "XXkm",
+    length: "40km",
     img: "/buller.jpeg",
     located: "60km south of CBD",
     nearby: ["Rifle Butts MTB Park", "Moyhu Timber Reserve", "Punkah"],

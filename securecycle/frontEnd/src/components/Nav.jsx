@@ -10,30 +10,32 @@ function Navigation() {
         <Link to="/">
           <img src="/new_logo.png" alt="Safe cycle" className={styles.logo} />
         </Link>
-      </div>
-
-      <div className={styles.navflex}>
-        <NavItem>
-          <NavLink tag={RRNavLink} exact to="/trails" activeClassName="active">
-            TrailQuest
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink tag={RRNavLink} to="/travel" activeClassName="active">
-            Hazard Spotter
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink tag={RRNavLink} to="/resources" activeClassName="active">
-            Pedalpedia
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink tag={RRNavLink} to="/aboutus" activeClassName="active">
-            About us
-          </NavLink>
-        </NavItem>
-      </div>
+        </div>
+        <input type="checkbox" id="menuToggle" className={styles.menuToggle} />
+        <label htmlFor="menuToggle" className={styles.hamburger}>&#9776;</label>
+        <div className={styles.navflex}>
+          <NavItem>
+            <NavLink tag={RRNavLink} exact to="/trails" activeClassName="active">
+              TrailQuest
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/travel" activeClassName="active">
+              Hazard Spotter
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/resources" activeClassName="active">
+              Pedalpedia
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/aboutus" activeClassName="active">
+              About us
+            </NavLink>
+          </NavItem>
+        </div>
+      
     </Nav>
   );
 }

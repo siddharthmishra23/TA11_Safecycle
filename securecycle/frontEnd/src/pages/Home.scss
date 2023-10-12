@@ -253,3 +253,48 @@ nav {
     cursor: pointer;
   }
 }
+
+/* Media Queries for Mobile and Tablet Devices */
+@media (max-width: 768px) {
+  /* Font Scaling */
+  .App h2 {
+    font-size: 3.5vh;
+    margin-top: 1rem;
+  }
+
+  /* Navigation */
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav li {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Card Layout */
+  .wrapper > div {
+    width: 90%;
+    margin: 1rem auto;
+  }
+  .home-screen {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Buttons and Icons */
+  .icon-btn {
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem 3rem;
+    &:hover {
+      background-color: white;
+      text-decoration: none;
+      border: #fff;
+      color: rgb(71, 200, 244);  
+  }
+}
+  .icon-size {
+    font-size: 3rem;
+  }
+}

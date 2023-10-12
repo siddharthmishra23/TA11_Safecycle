@@ -11,15 +11,20 @@
   z-index: 1000; // High z-index to ensure overlay is on top
 }
 
-.modal {
-  position: relative;
-  background: #fff;
-  padding: 50px;
-  border-radius: 8px;
-  max-width: 60%; // Change as needed
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
+
+
+  .modal {
+    position: relative;
+    background: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    max-width: 90%; /* Increase to 90% for better mobile view */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+  }
+
+  
 
   .close-button {
     position: absolute;
@@ -70,9 +75,38 @@
     }
     }
   }
-  
 
+@media screen and (max-width: 768px) {
+  .modal {
+    max-width: 300px;
+    max-height: 80vh; /* 80% of the viewport height */
+    overflow-y: auto; /* Only vertical scrolling */
+    padding: 20px;
+  }
+
+  .modal .close-button {
+    padding: 10px; /* Adds some space around the button to increase the touch area */
+  }
+
+  .modal .modal-content-h2 {
+    font-size: 1.5rem; /* Reduce font size for mobile */
+  }
+
+  .modal .modal-content {
+    flex-direction: column; /* Stack image and info block vertically on mobile */
+    
+    gap: 15px;
+  }
+
+  .modal .modal-content .trail-image {
+    flex: 0 0 100%; /* Make the image take up the full width of its container on mobile */
+    max-width: 100%;
+  }
+
+  .modal .modal-content .info-content {
+    font-size: 1rem; /* Reduce font size for mobile */
+    padding: 0.5rem; /* Reduce padding for mobile */
+    align-items: center; /* Center text on mobile */
+  }
 }
-
-
 

@@ -200,3 +200,42 @@
     background-color: rgba(0, 0, 0, 0.28);
   }
 }
+
+
+
+@media only screen and (max-width: 768px) {
+  .rotateslides {
+    overflow: hidden;
+  }
+
+  .holder {
+    width: 85vw; 
+    height: 40vh; 
+  }
+
+  .panel {
+    width: 60px;
+    height: 60px;
+  }
+
+  .panel p {
+    font-size: 0.5rem;
+  }
+
+  .buttons {
+    bottom: 3rem; 
+    flex-direction: column; /* Stack the buttons vertically */
+    gap: 10px; /* Increase the gap for better touch */
+  }
+
+  .pagination button {
+    width: 36px; 
+    height: 36px;
+    font-size: 20px; 
+  }
+
+  .rotateslides {
+    margin-top: 1rem;
+  }
+}
+

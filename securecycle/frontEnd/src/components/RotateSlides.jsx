@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./RotateSlides.module.scss";
+import Modal from "./Modal.jsx";  
 
 function RotateSlides({
   selected_trail,
@@ -8,6 +9,8 @@ function RotateSlides({
 }) {
   const [ang, setAng] = useState(0);
   const [selectedTrailName, setSelectedTrailName] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   const handlePrevClick = () => {
     console.log("prev");
@@ -23,6 +26,18 @@ function RotateSlides({
   const rotationStyle = {
     "--ang": `${ang}deg`,
   };
+
+  function scrollToSection(id) {
+    if (id === "infoSection") {
+      setIsModalOpen(true);
+      console.log("Opening modal");
+    } else {
+      const element = document.getElementById(id);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+      console.log("else modal");
+    }
+  }
+  
 
   const trails = {
     360: "Explore Victoria Trails",
@@ -63,10 +78,7 @@ function RotateSlides({
     }
   }, [ang, handleTrailSelectFromSpinner, trails, selected_trail]);
 
-  function scrollToSection(id) {
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  }
+
 
   return (
     <div className={styles.rotateslides}>
@@ -256,6 +268,11 @@ function RotateSlides({
           &#8594;
         </button>
       </div>
+      <Modal
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      trailName={selectedTrailName}
+    />
     </div>
   );
 }

@@ -174,7 +174,7 @@
   .weather-circle {
       height: 4rem;
       width: 4rem;
-      top: 4rem;
+      top: 5rem;
       right: 0.5rem;
   }
 
@@ -185,7 +185,7 @@
   } 
   
   .trail-weather {
-      top: 5rem;
+      top: 6rem;
       right: 1rem;
       width: 90%; 
       height: 500px; 

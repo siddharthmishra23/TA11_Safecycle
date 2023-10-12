@@ -45,19 +45,17 @@ const Information = () => {
                   styles.box
                 } ${styles[`shape-${index + 1}`]} ${styles.animated}`}
               >
-                <Col xs="7" sm="4" md="4" className={styles.shape}>
+                <Col xs="10" sm="7" md="7" className={styles.shape}>
                   <div className={styles.number}>
                     <h1>{index + 1}</h1>
                   </div>
                 </Col>
                 <Col
-                  xs={{ size: 5, offset: 1 }}
-                  sm={{ size: 4, offset: 1 }}
-                  md={{ size: 4, offset: 1 }}
+                  xs="12" sm="5" md="5"
                 >
                   <p>{guideline.text}</p>
                 </Col>
-                <Col sm="4" md="4" className="hidden-xs text-center">
+                <Col  xs="12" sm="4" md="4" className="hidden-xs text-center">
                   <i className={`material-icons ${styles["md-56"]}`}>
                     {guideline.icon}
                   </i>

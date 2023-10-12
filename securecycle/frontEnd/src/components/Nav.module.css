@@ -1,17 +1,17 @@
 .nav {
   display: grid;
-
   height: 5rem;
   background: #1a26acf7;
   margin: 0;
+  padding: 5px;
   position: sticky;
   top: 0;
   z-index: 9999999;
   grid-template-columns: 1fr 3fr;
+  
 }
 .navflex {
   display: flex;
-  align-items: center;
   justify-content: flex-end;
 }
 .nav ul {
@@ -25,7 +25,8 @@
   color: var(--color-light--2);
   margin-left: 1rem;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   transition: color 0.2s; /* smooth color transition */
 }
@@ -58,7 +59,7 @@ a.ctaLink:focus {
 }
 
 .logo {
-  height: 6rem;
+  height: 3.8rem;
 }
 
 .logo-flex {
@@ -66,3 +67,67 @@ a.ctaLink:focus {
   justify-content: flex-start;
   align-items: center;
 }
+
+.menuToggle {
+  display: none; /* hide the checkbox */
+}
+
+.hamburger {
+  display: none; /* hide the hamburger by default, will show on small screens */
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    height: auto;
+    
+  }
+
+  .hamburger {
+    display: block; /* show the hamburger on small screens */
+    text-align: right;
+    top: 0.5rem;
+    margin-right: 1rem;
+    color: white;
+  }
+
+  .navflex {
+    display: none;
+    height: auto;
+    justify-content: flex-end; /* push children to the right */
+  }
+
+  /* show the menu when the hidden checkbox is checked */
+  .menuToggle:checked + .hamburger + .navflex {
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+  }
+
+  .navflex a {
+    display: block;
+    text-align: right; /* make sure links align to the right */
+    padding: 0.5rem 0;
+  }
+
+  .nav a {
+    font-size: 1rem;
+  }
+
+  .nav a:hover,
+  .nav a:focus {
+    color: var(--color-brand--2);
+    outline: none; /* Removing default outline for focus for a cleaner look */
+  }
+
+  .nav a:global(.active) {
+    color: var(--color-brand--2);
+  }
+
+  .logo {
+    padding: 0.1rem;
+    height: 3rem;
+  }
+}
+

@@ -12,7 +12,9 @@
 @media (min-width: 768px) {
   .content-container {
     width: 750px;
+    top: 40px;
   }
+
 }
 
 @media (min-width: 992px) {
@@ -25,6 +27,7 @@
   .content-container {
     width: 1170px;
   }
+  
 }
 
 /* Inspiration Info */
@@ -36,7 +39,7 @@
 
 .inspiration-info h1 {
   color: #0b0d7b;
-  font-size: 60px;
+  font-size: 3rem;
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   padding: 20px;
@@ -90,5 +93,5 @@
 .hero-p {
   font-weight: bold;
   color: black;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }

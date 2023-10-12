@@ -1,6 +1,9 @@
+.bike-trails-container{
+  overflow: hidden;
+
+}
 .trail-container1 {
   display: grid;
-
   padding: 2rem;
   gap: 2rem;
 }
@@ -103,8 +106,8 @@
   width: 6rem;
   background: linear-gradient(
     135deg,
-    #086bd1,
-    #0a4ba5
+    #85d9f8,
+    #2877e7
   ); /* Gradient background */
   border-radius: 50%;
   position: absolute;
@@ -155,3 +158,60 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Text shadow for depth */
   margin: 0;
 }
+
+.weather-icon {
+  display: none; /* Hide icon by default */
+  width: 20px; /* You can set whatever size you want */
+  height: 20px;
+  margin-right: 8px; /* Some space between the icon and the text, adjust as necessary */
+}
+
+/* Media query for screens with a max width of 768px (typical breakpoint for tablets and below) */
+@media (max-width: 768px) {
+  h1 span {
+    display: block; /* This forces the span elements to take the full width and breaks the content into two lines */
+}
+  .weather-circle {
+      height: 4rem;
+      width: 4rem;
+      top: 4rem;
+      right: 0.5rem;
+  }
+
+  .weather-icon {
+    display: inline-block;
+    height: 3rem;
+    width: 4rem;
+  } 
+  
+  .trail-weather {
+      top: 5rem;
+      right: 1rem;
+      width: 90%; 
+      height: 500px; 
+  }
+  .trail-weather.active {
+    opacity: 1;
+    max-height: 500px;
+    z-index: 9999;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Shadow for active state */
+    font-size: 0.8rem;
+  }
+
+  .weather-p {
+    font-size: 0; /* Hide text but retain the element's space */
+}
+
+  .weather-p::after {
+      content: "Weather Info"; /* Bring back the text */
+      font-size: 1rem; /* Adjust to the original font-size or whatever you want */
+      visibility: hidden; /* Hide the pseudo content */
+      position: absolute;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+}
+
+
+  
+}
+

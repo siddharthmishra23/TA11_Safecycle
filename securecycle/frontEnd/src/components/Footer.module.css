@@ -11,3 +11,21 @@
   display: flex;
   justify-content: center;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  /* Adjust footer padding and font-size for smaller screens */
+  .footer {
+    padding: 10px 0;
+    font-size: 12px;
+  }
+
+  /* Adjust container width and layout for smaller screens */
+  .container {
+    max-width: 100%;  /* allow it to take full width */
+    flex-direction: column;  /* stack children vertically if necessary */
+    align-items: center; /* center the children */
+    padding: 0 15px;  /* add some padding on the left and right */
+  }
+}
+

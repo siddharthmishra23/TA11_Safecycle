@@ -70,15 +70,15 @@ function WeatherDisplay({ data }) {
       <main className="weatherContainer" style={{ background: background }}>
         <img src={iconURL} alt={data.weather[0].description} />
         <div className="weatherDesc">
-          Weather condition: {data.weather[0].description}
+        <strong>Weather condition:&nbsp;&nbsp;</strong> {data.weather[0].description}
         </div>
         <div className="temp">
-          Temperature: {Math.round(temperatureCelsius)}°C
+        <strong>Temperature:&nbsp;&nbsp;</strong> {Math.round(temperatureCelsius)}°C
         </div>
-        <div className="humidity">Humidity: {data.main.humidity}%</div>
-        <div className="windDirection">Wind Speed: {data.wind.speed} m/s</div>
+        <div className="humidity"><strong>Humidity:&nbsp;&nbsp; </strong> {data.main.humidity}%</div>
+        <div className="windDirection"><strong>Wind Speed:&nbsp;&nbsp;</strong> {data.wind.speed} m/s</div>
         <div className="windDirection">
-          Wind Direction: {data.wind.deg} m/s
+        <strong>Wind Direction:&nbsp;&nbsp;</strong> {data.wind.deg} m/s
           <div
             className="arrow"
             style={{ transform: `rotate(${data.wind.deg}deg)` }}

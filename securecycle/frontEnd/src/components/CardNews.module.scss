@@ -1,6 +1,6 @@
 /* Designer credit: https://dribbble.com/shots/1978243-Latest-News */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
-
+@media (min-width: 768px) {
 .app-header {
   font-family: "Roboto", sans-serif;
   display: block;
@@ -119,9 +119,7 @@
     transform: scale(1); /* active card at full size */
   }
 }
-.carousel-container {
-  position: relative;
-}
+
 
 .arrow {
   position: absolute;
@@ -168,5 +166,31 @@
 
   .active-dot {
     background-color: #333; // active dot color
+  }
+}
+}
+
+@media (max-width: 767px) {
+  .app-header {
+    padding: 15px;
+  }
+
+  .arrow {
+    font-size: 0rem;
+
+  }
+
+  .app-cardnews-list {
+    height: auto; /* Auto height to adjust for the content */
+    width: 100%;
+    padding: 0 5%;
+  }
+
+  .cardnews {
+    margin: 30px 15px;
+  }
+
+  .carousel-container {
+    position: relative;
   }
 }

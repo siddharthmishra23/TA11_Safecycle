@@ -54,15 +54,12 @@
 
 .chartSummarybox {
   height: 50vh;
-  width: 100% !important;
   padding: 1rem;
-  margin-left: 50%;
 }
 .chartSummary {
   display: grid;
   place-items: center;
   height: 50vh;
-  width: 100% !important;
   padding: 1rem;
 }
 
@@ -108,7 +105,6 @@
 
   .chartSummary {
     height: auto;
-    width: 90vw;
     margin: 0 auto;
   }
 }
@@ -220,12 +216,10 @@ section:nth-child(odd) {
 .importantInfo,
 .chartSummarybox,
 .chartSummary {
-  width: 100%;
   padding: 20px 0;
 }
 
 .videoResources {
-  width: 90%;
   height: 40vh;
 }
 

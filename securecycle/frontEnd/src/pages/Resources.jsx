@@ -156,7 +156,6 @@ const Resources = () => {
         </div>
 
         <div className={styles["severity-container"]}>
-          <div></div>
           <div
             className={styles["importantInfo"]}
             data-aos="fade-up"
@@ -187,10 +186,8 @@ const Resources = () => {
         </div>
         <div
           style={{
-            width: "50%",
-
             margin: "0 auto",
-            padding: "50px",
+            padding: "2rem",
           }}
         >
           <MapBarhartHour />

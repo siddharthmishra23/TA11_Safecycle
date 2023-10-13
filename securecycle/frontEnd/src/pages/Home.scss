@@ -255,11 +255,17 @@ nav {
 }
 
 /* Media Queries for Mobile and Tablet Devices */
-@media (max-width: 768px) {
-  /* Font Scaling */
+@media (max-width: 767px) {
+  .App {
+    overflow: hidden;
+  }
   .App h2 {
     font-size: 3.5vh;
     margin-top: 1rem;
+  }
+
+  .hero{
+    overflow: hidden;
   }
 
   /* Navigation */
@@ -276,6 +282,7 @@ nav {
   .wrapper > div {
     width: 90%;
     margin: 1rem auto;
+
   }
   .home-screen {
     flex-direction: column;
@@ -287,6 +294,7 @@ nav {
     width: 4rem;
     height: 4rem;
     margin: 0.5rem 3rem;
+    align-items: center;
     &:hover {
       background-color: white;
       text-decoration: none;
@@ -295,6 +303,45 @@ nav {
   }
 }
   .icon-size {
-    font-size: 3rem;
+    font-size: 4.5rem;
+    padding-left: 6rem;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .App h2 {
+    font-size: 4.5vh;
+    margin-top: 1.5rem;
+  }
+
+  /* Navigation */
+  nav ul {
+    flex-direction: row;
+  }
+  nav li {
+    width: 25%;
+    text-align: center;
+  }
+
+  /* Card Layout */
+  .wrapper > div {
+    width: 45%; // Half the width for 2 cards in a row
+    margin: 1rem;
+  }
+  .home-screen {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  /* Buttons and Icons */
+  .icon-btn {
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem 4rem;
+  }
+  .icon-size {
+    font-size: 5rem;
+  }
+}
+

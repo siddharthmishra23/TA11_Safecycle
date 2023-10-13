@@ -42,6 +42,7 @@
 }
 
 .panel {
+
   border-radius: 5px;
   width: 100px;
   height: 100px;
@@ -185,9 +186,8 @@
   position: relative;
   bottom: 5rem;
   margin-top: 5px;
-  color: white;
+  color: white important;
   font-size: 0.9rem;
-
   border: none;
   padding: 2px 5px;
   border-radius: 4px;
@@ -202,6 +202,16 @@
   }
 }
 
+
+@media only screen and (min-width: 769px) {
+  .panel {bottom:-4rem;}
+  .buttons {
+    bottom: 2rem;
+  }
+}
+
+
+
 @media only screen and (max-width: 768px) {
   .rotateslides {
     overflow: hidden;
@@ -213,8 +223,10 @@
   }
 
   .panel {
-    width: 60px;
-    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 80px;
+    height: 80px;
   }
 
   .panel p {
@@ -222,8 +234,11 @@
   }
 
   .buttons {
-    bottom: 3rem;
-    flex-direction: column; /* Stack the buttons vertically */
+
+    bottom: 2rem; 
+    flex-direction: row; /* Stack the buttons vertically */
+
+
     gap: 10px; /* Increase the gap for better touch */
   }
 

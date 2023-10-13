@@ -29,6 +29,7 @@ function Home() {
     <div className="App">
       <Nav />
       <Hero />
+      <div id="begin"></div>
       <div id="intro">
         <h2 data-aos="fade-up" style={{ color: "#0b0d7b" }}>
           WHAT DO WE DO HERE?

@@ -140,16 +140,16 @@ section:nth-child(odd) {
 //   background-color: rgba(237, 192, 69, 0.18); // replace with the color you want
 // }
 .chart-container1 {
-  display: grid;
-  grid-template-rows: 30% 70%;
-  place-items: center;
-  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .chart-container2 {
-  display: grid;
-  grid-template-rows: 30% 70%;
-  place-items: center;
-  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .importantInfo {
   width: 60%;
@@ -193,8 +193,8 @@ section:nth-child(odd) {
 }
 
 .videoResources {
-  height: 35vh;
   width: 100%;
+  height: 40vh;
 }
 
 .resource-img {
@@ -209,21 +209,24 @@ section:nth-child(odd) {
 }
 
 /* Default styling for smaller screens (Mobile) */
-.wrapper, .video-container {
+.wrapper,
+.video-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
-.importantInfo, .chartSummarybox, .chartSummary {
+.importantInfo,
+.chartSummarybox,
+.chartSummary {
   width: 100%;
   padding: 20px 0;
 }
 
 .videoResources {
   width: 90%;
-  height: auto;
+  height: 40vh;
 }
 
 .paragraph-resource {
@@ -243,20 +246,23 @@ section:nth-child(odd) {
   .resources-main {
     width: 100%;
   }
-  .wrapper, .video-container {
+  .wrapper,
+  .video-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 30px;
   }
 
-  .importantInfo, .chartSummarybox, .chartSummary {
+  .importantInfo,
+  .chartSummarybox,
+  .chartSummary {
     width: 60%;
   }
 
   .videoResources {
     width: 80%;
-    height: auto;
+    height: 40vh;
   }
 
   .paragraph-resource {

@@ -195,12 +195,12 @@
 }
 .button_rotate {
   background-color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
   &:hover {
+    font-weight: bold;
     background-color: rgba(0, 0, 0, 0.28);
   }
 }
-
-
 
 @media only screen and (max-width: 768px) {
   .rotateslides {
@@ -208,8 +208,8 @@
   }
 
   .holder {
-    width: 85vw; 
-    height: 40vh; 
+    width: 85vw;
+    height: 40vh;
   }
 
   .panel {
@@ -222,19 +222,18 @@
   }
 
   .buttons {
-    bottom: 3rem; 
+    bottom: 3rem;
     flex-direction: column; /* Stack the buttons vertically */
     gap: 10px; /* Increase the gap for better touch */
   }
 
   .pagination button {
-    width: 36px; 
+    width: 36px;
     height: 36px;
-    font-size: 20px; 
+    font-size: 20px;
   }
 
   .rotateslides {
     margin-top: 1rem;
   }
 }
-

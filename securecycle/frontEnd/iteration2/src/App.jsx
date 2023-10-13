@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import PageNotFound from "./pages/PageNotFound";
 import Footer from "./components/Footer";
@@ -29,10 +29,11 @@ function App() {
  // }
   return (
     <div>
-      <BrowserRouter>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+
           <Route path="/travel" element={<Travel />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/aboutus" element={<Aboutus />} />
@@ -42,7 +43,6 @@ function App() {
 
         </Routes>
       <Footer />
-      </BrowserRouter>
 
     </div>
   );

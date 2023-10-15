@@ -14,7 +14,6 @@
     width: 750px;
     top: 40px;
   }
-
 }
 
 @media (min-width: 992px) {
@@ -27,7 +26,6 @@
   .content-container {
     width: 1170px;
   }
-  
 }
 
 /* Inspiration Info */
@@ -121,7 +119,4 @@
     width: 32%;
     font-size: 140%;
   }
-}
-  color: black;
-  font-size: 1.2rem;
 }

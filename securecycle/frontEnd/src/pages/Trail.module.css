@@ -1,6 +1,5 @@
-.bike-trails-container{
+.bike-trails-container {
   overflow: hidden;
-
 }
 .trail-container1 {
   display: grid;
@@ -112,7 +111,7 @@
   border-radius: 50%;
   position: absolute;
   cursor: pointer;
-  z-index: 1999999;
+
   text-align: center;
   display: flex;
   align-items: center;
@@ -121,11 +120,6 @@
   right: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for hover effects */
-}
-
-.weather-circle:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
 }
 
 .trail-weather {
@@ -148,21 +142,23 @@
 .trail-weather.active {
   opacity: 1;
   max-height: 100%;
-  z-index: 9999;
+  z-index: 999999999999999;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Shadow for active state */
+  position: absolute;
+  right: 7rem;
+  top: 9rem;
 }
 
 .weather-p {
   color: white;
-  font-size: 1.2rem; /* Increased font size */
+  font-size: 0rem; /* Increased font size */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Text shadow for depth */
   margin: 0;
 }
 
 .weather-icon {
-  display: none; /* Hide icon by default */
-  width: 20px; /* You can set whatever size you want */
-  height: 20px;
+  width: 7rem; /* You can set whatever size you want */
+  height: 5rem;
   margin-right: 8px; /* Some space between the icon and the text, adjust as necessary */
 }
 
@@ -170,29 +166,33 @@
 @media (max-width: 768px) {
   h1 span {
     display: block; /* This forces the span elements to take the full width and breaks the content into two lines */
-}
+  }
   .weather-circle {
-      height: 4rem;
-      width: 4rem;
-      top: 5rem;
-      right: 0.5rem;
+    height: 4rem;
+    width: 4rem;
+    top: 5rem;
+    right: 0.5rem;
   }
 
   .weather-icon {
     display: inline-block;
     height: 3rem;
     width: 4rem;
-  } 
-  
+  }
+
   .trail-weather {
-      top: 6rem;
-      right: 1rem;
-      width: 90%; 
-      height: 500px; 
+    top: 6rem;
+    right: 1rem;
+    width: 90%;
+    height: 500px;
   }
   .trail-weather.active {
+    position: absolute;
+    top: 6rem;
+    right: 3rem;
     opacity: 1;
     max-height: 500px;
+    max-width: 300px;
     z-index: 9999;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Shadow for active state */
     font-size: 0.8rem;
@@ -200,18 +200,14 @@
 
   .weather-p {
     font-size: 0; /* Hide text but retain the element's space */
-}
+  }
 
   .weather-p::after {
-      content: "Weather Info"; /* Bring back the text */
-      font-size: 1rem; /* Adjust to the original font-size or whatever you want */
-      visibility: hidden; /* Hide the pseudo content */
-      position: absolute;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
+    content: "Weather Info"; /* Bring back the text */
+    font-size: 1rem; /* Adjust to the original font-size or whatever you want */
+    visibility: hidden; /* Hide the pseudo content */
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
 }
-
-
-  
-}
-

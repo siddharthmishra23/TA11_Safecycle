@@ -17,6 +17,32 @@ app.use(cors());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+//defined neccessary header to avoid vulnerabilities of the security.
+app.use((req, res, next) => {
+  res.header(
+    "Strict-Transport-Security",
+    "max-age=63072000; includeSubDomains; preload"
+  );
+  res.header("X-Frame-Options", "SAMEORIGIN");
+  res.header("X-Content-Type-Options", "nosniff");
+  // Other headers can be added here
+  next();
+});
+
+// Middleware to block access to certain paths
+app.use((req, res, next) => {
+  const blockedPaths = ["/secret", "/backup", "/hidden"];
+  const isPathBlocked = blockedPaths.some((path) => req.path.startsWith(path));
+
+  if (isPathBlocked) {
+    // If the path is blocked, return a 403 Forbidden status
+    res.status(403).send("Access denied");
+  } else {
+    // Otherwise, allow the request to proceed
+    next();
+  }
+});
+
 // app.get(/^(?!\/api).+/, (req, res) => {
 //   res.sendFile(path.join(__dirname, "../dist/index.html"));
 // });
@@ -33,6 +59,19 @@ app.use("/LongLat", langLatRouter);
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
+
+//noticed result when anyone try to find the path of sensitive file
+app.get("/secret/data", (req, res) => {
+  res.send("This path should be blocked!");
+});
+app.get("/backup/data", (req, res) => {
+  res.send("This path should be blocked!");
+});
+
+app.get("/hidden/files", (req, res) => {
+  res.send("This path should be blocked!");
+});
+
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   console.error(err.message, err.stack);

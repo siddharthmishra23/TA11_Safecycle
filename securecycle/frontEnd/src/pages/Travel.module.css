@@ -73,26 +73,46 @@
 }
 
 .reported-msg {
-  position: fixed; /* Position it fixed on the screen */
-  bottom: 20vh; /* Change to 'top: 10px;' if you want it at the top */
+  position: fixed;
+  bottom: 20px;
   left: 50%;
-  transform: translateX(-50%); /* Center it horizontally on the screen */
+  transform: translateX(-50%);
   padding: 15px 20px;
   border-radius: 8px;
-  background-color: #333; /* Dark background for contrast */
-  color: #fff; /* White text */
+  background-color: #333;
+  color: #fff;
   font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  max-width: 90%; /* Ensure it doesn't exceed the screen width */
-  text-align: center; /* Center the text */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  z-index: 1000; /* Make sure it's above other components */
+  z-index: 1000;
 }
 
-/* Add a modifier class when you want to show the message, for a fade-in effect */
+/* Adjust the message position and font size for smaller screens */
+@media (max-width: 768px) {
+  .reported-msg {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+    max-width: none;
+    font-size: 14px;
+  }
+}
+
 .reported-msg.show {
   opacity: 1;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
 }
 
 .travel-hazard-heading {

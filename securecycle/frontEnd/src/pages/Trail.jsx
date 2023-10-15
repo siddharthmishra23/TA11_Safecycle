@@ -202,7 +202,7 @@ function Trail() {
   useEffect(() => {
     const geoTimeout = setTimeout(() => {
       setIsTimeout(true);
-    }, 10000); // 10 seconds
+    }, 20000); // 10 seconds
 
     navigator.geolocation.getCurrentPosition(
       function (position) {
@@ -256,7 +256,9 @@ function Trail() {
 
       <div>
         <div className={styles["bike-trails-header"]}>
-          <h1><span>Cycle the</span> <span>Scenic Way</span></h1>
+          <h1>
+            <span>Cycle the</span> <span>Scenic Way</span>
+          </h1>
           <p>
             Life is Better on a Bike: Discover Scenic Trails Awaiting Your
             Exploration
@@ -268,9 +270,11 @@ function Trail() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <p className={styles["weather-p"]}>
-        <img src="./weather.png" alt="Weather" className={styles["weather-icon"]} />
-          Weather Info</p>
+        <img
+          src="./weather.png"
+          alt="Weather"
+          className={styles["weather-icon"]}
+        />
       </div>
 
       {isHovered && (
@@ -279,6 +283,9 @@ function Trail() {
             isHovered ? styles.active : ""
           }`}
         >
+          <h3 style={{ color: "#0b0d7b", fontWeight: "bolder" }}>
+            {data.name} current weather Info
+          </h3>
           <WeatherDisplay data={data} />
         </section>
       )}

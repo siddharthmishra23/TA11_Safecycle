@@ -21,7 +21,9 @@ function RotateSlides({
 
     setAng((prevAng) => prevAng - 22.5);
   };
-
+  const handleCardClick = (angle) => {
+    setAng(angle);
+  };
   const rotationStyle = {
     "--ang": `${ang}deg`,
   };
@@ -80,52 +82,100 @@ function RotateSlides({
     <div className={styles.rotateslides}>
       <div className={styles.holder}>
         <div className={`${styles.spinner}`} style={{ "--ang": ang }}>
-          <div className={styles.panel + " " + styles.a}>
+          <div
+            className={styles.panel + " " + styles.a}
+            onClick={() => handleCardClick(360)}
+          >
             <p>Explore Victoria Trails</p>
           </div>
-          <div className={styles.panel + " " + styles.b}>
+          <div
+            className={styles.panel + " " + styles.b}
+            onClick={() => handleCardClick(337.5)}
+          >
             <p>Surf Coast Walk</p>
           </div>
-          <div className={styles.panel + " " + styles.c}>
+          <div
+            className={styles.panel + " " + styles.c}
+            onClick={() => handleCardClick(315)}
+          >
             <p>Great Victorian Rail Trail</p>
           </div>
-          <div className={styles.panel + " " + styles.d}>
+          <div
+            className={styles.panel + " " + styles.d}
+            onClick={() => handleCardClick(292.5)}
+          >
             <p>Mornington Peninsula Walk</p>
           </div>
-          <div className={styles.panel + " " + styles.e}>
+          <div
+            className={styles.panel + " " + styles.e}
+            onClick={() => handleCardClick(270)}
+          >
             <p>Lilydale To Warburton</p>
           </div>
-          <div className={styles.panel + " " + styles.f}>
+          <div
+            className={styles.panel + " " + styles.f}
+            onClick={() => handleCardClick(247.5)}
+          >
             <p>Gippsland Plains Rail Trail</p>
           </div>
-          <div className={styles.panel + " " + styles.g}>
+          <div
+            className={styles.panel + " " + styles.g}
+            onClick={() => handleCardClick(225)}
+          >
             <p>You Yangs Mountain Bike Park</p>
           </div>
-          <div className={styles.panel + " " + styles.h}>
+          <div
+            className={styles.panel + " " + styles.h}
+            onClick={() => handleCardClick(202.5)}
+          >
             <p>Mt Buller Bike Park</p>
           </div>
-          <div className={styles.panel + " " + styles.i}>
+          <div
+            className={styles.panel + " " + styles.i}
+            onClick={() => handleCardClick(180)}
+          >
             <p>Wilsons Promontory Southern</p>
           </div>
-          <div className={styles.panel + " " + styles.j}>
+          <div
+            className={styles.panel + " " + styles.j}
+            onClick={() => handleCardClick(157.5)}
+          >
             <p>Great Ocean Walk</p>
           </div>
-          <div className={styles.panel + " " + styles.k}>
+          <div
+            className={styles.panel + " " + styles.k}
+            onClick={() => handleCardClick(135)}
+          >
             <p>Goldfields Track</p>
           </div>
-          <div className={styles.panel + " " + styles.l}>
+          <div
+            className={styles.panel + " " + styles.l}
+            onClick={() => handleCardClick(112.5)}
+          >
             <p>Forrest Mountain Bike Trails</p>
           </div>
-          <div className={styles.panel + " " + styles.m}>
+          <div
+            className={styles.panel + " " + styles.m}
+            onClick={() => handleCardClick(90)}
+          >
             <p>Great Walhalla Alpine Trail</p>
           </div>
-          <div className={styles.panel + " " + styles.n}>
+          <div
+            className={styles.panel + " " + styles.n}
+            onClick={() => handleCardClick(67.5)}
+          >
             <p>Great South West Walk</p>
           </div>
-          <div className={styles.panel + " " + styles.o}>
+          <div
+            className={styles.panel + " " + styles.o}
+            onClick={() => handleCardClick(45)}
+          >
             <p>Murray To Mountains Rail Trail</p>
           </div>
-          <div className={styles.panel + " " + styles.p}>
+          <div
+            className={styles.panel + " " + styles.p}
+            onClick={() => handleCardClick(22.5)}
+          >
             <p>East Gippsland Rail Trail</p>
           </div>
         </div>

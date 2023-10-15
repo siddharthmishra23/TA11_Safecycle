@@ -5,7 +5,6 @@ import WeatherDisplay from "../components/WeatherDisplay";
 import MyMap from "../components/GeojsonMap";
 import RotateSlides from "../components/RotateSlides";
 import styles from "./Trail.module.css";
-import TrailInfo from "../components/TrailInfo";
 import PageNotFound from "./PageNotFound";
 
 const trailDetails = {

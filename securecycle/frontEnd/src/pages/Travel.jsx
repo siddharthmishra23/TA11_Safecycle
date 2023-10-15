@@ -513,9 +513,10 @@ const Travel = () => {
               >
                 <span
                   className={styles["close-icon"]}
-                  onClick={() => setShowAccidents(false)} // Add an event handler to close the message
+                  onClick={() => setShowAccidents(false)}
+                  style={{ color: "white" }} // Set the color to white
                 >
-                  <i class="fa-duotone fa-xmark"></i>
+                  &#x2716;
                 </span>
                 {`There were ${accidents.length} reported cases on the path since 2007.`}
               </div>

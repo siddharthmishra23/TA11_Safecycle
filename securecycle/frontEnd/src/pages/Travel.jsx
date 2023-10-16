@@ -514,7 +514,6 @@ const Travel = () => {
                 <span
                   className={styles["close-icon"]}
                   onClick={() => setShowAccidents(false)}
-                  style={{ color: "white" }} // Set the color to white
                 >
                   &#x2716;
                 </span>

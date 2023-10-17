@@ -49,25 +49,34 @@ function MyMap({ selected_trail, onTrailClick: handleTrailClickFromMap }) {
   const mapRef = useRef();
 
   function getIconByName(name) {
+    console.log(name);
     let iconUrl;
 
-    switch (name) {
-      case "Car park":
-        iconUrl = "./marker-parking.png";
-        break;
-      case "Picnic table":
-        iconUrl = "./marker_picnic.png";
-        break;
-      // ... other cases ...
-
-      default:
-        iconUrl = "./marker_all.png"; // Optional: default icon
-        break;
+    if (name.includes("Water")) {
+      iconUrl = "./marker_water.png";
+    } else if (name.includes("park")) {
+      iconUrl = "./marker-parking.png";
+    } else if (name.includes("picnic") || name.includes("Picnic")) {
+      iconUrl = "./marker_picnic.png";
+    } else if (name.includes("Bridge")) {
+      iconUrl = "./marker_bridge.png";
+    } else if (name.includes("Beach")) {
+      iconUrl = "./marker_beach.png";
+    } else if (name.includes("Park") || name.includes("Garden")) {
+      iconUrl = "./marker_garden.png";
+    } else if (name.includes("Lookout")) {
+      iconUrl = "./marker_lookout.png";
+    } else if (name.includes("Railway")) {
+      iconUrl = "./marker_station.png";
+    } else if (name.includes("Toilet")) {
+      iconUrl = "./marker_toilet.png";
+    } else {
+      iconUrl = "./marker_pin.png"; // Default icon
     }
 
     return new L.Icon({
       iconUrl: iconUrl,
-      iconSize: [80, 60],
+      iconSize: [60, 60],
     });
   }
 
